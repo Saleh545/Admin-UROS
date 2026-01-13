@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Box, CssBaseline, AppBar, Toolbar, IconButton, 
   Typography, Avatar, Menu, MenuItem, ListItemIcon, 
-  Divider, Button, Badge 
+  Divider, Button, Badge, Backdrop, CircularProgress 
 } from '@mui/material';
 import { 
   Menu as MenuIcon, PersonOutline, Settings, Logout, 
@@ -11,6 +11,7 @@ import {
 import Sidebar from '../components/Sidebar';
 import { useColorMode } from '../context/ColorModeContext';
 import { useTranslation } from 'react-i18next'; 
+import logo from "../assets/logo.png"; // Logonu import edirik (loading üçün)
 
 const drawerWidth = 260;
 
@@ -18,34 +19,46 @@ const MainLayout = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorElProfile, setAnchorElProfile] = useState(null);
   
+  // DİL DƏYİŞMƏ ANIMASİYASI ÜÇÜN STATE
+  const [isLangSwitching, setIsLangSwitching] = useState(false);
+
   const { toggleColorMode, mode } = useColorMode(); 
   const { t, i18n } = useTranslation(); 
 
-  // Profil menyusu idarəetməsi
   const openProfile = Boolean(anchorElProfile);
   const handleProfileClick = (event) => setAnchorElProfile(event.currentTarget);
   const handleProfileClose = () => setAnchorElProfile(null);
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
-  // --- YENİ DİL DƏYİŞMƏ MƏNTİQİ (TOGGLE) ---
+  // --- DİL DƏYİŞMƏ MƏNTİQİ (ANIMASİYA İLƏ) ---
   const handleLanguageToggle = () => {
-    const currentLang = i18n.language;
-    let nextLang = 'az';
+    // 1. Ekranı qaraltmağa başla
+    setIsLangSwitching(true);
 
-    // Sıralama: AZ -> EN -> RU -> AZ
-    if (currentLang === 'az') nextLang = 'en';
-    else if (currentLang === 'en') nextLang = 'ru';
-    else nextLang = 'az';
+    // 2. 500ms gözlə (ekran tam qaralsın), sonra dili dəyiş
+    setTimeout(() => {
+        const currentLang = i18n.language;
+        let nextLang = 'az';
 
-    i18n.changeLanguage(nextLang);
+        if (currentLang === 'az') nextLang = 'en';
+        else if (currentLang === 'en') nextLang = 'ru';
+        else nextLang = 'az';
+
+        i18n.changeLanguage(nextLang);
+
+        // 3. Daha 500ms gözlə (ümumi 1 saniyə), sonra ekranı aç
+        setTimeout(() => {
+            setIsLangSwitching(false);
+        }, 500);
+
+    }, 500);
   };
 
-  // Hazırkı dilə uyğun Bayraq qaytaran funksiya
-  const getCurrentFlag = () => {
+  const getCurrentLangText = () => {
     switch (i18n.language) {
-        case 'en': return '🇬🇧';
-        case 'ru': return '🇷🇺';
-        default: return '🇦🇿'; // Varsayılan 'az'
+        case 'en': return 'EN'; 
+        case 'ru': return 'RU'; 
+        default: return 'AZ';   
     }
   };
 
@@ -76,6 +89,25 @@ const MainLayout = ({ children }) => {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       
+      {/* LOADING EKRANI (Dil dəyişəndə çıxır) */}
+      <Backdrop
+        sx={{ 
+            color: '#fff', 
+            zIndex: (theme) => theme.zIndex.drawer + 9999, // Ən üstdə olsun
+            bgcolor: mode === 'dark' ? '#0f111a' : '#ffffff', // Temaya uyğun fon
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2
+        }}
+        open={isLangSwitching}
+      >
+         <img src={logo} alt="Loading" style={{ height: '50px', objectFit: 'contain' }} />
+         <CircularProgress color="primary" />
+         <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1 }}>
+            {t('')}
+         </Typography>
+      </Backdrop>
+
       <AppBar
         position="fixed"
         sx={{
@@ -98,26 +130,25 @@ const MainLayout = ({ children }) => {
             <MenuIcon />
           </IconButton>
           
-          {/* ---------------- SOL TƏRƏF ---------------- */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             
-            {/* DİL DÜYMƏSİ (TEK DÜYMƏ) */}
             <IconButton 
                 onClick={handleLanguageToggle} 
                 color="inherit" 
+                disabled={isLangSwitching} // Dəyişən vaxtı düyməni blokla
                 sx={{ 
                     mr: 1,
                     width: 40,
                     height: 40,
-                    fontSize: '1.5rem', // Bayrağı böyütmək üçün
+                    fontSize: '1rem', 
+                    fontWeight: 'bold', 
                     transition: 'transform 0.2s',
-                    '&:active': { transform: 'scale(0.9)' } // Basanda kiçilmə effekti
+                    '&:active': { transform: 'scale(0.9)' } 
                 }}
             >
-                {getCurrentFlag()}
+                {getCurrentLangText()}
             </IconButton>
 
-            {/* TEMA DÜYMƏSİ */}
             <IconButton onClick={toggleColorMode} color="inherit">
                 {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
             </IconButton>
@@ -126,14 +157,12 @@ const MainLayout = ({ children }) => {
 
           <Box sx={{ flexGrow: 1 }} /> 
 
-          {/* ---------------- SAĞ TƏRƏF (Profil) ---------------- */}
           <IconButton onClick={handleProfileClick} size="small" sx={{ ml: 1 }}>
              <Badge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" sx={StyledBadge}>
                 <Avatar sx={{ width: 40, height: 40 }} src="/broken-image.jpg" />
               </Badge>
           </IconButton>
 
-          {/* Profil Menyusu */}
           <Menu
               anchorEl={anchorElProfile}
               open={openProfile}

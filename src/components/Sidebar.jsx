@@ -9,35 +9,38 @@ import {
   Security, Settings, BarChart, ShoppingBag 
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // 1. BU SƏTRİ MÜTLƏQ ƏLAVƏ ET
 import logo from "../assets/logo.png"
 
 const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation(); // 2. BU HOOK-U KOMPONENTİN İÇİNDƏ ÇAĞIR
 
+  // 3. ADLARI t() FUNKSİYASI İLƏ DƏYİŞDİRDİK
   const navigation = [
-    { kind: 'header', title: 'SUPER ADMIN' },
-    { kind: 'item', title: 'Dashboard', icon: <Home />, path: '/' },
-    { kind: 'item', title: 'Restaurants', icon: <Store />, path: '/restaurants' },
-    { kind: 'item', title: 'Users', icon: <Person />, path: '/users' },
-    { kind: 'item', title: 'n8n Automation', icon: <AccountTree />, path: '/automation' },
-    { kind: 'item', title: 'Support Tickets', icon: <HeadsetMic />, path: '/support' },
-    { kind: 'item', title: 'Push Notifications', icon: <Podcasts />, path: '/push' },
-    { kind: 'item', title: 'Global Logs', icon: <Storage />, path: '/logs' },
+    { kind: 'header', title: t('sidebar.super_admin') },
+    { kind: 'item', title: t('sidebar.dashboard'), icon: <Home />, path: '/' },
+    { kind: 'item', title: t('sidebar.restaurants'), icon: <Store />, path: '/restaurants' },
+    { kind: 'item', title: t('sidebar.users'), icon: <Person />, path: '/users' },
+    { kind: 'item', title: t('sidebar.automation'), icon: <AccountTree />, path: '/automation' },
+    { kind: 'item', title: t('sidebar.support'), icon: <HeadsetMic />, path: '/support' },
+    { kind: 'item', title: t('sidebar.push'), icon: <Podcasts />, path: '/push' },
+    { kind: 'item', title: t('sidebar.logs'), icon: <Storage />, path: '/logs' },
 
-    { kind: 'header', title: 'MANAGEMENT' },
-    { kind: 'item', title: 'Dashboard', icon: <ShoppingBag />, path: '/venue-dashboard' },
-    { kind: 'item', title: 'Marketing & Promo', icon: <CardGiftcard />, path: '/marketing' },
+    { kind: 'header', title: t('sidebar.management') },
+    { kind: 'item', title: t('sidebar.venue_dashboard'), icon: <ShoppingBag />, path: '/venue-dashboard' },
+    { kind: 'item', title: t('sidebar.marketing'), icon: <CardGiftcard />, path: '/marketing' },
     { 
       kind: 'item', 
-      title: 'Staff & Access', 
+      title: t('sidebar.staff'), 
       icon: <PeopleOutline />, 
       path: '/staff',
-      badge: { label: 'Limits', color: '#4285F4' } 
+      badge: { label: t('sidebar.limits'), color: '#4285F4' } 
     },
-    { kind: 'item', title: 'Security Logs', icon: <Security />, path: '/security' },
-    { kind: 'item', title: 'Venue Settings', icon: <Settings />, path: '/venue-settings' },
-    { kind: 'item', title: 'Analytics', icon: <BarChart />, path: '/analytics' },
+    { kind: 'item', title: t('sidebar.security'), icon: <Security />, path: '/security' },
+    { kind: 'item', title: t('sidebar.settings'), icon: <Settings />, path: '/venue-settings' },
+    { kind: 'item', title: t('sidebar.analytics'), icon: <BarChart />, path: '/analytics' },
   ];
 
   const drawerContent = (
@@ -73,7 +76,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
                   disableSticky
                   sx={{ 
                     bgcolor: 'transparent', 
-                    mt: 2.5, mb: 0.5, px: 3 // Paddingi düymələr ilə eyniləşdirdik
+                    mt: 2.5, mb: 0.5, px: 3 
                   }}
                 >
                   <Box 
@@ -88,7 +91,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
                       letterSpacing: '0.8px'
                     }}
                   >
-                      {/* SOL XƏTT (Çox qısa - səliqəli görünməsi üçün) */}
+                      {/* SOL XƏTT */}
                       <Box 
                         sx={{ 
                           width: '8px', 
@@ -103,7 +106,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
                         {item.title}
                       </Box>
 
-                      {/* SAĞ XƏTT (Sona qədər) */}
+                      {/* SAĞ XƏTT */}
                       <Box 
                         sx={{ 
                           flexGrow: 1, 
@@ -132,7 +135,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
                     borderTopLeftRadius: '0px',
                     borderBottomLeftRadius: '0px',
                     mr: 2, 
-                    pl: 3, // İkonlar buradan başlayır (24px)
+                    pl: 3, 
                     py: 1.2, 
                     '&.Mui-selected': { 
                         background: 'linear-gradient(98deg, #4285F4, #346efd 94%)', 

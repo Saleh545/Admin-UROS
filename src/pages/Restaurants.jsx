@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Box, Card, CardContent, Typography, Button, 
-  TextField, Table, TableBody, TableCell, TableContainer, 
-  TableHead, TableRow, Avatar, Chip, IconButton, MenuItem, Select, InputAdornment, Tooltip,
+  TextField, Table, TableBody, TableCell, TableHead, TableRow, 
+  Avatar, Chip, IconButton, MenuItem, Select, InputAdornment, Tooltip,
   Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions
 } from '@mui/material';
 import { 
@@ -20,21 +20,29 @@ const initialBrands = [
   { id: 4, name: 'Salam Qaqa', owner: 'Salam Salamov', branches: 0, currency: 'AZN', link: '/m/salam', status: 'Active', initials: 'SA', color: '#666CFF' },
 ];
 
-// STATISTIKA KARTI
+// STATISTIKA KARTI - DAŞMAYA QARŞI QORUMALI
 const StatCard = ({ title, value, icon, color, bgColor }) => (
-  <Card sx={{ height: '100%', boxShadow: 3, borderRadius: '12px', minWidth: 0 }}>
-    <CardContent sx={{ p: 2.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', '&:last-child': { pb: 2.5 } }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-        <Typography variant="h5" sx={{ fontWeight: 700, mb: 0.5, fontSize: { xs: '1.25rem', md: '1.5rem' } }}>
-            {value}
-        </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500, fontSize: '0.85rem' }}>
-            {title}
-        </Typography>
+  <Card sx={{ height: '100%', boxShadow: 3, borderRadius: '12px', width: '100%' }}>
+    <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}> 
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: 0, flex: 1 }}> {/* flex: 1 vacibdir */}
+          <Typography variant="h5" sx={{ fontWeight: 700, mb: 0.5, fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
+              {value}
+          </Typography>
+          <Typography variant="body2" sx={{ 
+              color: 'text.secondary', 
+              fontWeight: 500, 
+              fontSize: '0.75rem', 
+              whiteSpace: 'normal', // Yazı uzun olsa qırılacaq
+              wordBreak: 'break-word' // Məcbur qırılma
+          }}>
+              {title}
+          </Typography>
+        </Box>
+        <Avatar variant="rounded" sx={{ bgcolor: bgColor, color: color, width: 40, height: 40, borderRadius: '8px', ml: 1 }}>
+          {icon}
+        </Avatar>
       </Box>
-      <Avatar variant="rounded" sx={{ bgcolor: bgColor, color: color, width: 42, height: 42, borderRadius: '8px' }}>
-        {icon}
-      </Avatar>
     </CardContent>
   </Card>
 );
@@ -94,22 +102,29 @@ const Restaurants = () => {
   };
 
   return (
-    // 1. GLOBAL LAYOUT FIX - SƏHİFƏNİN DAŞMASINI QADAĞAN EDİRİK
+    // 1. ANA KONTEYNER: Tamamilə izolyasiya edilmiş
     <Box sx={{ 
         width: '100%', 
-        maxWidth: '100vw', 
-        overflowX: 'hidden', 
+        maxWidth: '100vw', // Ekran genişliyini aşmasın
+        overflowX: 'hidden', // Daşmanı gizlət
         boxSizing: 'border-box' 
     }}>
       
-      {/* 2. STATISTIKA KARTLARI (CSS GRID - DAHA STABİL) */}
+      {/* 2. STATISTIKA: CSS GRID */}
       <Box sx={{ 
           display: 'grid', 
-          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(4, 1fr)' }, 
+          // Mobildə (xs): 1 sütun (Tam alt-alta). Bu iPhone 5-də daşmanı həll edir.
+          // Planşet (sm): 2 sütun
+          // PC (md): 4 sütun
+          gridTemplateColumns: { 
+              xs: '1fr', 
+              sm: '1fr 1fr', 
+              md: '1fr 1fr 1fr 1fr' 
+          }, 
           gap: 2, 
-          width: '100%', 
+          width: '86%', 
           mb: 3,
-          px: { xs: 0, sm: 0 } // Mobil padding sıfırlama
+          boxSizing: 'border-box'
       }}>
         <StatCard title={t('restaurants.stats.total_brands')} value={brandsData.length} icon={<Store />} color="#666CFF" bgColor="rgba(102, 108, 255, 0.12)" />
         <StatCard title={t('restaurants.stats.active_networks')} value={brandsData.filter(b => b.status === 'Active').length} icon={<CheckCircle />} color="#72E128" bgColor="rgba(114, 225, 40, 0.12)" />
@@ -117,47 +132,49 @@ const Restaurants = () => {
         <StatCard title={t('restaurants.stats.total_revenue')} value="17,850 ₼" icon={<MonetizationOn />} color="#26C6F9" bgColor="rgba(38, 198, 249, 0.12)" />
       </Box>
 
-      {/* 3. MAIN CARD */}
+      {/* 3. CƏDVƏL KARTI */}
       <Card sx={{ boxShadow: 3, width: '100%', overflow: 'hidden' }}>
-        <CardContent sx={{ p: 0 }}>
+        <CardContent sx={{ p: 0, '&:last-child': { pb: 0 } }}>
           
           <Box sx={{ p: 2 }}>
              <Typography variant="h6" fontWeight={700}>{t('restaurants.title')}</Typography>
           </Box>
 
-          {/* 4. TOOLBAR (IPHONE 5 FIX - TAM COLUMN) */}
+          {/* 4. TOOLBAR (ALT-ALTA LAYOUT - iPhone 5 safe) */}
           <Box sx={{ 
-              px: 2, 
-              pb: 2, 
-              display: 'flex', 
-              flexDirection: { xs: 'column', md: 'row' }, // Mobildə ALT-ALTA
-              gap: 2, 
-              width: '100%'
+              display: 'flex',
+              flexDirection: 'column', // Mobildə HƏMİŞƏ alt-alta
+              gap: 2,
+              p: 2,
+              pt: 0,
+              width: '100%',
+              boxSizing: 'border-box'
           }}>
             {/* Axtarış */}
             <TextField 
-              placeholder={t('restaurants.search_placeholder')}
-              size="small" 
-              fullWidth
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px' } }}
-              InputProps={{ startAdornment: <InputAdornment position="start"><Search fontSize="small" sx={{ color: 'text.secondary' }} /></InputAdornment> }}
+                placeholder={t('restaurants.search_placeholder')}
+                size="small" 
+                fullWidth
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px' } }}
+                InputProps={{ startAdornment: <InputAdornment position="start"><Search fontSize="small" sx={{ color: 'text.secondary' }} /></InputAdornment> }}
             />
             
-            {/* Filtr və Button Container - Mobildə də alt-alta olsun ki, düymə sıxılmasın */}
+            {/* Filtr və Düymə */}
             <Box sx={{ 
-                display: 'flex', 
-                flexDirection: { xs: 'column', sm: 'row' }, // Çox kiçikdə alt-alta, biraz böyükdə yan-yana
-                gap: 2, 
-                width: { xs: '100%', md: 'auto' } 
+                display: 'grid', 
+                // Mobildə (xs): 1 sütun (Alt-alta). iPhone 5-də yan-yana qoymuram.
+                // Planşetdən yuxarı (sm): Yan-yana
+                gridTemplateColumns: { xs: '1fr', sm: '150px auto' }, 
+                gap: 2 
             }}>
                 <Select 
                     size="small" 
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
                     fullWidth
-                    sx={{ borderRadius: '8px', minWidth: { sm: 150 } }}
+                    sx={{ borderRadius: '8px' }}
                 >
                     <MenuItem value="all">{t('restaurants.filters.all')}</MenuItem>
                     <MenuItem value="active">{t('restaurants.filters.active')}</MenuItem>
@@ -177,7 +194,7 @@ const Restaurants = () => {
                         fontWeight: 600, 
                         boxShadow: '0 4px 14px 0 rgba(66, 133, 244, 0.3)',
                         whiteSpace: 'nowrap',
-                        height: 40 // Hündürlük sabitləndi
+                        height: 40
                     }}
                 >
                     {t('restaurants.btn_new_brand')}
@@ -185,73 +202,74 @@ const Restaurants = () => {
             </Box>
           </Box>
 
-          {/* 5. CƏDVƏL WRAPPER (DAŞMANIN QARŞISINI ALAN ƏSAS HİSSƏ) */}
+          {/* 5. CƏDVƏL WRAPPER */}
           <Box sx={{ width: '100%', overflowX: 'auto', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-            <Table sx={{ minWidth: 800 }}> {/* Min Width saxlanılır ki, cədvəl oxunsun */}
-              <TableHead sx={{ bgcolor: 'rgba(255, 255, 255, 0.02)' }}>
-                <TableRow sx={{ '& th': { borderBottom: '1px solid rgba(255,255,255,0.05)', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 700, color: 'text.secondary' } }}>
-                  <TableCell>{t('restaurants.table.brand')}</TableCell>
-                  <TableCell>{t('restaurants.table.stats')}</TableCell>
-                  <TableCell>{t('restaurants.table.public_link')}</TableCell>
-                  <TableCell>{t('restaurants.table.status')}</TableCell>
-                  <TableCell align="right">{t('restaurants.table.actions')}</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {filteredBrands.length > 0 ? (
-                    filteredBrands.map((row) => {
-                        const statusStyle = getStatusColor(row.status);
-                        const statusLabel = t(`restaurants.filters.${row.status.toLowerCase()}`); 
-                        return (
-                            <TableRow key={row.id} hover sx={{ '& td': { borderBottom: '1px solid rgba(255,255,255,0.05)', py: 2 } }}>
-                            <TableCell>
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                <Avatar variant="rounded" sx={{ bgcolor: 'rgba(255,255,255,0.05)', color: row.color, fontWeight: 700, borderRadius: '8px' }}>{row.initials}</Avatar>
-                                <Box>
-                                    <Typography variant="subtitle2" fontWeight="bold" sx={{ fontSize: '0.95rem' }}>{row.name}</Typography>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary' }}>
-                                        <PersonOutline sx={{ fontSize: 14 }} />
-                                        <Typography variant="caption">{row.owner}</Typography>
-                                    </Box>
-                                </Box>
-                                </Box>
-                            </TableCell>
-                            <TableCell>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                                    <Chip label={t('restaurants.table.branches_count', { count: row.branches || 0 })} size="small" sx={{ bgcolor: 'rgba(66, 133, 244, 0.12)', color: '#4285F4', fontWeight: 700, borderRadius: '6px', height: 22, fontSize: '0.7rem', width: 'fit-content' }} />
-                                    <Typography variant="caption" color="text.secondary">{t('restaurants.table.currency')}: {row.currency}</Typography>
-                                </Box>
-                            </TableCell>
-                            <TableCell>
-                                <Button variant="outlined" size="small" startIcon={<Launch sx={{ fontSize: 14 }} />} sx={{ textTransform: 'none', borderRadius: '20px', fontSize: '0.75rem', borderColor: 'rgba(255,255,255,0.2)', color: '#26C6F9' }}>{row.link}</Button>
-                            </TableCell>
-                            <TableCell>
-                                <Chip label={statusLabel.toUpperCase()} size="small" sx={{ bgcolor: statusStyle.bg, color: statusStyle.text, fontWeight: 700, borderRadius: '6px', fontSize: '0.7rem' }} />
-                            </TableCell>
-                            <TableCell align="right">
-                                <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
-                                    <Tooltip title="Login"><IconButton size="small" sx={{ color: '#26C6F9', bgcolor: 'rgba(38, 198, 249, 0.1)' }}><Login fontSize="small" /></IconButton></Tooltip>
-                                    <Tooltip title="Edit"><IconButton size="small" onClick={() => handleEditClick(row)} sx={{ color: 'text.secondary' }}><Edit fontSize="small" /></IconButton></Tooltip>
-                                    <Tooltip title="Delete"><IconButton size="small" color="error" onClick={() => handleDeleteClick(row)}><Delete fontSize="small" /></IconButton></Tooltip>
-                                </Box>
-                            </TableCell>
-                            </TableRow>
-                        );
-                    })
-                ) : (
-                    <TableRow>
-                        <TableCell colSpan={5} align="center" sx={{ py: 3 }}>
-                            <Typography color="text.secondary">No brands found matching your search.</Typography>
-                        </TableCell>
+            <Box sx={{ minWidth: 800 }}> 
+                <Table>
+                <TableHead sx={{ bgcolor: 'rgba(255, 255, 255, 0.02)' }}>
+                    <TableRow sx={{ '& th': { borderBottom: '1px solid rgba(255,255,255,0.05)', textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 700, color: 'text.secondary' } }}>
+                    <TableCell>{t('restaurants.table.brand')}</TableCell>
+                    <TableCell>{t('restaurants.table.stats')}</TableCell>
+                    <TableCell>{t('restaurants.table.public_link')}</TableCell>
+                    <TableCell>{t('restaurants.table.status')}</TableCell>
+                    <TableCell align="right">{t('restaurants.table.actions')}</TableCell>
                     </TableRow>
-                )}
-              </TableBody>
-            </Table>
+                </TableHead>
+                <TableBody>
+                    {filteredBrands.length > 0 ? (
+                        filteredBrands.map((row) => {
+                            const statusStyle = getStatusColor(row.status);
+                            const statusLabel = t(`restaurants.filters.${row.status.toLowerCase()}`); 
+                            return (
+                                <TableRow key={row.id} hover sx={{ '& td': { borderBottom: '1px solid rgba(255,255,255,0.05)', py: 2 } }}>
+                                <TableCell>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                    <Avatar variant="rounded" sx={{ bgcolor: 'rgba(255,255,255,0.05)', color: row.color, fontWeight: 700, borderRadius: '8px' }}>{row.initials}</Avatar>
+                                    <Box>
+                                        <Typography variant="subtitle2" fontWeight="bold" sx={{ fontSize: '0.95rem' }}>{row.name}</Typography>
+                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary' }}>
+                                            <PersonOutline sx={{ fontSize: 14 }} />
+                                            <Typography variant="caption">{row.owner}</Typography>
+                                        </Box>
+                                    </Box>
+                                    </Box>
+                                </TableCell>
+                                <TableCell>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+                                        <Chip label={t('restaurants.table.branches_count', { count: row.branches || 0 })} size="small" sx={{ bgcolor: 'rgba(66, 133, 244, 0.12)', color: '#4285F4', fontWeight: 700, borderRadius: '6px', height: 22, fontSize: '0.7rem', width: 'fit-content' }} />
+                                        <Typography variant="caption" color="text.secondary">{t('restaurants.table.currency')}: {row.currency}</Typography>
+                                    </Box>
+                                </TableCell>
+                                <TableCell>
+                                    <Button variant="outlined" size="small" startIcon={<Launch sx={{ fontSize: 14 }} />} sx={{ textTransform: 'none', borderRadius: '20px', fontSize: '0.75rem', borderColor: 'rgba(255,255,255,0.2)', color: '#26C6F9' }}>{row.link}</Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Chip label={statusLabel.toUpperCase()} size="small" sx={{ bgcolor: statusStyle.bg, color: statusStyle.text, fontWeight: 700, borderRadius: '6px', fontSize: '0.7rem' }} />
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
+                                        <Tooltip title="Login"><IconButton size="small" sx={{ color: '#26C6F9', bgcolor: 'rgba(38, 198, 249, 0.1)' }}><Login fontSize="small" /></IconButton></Tooltip>
+                                        <Tooltip title="Edit"><IconButton size="small" onClick={() => handleEditClick(row)} sx={{ color: 'text.secondary' }}><Edit fontSize="small" /></IconButton></Tooltip>
+                                        <Tooltip title="Delete"><IconButton size="small" color="error" onClick={() => handleDeleteClick(row)}><Delete fontSize="small" /></IconButton></Tooltip>
+                                    </Box>
+                                </TableCell>
+                                </TableRow>
+                            );
+                        })
+                    ) : (
+                        <TableRow>
+                            <TableCell colSpan={5} align="center" sx={{ py: 3 }}>
+                                <Typography color="text.secondary">No brands found matching your search.</Typography>
+                            </TableCell>
+                        </TableRow>
+                    )}
+                </TableBody>
+                </Table>
+            </Box>
           </Box>
         </CardContent>
       </Card>
 
-      {/* DIALOG FIX */}
       <Dialog 
         open={deleteDialogOpen} 
         onClose={() => setDeleteDialogOpen(false)} 
@@ -260,7 +278,8 @@ const Restaurants = () => {
                 bgcolor: '#28243d', 
                 color: '#fff', 
                 backgroundImage: 'none',
-                width: 'calc(100% - 32px)', // Ekrandan 32px kiçik
+                width: 'calc(100% - 32px)', 
+                maxWidth: '400px', 
                 m: 2 
             } 
         }}

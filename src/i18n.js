@@ -5,6 +5,44 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const resources = {
   en: {
     translation: {
+      // --- NEW PRICING SECTION ---
+      pricing: {
+        title: "Monetization & Pricing 💰",
+        subtitle: "Create custom plans & limits.",
+        btn_save_all: "Save All Changes",
+        tab_manage: "Manage Plans",
+        tab_subscriptions: "Subscriptions",
+        plan_name_placeholder: "Plan Name",
+        price_label: "Price",
+        limits: {
+          branches: "BRANCHES",
+          staff: "STAFF",
+          admins: "ADMINS"
+        },
+        btn_add_feature: "Add Feature",
+        card_create: "Create Plan",
+        table: {
+          restaurant: "RESTAURANT",
+          current_plan: "CURRENT PLAN",
+          price_mo: "PRICE/MO",
+          addons: "ADD-ONS",
+          action: "ACTION",
+          btn_edit: "Edit"
+        },
+        dialog: {
+          title: "Manage: {{restaurant}}",
+          label_select_plan: "Select Plan",
+          label_standard_price: "Standard Price",
+          label_custom_price: "Custom Price",
+          placeholder_custom: "e.g. 400",
+          helper_custom: "Optional override",
+          btn_cancel: "Cancel",
+          btn_save: "Save Changes"
+        },
+        alert_saved: "All changes saved 💾"
+      },
+      // ---------------------------
+
       sidebar: {
         super_admin: "Super Admin",
         dashboard: "Dashboard",
@@ -102,7 +140,6 @@ const resources = {
           btn_delete: "Delete Permanently"
         }
       },
-      // YENİ: USERS PAGE
       users_page: {
         title: "System Users",
         subtitle: "Access Management (Admins, Owners, Staff)",
@@ -211,6 +248,44 @@ const resources = {
   },
   az: {
     translation: {
+      // --- NEW PRICING SECTION (AZ) ---
+      pricing: {
+        title: "Monetizasiya və Qiymətlər 💰",
+        subtitle: "Xüsusi planlar və limitlər yaradın.",
+        btn_save_all: "Yadda Saxla",
+        tab_manage: "Planları İdarə Et",
+        tab_subscriptions: "Abunəliklər",
+        plan_name_placeholder: "Plan Adı",
+        price_label: "Qiymət",
+        limits: {
+          branches: "FİLİALLAR",
+          staff: "İŞÇİ",
+          admins: "ADMİN"
+        },
+        btn_add_feature: "Özəllik Əlavə Et",
+        card_create: "Plan Yarat",
+        table: {
+          restaurant: "RESTORAN",
+          current_plan: "CARİ PLAN",
+          price_mo: "QİYMƏT/AY",
+          addons: "ƏLAVƏLƏR",
+          action: "ƏMƏLİYYAT",
+          btn_edit: "Düzəliş"
+        },
+        dialog: {
+          title: "İdarə et: {{restaurant}}",
+          label_select_plan: "Plan Seçin",
+          label_standard_price: "Standart Qiymət",
+          label_custom_price: "Xüsusi Qiymət",
+          placeholder_custom: "məs. 400",
+          helper_custom: "İstəyə bağlı (Standartdan fərqli)",
+          btn_cancel: "Ləğv Et",
+          btn_save: "Dəyişikliyi Saxla"
+        },
+        alert_saved: "Bütün dəyişikliklər yadda saxlanıldı 💾"
+      },
+      // -------------------------------
+
       sidebar: {
         super_admin: "Super Admin",
         dashboard: "İdarə Paneli",
@@ -308,7 +383,6 @@ const resources = {
           btn_delete: "Birdəfəlik Sil"
         }
       },
-      // YENİ: USERS PAGE
       users_page: {
         title: "Sistem İstifadəçiləri",
         subtitle: "Giriş İdarəetməsi (Adminlər, Sahibləri, Personal)",
@@ -417,6 +491,44 @@ const resources = {
   },
   ru: {
     translation: {
+      // --- NEW PRICING SECTION (RU) ---
+      pricing: {
+        title: "Монетизация и Цены 💰",
+        subtitle: "Создавайте тарифы и лимиты.",
+        btn_save_all: "Сохранить Всё",
+        tab_manage: "Управление Планами",
+        tab_subscriptions: "Подписки",
+        plan_name_placeholder: "Название Плана",
+        price_label: "Цена",
+        limits: {
+          branches: "ФИЛИАЛЫ",
+          staff: "ПЕРСОНАЛ",
+          admins: "АДМИНЫ"
+        },
+        btn_add_feature: "Добавить Функцию",
+        card_create: "Создать План",
+        table: {
+          restaurant: "РЕСТОРАН",
+          current_plan: "ТЕКУЩИЙ ПЛАН",
+          price_mo: "ЦЕНА/МЕС",
+          addons: "ДОПОЛНЕНИЯ",
+          action: "ДЕЙСТВИЕ",
+          btn_edit: "Изменить"
+        },
+        dialog: {
+          title: "Управление: {{restaurant}}",
+          label_select_plan: "Выберите План",
+          label_standard_price: "Стандартная Цена",
+          label_custom_price: "Своя Цена",
+          placeholder_custom: "напр. 400",
+          helper_custom: "Необязательно (вместо стандарта)",
+          btn_cancel: "Отмена",
+          btn_save: "Сохранить"
+        },
+        alert_saved: "Все изменения сохранены 💾"
+      },
+      // -------------------------------
+
       sidebar: {
         super_admin: "Супер Админ",
         dashboard: "Панель управления",
@@ -514,7 +626,6 @@ const resources = {
           btn_delete: "Удалить Навсегда"
         }
       },
-      // YENİ: USERS PAGE
       users_page: {
         title: "Пользователи Системы",
         subtitle: "Управление доступами (Админы, Владельцы, Персонал)",

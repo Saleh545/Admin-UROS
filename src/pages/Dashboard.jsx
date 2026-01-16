@@ -9,10 +9,13 @@ import {
   LockPerson, AccessTime 
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom'; // Yönləndirmə üçün import
 
 const Dashboard = () => {
   const { t } = useTranslation();
   const theme = useTheme();
+  const navigate = useNavigate(); // Hook-u çağırırıq
+  
   // Mobil ekranı təyin edirik (<600px)
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -149,7 +152,14 @@ const Dashboard = () => {
       <Card sx={{ mt: 2, overflow: 'hidden' }}>
         <Box sx={{ p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>{t('dashboard.table.title')}</Typography>
-            <Button size="small" sx={{ textTransform: 'none', fontSize: '0.75rem' }}>{t('dashboard.table.all')}</Button>
+            {/* DÜZƏLİŞ: onClick naviqasiya əlavə edildi */}
+            <Button 
+                size="small" 
+                onClick={() => navigate('/restaurants')} 
+                sx={{ textTransform: 'none', fontSize: '0.75rem' }}
+            >
+                {t('dashboard.table.all')}
+            </Button>
         </Box>
 
         {/* --- MOBIL VS PC GÖRÜNÜŞÜ --- */}

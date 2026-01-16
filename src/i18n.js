@@ -6,14 +6,19 @@ const resources = {
   en: {
     translation: {
       sidebar: {
+        // Super Admin
         super_admin: "Super Admin",
         dashboard: "Dashboard",
         restaurants: "Restaurants",
         users: "Users",
+        pricing: "Pricing & Plans",
         automation: "n8n Automation",
         support: "Support Tickets",
         push: "Push Notifications",
+        releases: "System Releases",
         logs: "Global Logs",
+        
+        // Management
         management: "Management",
         venue_dashboard: "Venue Dashboard",
         marketing: "Marketing & Promo",
@@ -21,7 +26,32 @@ const resources = {
         limits: "Limits",
         security: "Security Logs",
         settings: "Venue Settings",
-        analytics: "Analytics"
+        analytics: "Analytics",
+        whats_new: "What's New",
+        help: "Help & Support",
+
+        // Finance
+        finance: "Finance",
+        billing: "Billing",
+
+        // Operations
+        operations: "Operations",
+        ops_dashboard: "Dashboard",
+        live_orders: "Live Orders",
+        chat: "Chat / CRM",
+        reviews: "Reviews / Feedback",
+        menu_mgmt: "Menu Management",
+        table_layout: "Table Layout",
+        floor_plan: "Visual Floor Plan",
+
+        // Personal
+        personal: "Personal",
+        profile_settings: "Profile Settings",
+
+        // Staff Interface
+        staff_interface: "Staff Interface",
+        open_mobile: "Open Mobile App",
+        staff_profile: "Staff Profile"
       },
       dashboard: {
         title: "Super Admin",
@@ -50,7 +80,6 @@ const resources = {
           time_2_weeks: "2 weeks ago"
         }
       },
-      // --- RESTAURANTS PAGE (EN) ---
       restaurants: {
         title: "Brands & Networks",
         stats: {
@@ -84,7 +113,6 @@ const resources = {
           btn_delete: "Delete Permanently"
         }
       },
-      // --- DRAWER (EN) ---
       drawer: {
         title_edit: "Edit Brand",
         title_new: "New Brand Client",
@@ -115,6 +143,37 @@ const resources = {
         profile: "Profile",
         settings: "Settings",
         logout: "Logout"
+      },
+      // YENİ: Venue Dashboard
+      venue_dashboard: {
+        you_manage: "You Manage:",
+        shift: "Shift: 12:00 - 00:00",
+        stats: {
+          hall_load: "HALL LOAD",
+          tables_count: "{{count}} / 20 Tables",
+          reserves: "RESERVES",
+          guests_count: "Guests: {{count}}",
+          waiters: "WAITERS",
+          on_shift: "On Shift",
+          ai_assistant: "AI ASSISTANT",
+          status_online: "Online",
+          status_norm: "Normal"
+        },
+        reserves: {
+          title: "Upcoming Reserves",
+          calendar: "Calendar",
+          guest_count: "{{count}} Pers.",
+          status_confirmed: "Confirmed",
+          status_pending: "Pending",
+          hall_vip: "VIP",
+          hall_terrace: "Terrace",
+          hall_main: "Main Hall"
+        },
+        stop_list: {
+          title: "Stop List",
+          count: "{{count}} Items",
+          hint: "Tap to edit"
+        }
       }
     }
   },
@@ -125,9 +184,11 @@ const resources = {
         dashboard: "İdarə Paneli",
         restaurants: "Restoranlar",
         users: "İstifadəçilər",
+        pricing: "Qiymət və Planlar",
         automation: "n8n Avtomatlaşdırma",
         support: "Dəstək Tələbləri",
         push: "Push Bildirişlər",
+        releases: "Sistem Yenilikləri",
         logs: "Qlobal Loglar",
         management: "İdarəetmə",
         venue_dashboard: "Məkan Paneli",
@@ -136,12 +197,28 @@ const resources = {
         limits: "Limitlər",
         security: "Təhlükəsizlik",
         settings: "Məkan Ayarları",
-        analytics: "Analitika"
+        analytics: "Analitika",
+        whats_new: "Yeniliklər",
+        help: "Kömək və Dəstək",
+        finance: "Maliyyə",
+        billing: "Ödənişlər",
+        operations: "Əməliyyatlar",
+        ops_dashboard: "İdarə Paneli",
+        live_orders: "Canlı Sifarişlər",
+        chat: "Çat / CRM",
+        reviews: "Rəylər",
+        menu_mgmt: "Menyu İdarəetməsi",
+        table_layout: "Masa Düzümü",
+        floor_plan: "Vizual Plan",
+        personal: "Şəxsi",
+        profile_settings: "Profil Ayarları",
+        staff_interface: "Personal İnterfeysi",
+        open_mobile: "Mobil Tətbiqi Aç",
+        staff_profile: "Personal Profili"
       },
       dashboard: {
         title: "Super Admin",
         subtitle: "UR-OS Monitorinq Paneli",
-        // DÜZƏLİŞ: Dashboard stat və table bura əlavə edildi
         stats: {
           brands: "BRENDLƏR (ŞƏBƏKƏ)",
           branches: "CƏMİ FİLİALLAR",
@@ -166,7 +243,6 @@ const resources = {
           time_2_weeks: "2 həftə əvvəl"
         }
       },
-      // --- RESTAURANTS PAGE (AZ) ---
       restaurants: {
         title: "Brendlər və Şəbəkələr",
         stats: {
@@ -200,7 +276,6 @@ const resources = {
           btn_delete: "Birdəfəlik Sil"
         }
       },
-      // --- DRAWER (AZ) ---
       drawer: {
         title_edit: "Brendi Redaktə Et",
         title_new: "Yeni Brend Müştərisi",
@@ -231,6 +306,36 @@ const resources = {
         profile: "Profil",
         settings: "Ayarlar",
         logout: "Çıxış"
+      },
+      venue_dashboard: {
+        you_manage: "Siz İdarə Edirsiniz:",
+        shift: "Növbə: 12:00 - 00:00",
+        stats: {
+          hall_load: "ZAL YÜKÜ",
+          tables_count: "{{count}} / 20 Masa",
+          reserves: "REZERVLƏR",
+          guests_count: "Qonaq: {{count}}",
+          waiters: "OFİSİANTLAR",
+          on_shift: "Növbədə",
+          ai_assistant: "AI ASSİSTENT",
+          status_online: "Onlayn",
+          status_norm: "Norma"
+        },
+        reserves: {
+          title: "Yaxın Rezervlər",
+          calendar: "Təqvim",
+          guest_count: "{{count}} Nəf.",
+          status_confirmed: "Təsdiqləndi",
+          status_pending: "Gözləmədə",
+          hall_vip: "VİP",
+          hall_terrace: "Teras",
+          hall_main: "Əsas Zal"
+        },
+        stop_list: {
+          title: "Stop List",
+          count: "{{count}} Məhsul",
+          hint: "Dəyişmək üçün toxunun"
+        }
       }
     }
   },
@@ -241,9 +346,11 @@ const resources = {
         dashboard: "Панель управления",
         restaurants: "Рестораны",
         users: "Пользователи",
+        pricing: "Тарифы и Планы",
         automation: "Автоматизация n8n",
         support: "Тикеты поддержки",
         push: "Push-уведомления",
+        releases: "Релизы Системы",
         logs: "Глобальные логи",
         management: "Управление",
         venue_dashboard: "Панель заведения",
@@ -252,12 +359,28 @@ const resources = {
         limits: "Лимиты",
         security: "Безопасность",
         settings: "Настройки заведения",
-        analytics: "Аналитика"
+        analytics: "Аналитика",
+        whats_new: "Что Нового",
+        help: "Помощь и Поддержка",
+        finance: "Финансы",
+        billing: "Биллинг",
+        operations: "Операции",
+        ops_dashboard: "Панель Управления",
+        live_orders: "Живые Заказы",
+        chat: "Чат / CRM",
+        reviews: "Отзывы",
+        menu_mgmt: "Управление Меню",
+        table_layout: "Раскладка Столов",
+        floor_plan: "Визуальный План",
+        personal: "Личное",
+        profile_settings: "Настройки Профиля",
+        staff_interface: "Интерфейс Персонала",
+        open_mobile: "Открыть Приложение",
+        staff_profile: "Профиль Персонала"
       },
       dashboard: {
         title: "Супер Админ",
         subtitle: "Панель мониторинга UR-OS",
-        // DÜZƏLİŞ: Dashboard stat və table bura əlavə edildi
         stats: {
           brands: "БРЕНДЫ (СЕТИ)",
           branches: "ВСЕГО ФИЛИАЛОВ",
@@ -282,7 +405,6 @@ const resources = {
           time_2_weeks: "2 недели назад"
         }
       },
-      // --- RESTAURANTS PAGE (RU) ---
       restaurants: {
         title: "Бренды и Сети",
         stats: {
@@ -316,7 +438,6 @@ const resources = {
           btn_delete: "Удалить Навсегда"
         }
       },
-      // --- DRAWER (RU) ---
       drawer: {
         title_edit: "Редактировать Бренд",
         title_new: "Новый Клиент Бренда",
@@ -347,6 +468,36 @@ const resources = {
         profile: "Профиль",
         settings: "Настройки",
         logout: "Выйти"
+      },
+      venue_dashboard: {
+        you_manage: "Вы управляете:",
+        shift: "Смена: 12:00 - 00:00",
+        stats: {
+          hall_load: "ЗАГРУЗКА ЗАЛА",
+          tables_count: "{{count}} / 20 Столов",
+          reserves: "РЕЗЕРВЫ",
+          guests_count: "Гостей: {{count}}",
+          waiters: "ОФИЦИАНТЫ",
+          on_shift: "На смене",
+          ai_assistant: "AI АССИСТЕНТ",
+          status_online: "Online",
+          status_norm: "Норма"
+        },
+        reserves: {
+          title: "Ближайшие резервы",
+          calendar: "Календарь",
+          guest_count: "{{count}} Перс.",
+          status_confirmed: "Confirmed",
+          status_pending: "Pending",
+          hall_vip: "VIP",
+          hall_terrace: "Terrace",
+          hall_main: "Main Hall"
+        },
+        stop_list: {
+          title: "Stop List",
+          count: "{{count}} Позиций",
+          hint: "Нажмите, чтобы изменить"
+        }
       }
     }
   }

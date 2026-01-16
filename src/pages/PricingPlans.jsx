@@ -115,23 +115,23 @@ const PricingPlans = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '100vw', overflowX: 'hidden', boxSizing: 'border-box' }}>
+    <Box sx={{ width: '100%', maxWidth: '100vw', overflowX: 'hidden', boxSizing: 'border-box', p: { xs: 1, md: 3 } }}>
       
       {/* 1. HEADER */}
-      <Box sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box sx={{ mb: 3, display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, gap: 2 }}>
         <Box>
-            <Typography variant="h6" fontWeight="700">Monetization & Pricing 💰</Typography>
+            <Typography variant="h5" fontWeight="700" sx={{ fontSize: { xs: '1.25rem', md: '1.5rem' } }}>Monetization & Pricing 💰</Typography>
             <Typography variant="body2" color="text.secondary">Manage plans, limits & restaurant subscriptions.</Typography>
         </Box>
         {activeTab === 0 && (
-            <Button variant="contained" size="small" startIcon={<Save fontSize="small" />} sx={{ bgcolor: '#72E128', color: '#fff', fontWeight: 'bold', textTransform: 'none' }}>
+            <Button variant="contained" size="medium" startIcon={<Save fontSize="small" />} sx={{ bgcolor: '#72E128', color: '#fff', fontWeight: 'bold', textTransform: 'none', width: { xs: '100%', sm: 'auto' } }}>
               Publish Changes
             </Button>
         )}
       </Box>
 
       {/* 2. TABS */}
-      <Card sx={{ mb: 2, boxShadow: 2, bgcolor: 'background.paper', backgroundImage: 'none', minHeight: 'unset' }}>
+      <Card sx={{ mb: 3, boxShadow: 2, bgcolor: 'background.paper', backgroundImage: 'none', minHeight: 'unset' }}>
           <Tabs 
             value={activeTab}
             onChange={handleTabChange} 
@@ -139,10 +139,11 @@ const PricingPlans = () => {
             indicatorColor="primary"
             variant="scrollable"
             scrollButtons="auto"
-            sx={{ minHeight: '42px', '& .MuiTab-root': { minHeight: '42px', py: 1.5, fontSize: '0.85rem' } }}
+            allowScrollButtonsMobile
+            sx={{ minHeight: '48px', '& .MuiTab-root': { minHeight: '48px', py: 1.5, fontSize: '0.85rem', textTransform: 'none', minWidth: 'auto', px: 2 } }}
           >
             <Tab label="Plans & Limits" />
-            <Tab label="Restaurant Subscriptions" />
+            <Tab label="Subscriptions" />
             <Tab label="Add-Ons" />
           </Tabs>
       </Card>
@@ -152,71 +153,70 @@ const PricingPlans = () => {
         <Box 
           sx={{ 
             display: 'grid', 
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, 
+            gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, 
             gap: 2,
             alignItems: 'start'
           }}
         >
           {plans.map((plan, planIndex) => (
-            <Card key={planIndex} sx={{ boxShadow: 3, bgcolor: 'background.paper', backgroundImage: 'none', position: 'relative', border: planIndex === 1 ? '1px solid #FDB528' : '1px solid transparent' }}>
+            <Card key={planIndex} sx={{ boxShadow: 3, bgcolor: 'background.paper', backgroundImage: 'none', position: 'relative', border: planIndex === 1 ? '2px solid #FDB528' : '1px solid rgba(0,0,0,0.05)', borderRadius: 3 }}>
               {plan.badge && (
                 <Chip 
                   label={plan.badge} 
                   size="small" 
                   sx={{ 
-                    position: 'absolute', top: 12, right: 12, 
-                    bgcolor: '#FDB528', color: '#000', fontWeight: 'bold', height: 20, fontSize: '0.65rem'
+                    position: 'absolute', top: 16, right: 16, 
+                    bgcolor: '#FDB528', color: '#000', fontWeight: 'bold', height: 24, fontSize: '0.7rem'
                   }} 
                 />
               )}
-              <CardContent sx={{ p: 2.5, '&:last-child': { pb: 2.5 } }}> 
+              <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } } }}> 
                 
-                <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', fontSize: '0.7rem' }}>Plan Name</Typography>
-                <Typography variant="h6" fontWeight="bold" sx={{ mb: 2, lineHeight: 1.2 }}>{plan.name}</Typography>
+                <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: 1, fontWeight: 'bold' }}>PLAN</Typography>
+                <Typography variant="h5" fontWeight="800" sx={{ mb: 2, lineHeight: 1.2 }}>{plan.name}</Typography>
                 
                 {/* Price Input */}
-                <Box sx={{ mb: 2.5 }}>
-                  <Typography variant="caption" color="text.secondary">Price</Typography>
+                <Box sx={{ mb: 3 }}>
+                  <Typography variant="caption" color="text.secondary" sx={{ mb: 0.5, display: 'block' }}>Monthly Price</Typography>
                   <TextField 
                     fullWidth 
                     size="small" 
                     defaultValue={plan.price} 
                     InputProps={{
-                      startAdornment: <InputAdornment position="start"><Typography fontSize="0.9rem">₼</Typography></InputAdornment>,
-                      endAdornment: <InputAdornment position="end"><Typography fontSize="0.8rem">/mo</Typography></InputAdornment>,
-                      style: { fontSize: '0.95rem', height: '36px' } 
+                      startAdornment: <InputAdornment position="start"><Typography fontWeight="bold">₼</Typography></InputAdornment>,
+                      style: { fontWeight: 'bold', fontSize: '1.1rem' } 
                     }}
                   />
                 </Box>
 
                 {/* LIMITS (Updated Layout for 3 Items) */}
-                <Box sx={{ mb: 2.5, p: 1.5, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 2 }}>
+                <Box sx={{ mb: 3, p: 2, bgcolor: 'action.hover', borderRadius: 2 }}>
                   <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item xs={3} textAlign="center">
-                      <Typography variant="caption" display="block" color="text.secondary" sx={{ fontSize: '0.65rem' }}>Branches</Typography>
-                      <Typography variant="body2" fontWeight="bold">🏠 {plan.limits.branches}</Typography>
+                      <Typography variant="caption" display="block" color="text.secondary" sx={{ fontSize: '0.65rem', mb: 0.5 }}>BRANCHES</Typography>
+                      <Typography variant="body1" fontWeight="bold">🏠 {plan.limits.branches}</Typography>
                     </Grid>
-                    <Divider orientation="vertical" flexItem sx={{ height: '20px', my: 'auto' }} />
+                    <Divider orientation="vertical" flexItem sx={{ height: '24px', my: 'auto' }} />
                     <Grid item xs={3} textAlign="center">
-                      <Typography variant="caption" display="block" color="text.secondary" sx={{ fontSize: '0.65rem' }}>Staff</Typography>
-                      <Typography variant="body2" fontWeight="bold">👤 {plan.limits.staff}</Typography>
+                      <Typography variant="caption" display="block" color="text.secondary" sx={{ fontSize: '0.65rem', mb: 0.5 }}>STAFF</Typography>
+                      <Typography variant="body1" fontWeight="bold">👤 {plan.limits.staff}</Typography>
                     </Grid>
-                    <Divider orientation="vertical" flexItem sx={{ height: '20px', my: 'auto' }} />
+                    <Divider orientation="vertical" flexItem sx={{ height: '24px', my: 'auto' }} />
                     <Grid item xs={3} textAlign="center">
-                      <Typography variant="caption" display="block" color="text.secondary" sx={{ fontSize: '0.65rem' }}>Admins</Typography>
-                      <Typography variant="body2" fontWeight="bold">🛡️ {plan.limits.admins}</Typography>
+                      <Typography variant="caption" display="block" color="text.secondary" sx={{ fontSize: '0.65rem', mb: 0.5 }}>ADMINS</Typography>
+                      <Typography variant="body1" fontWeight="bold">🛡️ {plan.limits.admins}</Typography>
                     </Grid>
                   </Grid>
                 </Box>
 
                 {/* EDITABLE FEATURES LIST */}
                 <Box>
-                  <Typography variant="caption" color="text.secondary" fontWeight="bold" sx={{ mb: 1, display: 'block', fontSize: '0.7rem' }}>FEATURES</Typography>
+                  <Typography variant="caption" color="text.secondary" fontWeight="bold" sx={{ mb: 1.5, display: 'block', letterSpacing: 0.5 }}>FEATURES</Typography>
                   <List dense disablePadding>
                     {plan.features.map((feat, featureIndex) => (
-                      <ListItem key={featureIndex} disablePadding sx={{ py: 0.3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <ListItem key={featureIndex} disablePadding sx={{ py: 0.5, display: 'flex', alignItems: 'center', gap: 1 }}>
                         <IconButton size="small" onClick={() => toggleFeatureStatus(planIndex, featureIndex)} sx={{ p: 0.5 }}>
-                          {feat.included ? <CheckCircle sx={{ color: '#72E128', fontSize: 18 }} /> : <Cancel sx={{ color: '#FF4C51', fontSize: 18 }} />}
+                          {feat.included ? <CheckCircle sx={{ color: '#72E128', fontSize: 20 }} /> : <Cancel sx={{ color: '#FF4C51', fontSize: 20 }} />}
                         </IconButton>
                         <TextField 
                           fullWidth
@@ -225,11 +225,11 @@ const PricingPlans = () => {
                           onChange={(e) => handleFeatureTextChange(planIndex, featureIndex, e.target.value)}
                           InputProps={{
                             disableUnderline: true,
-                            style: { fontSize: '0.8rem', color: feat.included ? theme.palette.text.primary : theme.palette.text.disabled }
+                            style: { fontSize: '0.9rem', color: feat.included ? theme.palette.text.primary : theme.palette.text.disabled }
                           }}
                         />
-                        <IconButton size="small" onClick={() => handleDeleteFeature(planIndex, featureIndex)} sx={{ p: 0.5, color: 'text.secondary' }}>
-                          <Close sx={{ fontSize: 16 }} />
+                        <IconButton size="small" onClick={() => handleDeleteFeature(planIndex, featureIndex)} sx={{ p: 0.5, opacity: 0.5, '&:hover': { opacity: 1, color: 'error.main' } }}>
+                          <Close sx={{ fontSize: 18 }} />
                         </IconButton>
                       </ListItem>
                     ))}
@@ -241,8 +241,8 @@ const PricingPlans = () => {
                   fullWidth 
                   size="small" 
                   onClick={() => handleAddFeature(planIndex)}
-                  startIcon={<Add fontSize="small" />}
-                  sx={{ mt: 2.5, textTransform: 'none', py: 0.5 }}
+                  startIcon={<Add />}
+                  sx={{ mt: 3, textTransform: 'none', py: 1, borderRadius: 2, borderStyle: 'dashed' }}
                 >
                   Add Feature
                 </Button>
@@ -255,16 +255,17 @@ const PricingPlans = () => {
 
       {/* 4. SUBSCRIPTIONS TAB (MANAGE RESTAURANT PLANS) */}
       {activeTab === 1 && (
-        <Card sx={{ boxShadow: 3, bgcolor: 'background.paper', backgroundImage: 'none' }}>
+        <Card sx={{ boxShadow: 3, bgcolor: 'background.paper', backgroundImage: 'none', borderRadius: 3 }}>
           <Box sx={{ width: '100%', overflowX: 'auto' }}>
-            <Box sx={{ minWidth: '800px' }}>
+            <Box sx={{ minWidth: { xs: '600px', md: '100%' } }}> 
+              {/* Header */}
               <Box 
                 sx={{ 
                   display: 'grid', 
-                  gridTemplateColumns: '1.5fr 1fr 1fr 2fr 1fr', 
+                  gridTemplateColumns: '1.5fr 1fr 1fr 1.5fr 100px', 
                   gap: 2, px: 3, py: 2, 
-                  bgcolor: 'rgba(255,255,255,0.02)', 
-                  borderBottom: '1px solid rgba(255,255,255,0.05)'
+                  bgcolor: 'action.hover', 
+                  borderBottom: '1px solid', borderColor: 'divider'
                 }}
               >
                 {['RESTAURANT', 'CURRENT PLAN', 'PRICE/MO', 'ADD-ONS', 'ACTION'].map(h => (
@@ -272,15 +273,17 @@ const PricingPlans = () => {
                 ))}
               </Box>
 
+              {/* Rows */}
               {subscriptions.map((sub) => (
                 <Box 
                   key={sub.id}
                   sx={{ 
                     display: 'grid', 
-                    gridTemplateColumns: '1.5fr 1fr 1fr 2fr 1fr', 
+                    gridTemplateColumns: '1.5fr 1fr 1fr 1.5fr 100px', 
                     gap: 2, px: 3, py: 2, 
-                    borderBottom: '1px solid rgba(255,255,255,0.05)',
-                    alignItems: 'center'
+                    borderBottom: '1px solid', borderColor: 'divider',
+                    alignItems: 'center',
+                    '&:last-child': { borderBottom: 'none' }
                   }}
                 >
                   <Typography variant="body2" fontWeight="bold">{sub.restaurant}</Typography>
@@ -323,9 +326,9 @@ const PricingPlans = () => {
                     size="small" 
                     startIcon={<Edit fontSize="small" />}
                     onClick={() => handleEditSubscription(sub)}
-                    sx={{ textTransform: 'none', py: 0.4, fontSize: '0.8rem', minWidth: '90px' }}
+                    sx={{ textTransform: 'none', py: 0.5, fontSize: '0.8rem' }}
                   >
-                    Change
+                    Edit
                   </Button>
                 </Box>
               ))}
@@ -335,17 +338,23 @@ const PricingPlans = () => {
       )}
 
       {/* 5. EDIT SUBSCRIPTION DIALOG */}
-      <Dialog open={openDialog} onClose={() => setOpenDialog(false)} maxWidth="sm" fullWidth>
+      <Dialog 
+        open={openDialog} 
+        onClose={() => setOpenDialog(false)} 
+        maxWidth="xs" 
+        fullWidth
+        PaperProps={{ sx: { borderRadius: 3, m: 2 } }}
+      >
         {editingSub && (
           <>
-            <DialogTitle sx={{ fontWeight: 'bold' }}>
+            <DialogTitle sx={{ fontWeight: 'bold', pb: 1 }}>
               Manage: {editingSub.restaurant}
             </DialogTitle>
-            <DialogContent dividers>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, pt: 1 }}>
+            <DialogContent>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, pt: 2 }}>
                 
                 {/* Change Plan */}
-                <FormControl fullWidth size="small">
+                <FormControl fullWidth size="medium">
                   <InputLabel>Select Plan</InputLabel>
                   <Select
                     value={editingSub.plan}
@@ -372,29 +381,27 @@ const PricingPlans = () => {
                       value={editingSub.price}
                       fullWidth
                       disabled
-                      size="small"
                       InputProps={{ endAdornment: <InputAdornment position="end">₼</InputAdornment> }}
                     />
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      label="Custom Offer (Optional)"
+                      label="Custom Price"
                       value={editingSub.discountPrice || ''}
                       onChange={(e) => setEditingSub({ ...editingSub, discountPrice: e.target.value })}
                       fullWidth
-                      size="small"
                       placeholder="e.g. 400"
                       InputProps={{ endAdornment: <InputAdornment position="end">₼</InputAdornment> }}
-                      helperText="Leave empty for standard price"
+                      helperText="Optional override"
                     />
                   </Grid>
                 </Grid>
 
               </Box>
             </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setOpenDialog(false)} color="inherit">Cancel</Button>
-              <Button onClick={handleSaveSubscription} variant="contained" color="primary">Save Changes</Button>
+            <DialogActions sx={{ p: 3, pt: 0 }}>
+              <Button onClick={() => setOpenDialog(false)} color="inherit" sx={{ textTransform: 'none' }}>Cancel</Button>
+              <Button onClick={handleSaveSubscription} variant="contained" color="primary" disableElevation sx={{ textTransform: 'none', fontWeight: 'bold' }}>Save Changes</Button>
             </DialogActions>
           </>
         )}

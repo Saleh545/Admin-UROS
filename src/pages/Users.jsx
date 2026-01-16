@@ -11,9 +11,11 @@ import {
   LockReset, Block, ArrowForward, Person, Save,
   ContentCopy, CheckCircle
 } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next'; // i18n Hook
 
 const Users = () => {
   const theme = useTheme();
+  const { t } = useTranslation(); // Tərcümə funksiyası
 
   // 1. STATE & LOCAL STORAGE
   const [users, setUsers] = useState(() => {
@@ -77,7 +79,7 @@ const Users = () => {
   };
 
   const handleSaveUser = () => {
-    if (!newUser.name || !newUser.email) return alert("Ad və Email mütləqdir!");
+    if (!newUser.name || !newUser.email) return alert(t('users_page.drawer.alert_required'));
     const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
     const userToAdd = {
       id: newId, ...newUser, lastLogin: 'Never',
@@ -88,7 +90,6 @@ const Users = () => {
     setNewUser({ name: '', email: '', phone: '', role: 'STAFF', restaurant: '', status: 'ACTIVE' });
   };
 
-  // --- TOGGLE STATUS (BAN / UNBAN) ---
   const handleToggleStatus = (userId) => {
     const updatedUsers = users.map(user => {
       if (user.id === userId) {
@@ -144,10 +145,10 @@ const Users = () => {
   };
 
   const getStatusColor = (status) => {
-    if (status === 'ACTIVE') return { bg: 'rgba(114, 225, 40, 0.12)', text: '#72E128' }; // Yaşıl
-    if (status === 'PENDING') return { bg: 'rgba(253, 181, 40, 0.12)', text: '#FDB528' }; // Sarı
-    if (status === 'BANNED') return { bg: 'rgba(255, 76, 81, 0.12)', text: '#FF4C51' }; // Qırmızı
-    return { bg: 'rgba(138, 141, 147, 0.12)', text: '#8A8D93' }; // Boz
+    if (status === 'ACTIVE') return { bg: 'rgba(114, 225, 40, 0.12)', text: '#72E128' };
+    if (status === 'PENDING') return { bg: 'rgba(253, 181, 40, 0.12)', text: '#FDB528' };
+    if (status === 'BANNED') return { bg: 'rgba(255, 76, 81, 0.12)', text: '#FF4C51' };
+    return { bg: 'rgba(138, 141, 147, 0.12)', text: '#8A8D93' };
   };
 
   return (
@@ -158,17 +159,17 @@ const Users = () => {
         <CardContent sx={{ p: 2.5, display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
           <Box>
             <Typography variant="h6" fontWeight="700" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              System Users 👥
+              {t('users_page.title')} 👥
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Управление доступами (Admins, Owners, Staff)
+              {t('users_page.subtitle')}
             </Typography>
           </Box>
           <Button 
             variant="contained" startIcon={<Add />} onClick={() => setOpenDrawer(true)}
             sx={{ bgcolor: '#4285F4', textTransform: 'none', borderRadius: '8px', fontWeight: 600 }}
           >
-            Add New User
+            {t('users_page.btn_add_user')}
           </Button>
         </CardContent>
       </Card>
@@ -177,7 +178,7 @@ const Users = () => {
       <Card sx={{ boxShadow: 3, bgcolor: 'background.paper', backgroundImage: 'none', overflow: 'hidden' }}>
         <Box sx={{ p: 2, display: 'flex', flexWrap: 'wrap', gap: 2, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <TextField 
-            placeholder="Поиск по имени, email или ресторану..." size="small" fullWidth
+            placeholder={t('users_page.search_placeholder')} size="small" fullWidth
             value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
             InputProps={{ startAdornment: <InputAdornment position="start"><Search fontSize="small" /></InputAdornment> }}
             sx={{ flex: { xs: '1 1 100%', md: '1 1 400px' } }} 
@@ -186,7 +187,7 @@ const Users = () => {
             value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} size="small" 
             sx={{ minWidth: 150, flex: { xs: '1 1 100%', md: '0 0 auto' } }}
           >
-            <MenuItem value="All Roles">All Roles</MenuItem>
+            <MenuItem value="All Roles">{t('users_page.filter_all_roles')}</MenuItem>
             <MenuItem value="SUPER ADMIN">Super Admin</MenuItem>
             <MenuItem value="OWNER">Owner</MenuItem>
             <MenuItem value="MANAGER">Manager</MenuItem>
@@ -204,7 +205,14 @@ const Users = () => {
                 bgcolor: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.05)'
               }}
             >
-              {['USER', 'ROLE', 'RESTAURANT', 'CONTACT', 'STATUS', 'ACTIONS'].map((head) => (
+              {[
+                t('users_page.table.col_user'), 
+                t('users_page.table.col_role'), 
+                t('users_page.table.col_restaurant'), 
+                t('users_page.table.col_contact'), 
+                t('users_page.table.col_status'), 
+                t('users_page.table.col_actions')
+              ].map((head) => (
                 <Typography key={head} variant="caption" fontWeight="bold" color="text.secondary">{head}</Typography>
               ))}
             </Box>
@@ -226,7 +234,9 @@ const Users = () => {
                     <Avatar sx={{ bgcolor: user.avatarColor, width: 38, height: 38, fontSize: '0.9rem', fontWeight: 'bold' }}>{user.avatarText}</Avatar>
                     <Box>
                       <Typography variant="subtitle2" fontWeight="bold" sx={{ lineHeight: 1.2 }}>{user.name}</Typography>
-                      <Typography variant="caption" color="text.secondary">Last login: {user.lastLogin}</Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        {t('users_page.table.last_login', { time: user.lastLogin })}
+                      </Typography>
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -242,13 +252,14 @@ const Users = () => {
                   <Box>
                     <Chip label={user.status} size="small" sx={{ bgcolor: statusStyle.bg, color: statusStyle.text, fontWeight: 'bold', fontSize: '0.65rem', height: 22 }} />
                   </Box>
-                  
                   <Box sx={{ display: 'flex', gap: 1 }}>
                     <IconButton size="small" sx={{ color: '#26C6F9', bgcolor: 'rgba(38, 198, 249, 0.1)' }}><ArrowForward fontSize="small" /></IconButton>
-                    <IconButton size="small" onClick={() => handleOpenResetDialog(user)} sx={{ color: 'text.secondary' }}><LockReset fontSize="small" /></IconButton>
                     
-                    {/* BAN / UNBAN BUTTON */}
-                    <Tooltip title={user.status === 'BANNED' ? "Unban User" : "Ban User"}>
+                    <Tooltip title={t('users_page.tooltips.reset_pass')}>
+                      <IconButton size="small" onClick={() => handleOpenResetDialog(user)} sx={{ color: 'text.secondary' }}><LockReset fontSize="small" /></IconButton>
+                    </Tooltip>
+                    
+                    <Tooltip title={user.status === 'BANNED' ? t('users_page.tooltips.unban_user') : t('users_page.tooltips.ban_user')}>
                       <IconButton 
                         size="small" 
                         onClick={() => handleToggleStatus(user.id)}
@@ -260,12 +271,11 @@ const Users = () => {
                         {user.status === 'BANNED' ? <CheckCircle fontSize="small" /> : <Block fontSize="small" />}
                       </IconButton>
                     </Tooltip>
-                  
                   </Box>
                 </Box>
               );
             }) : (
-              <Box sx={{ p: 4, textAlign: 'center', color: 'text.secondary' }}><Typography>İstifadəçi tapılmadı</Typography></Box>
+              <Box sx={{ p: 4, textAlign: 'center', color: 'text.secondary' }}><Typography>No user found</Typography></Box>
             )}
           </Box>
         </Box>
@@ -275,46 +285,60 @@ const Users = () => {
       <Drawer
         anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}
         PaperProps={{ 
-          sx: { width: { xs: '100%', sm: 400 }, p: 3, bgcolor: theme.palette.mode === 'dark' ? '#312d4b' : 'background.paper', backgroundImage: 'none', boxShadow: 24 } 
+          sx: { 
+            width: { xs: '100%', sm: 400 }, 
+            p: 3, 
+            bgcolor: theme.palette.mode === 'dark' ? '#312d4b' : 'background.paper', 
+            backgroundImage: 'none', 
+            boxShadow: 24 
+          } 
         }}
       >
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-          <Typography variant="h6" fontWeight="700">Add New User</Typography>
+          <Typography variant="h6" fontWeight="700">{t('users_page.drawer.title')}</Typography>
           <IconButton onClick={() => setOpenDrawer(false)} sx={{ color: 'text.secondary' }}><Close /></IconButton>
         </Box>
         <Stack spacing={3}>
-          <TextField label="Full Name" name="name" value={newUser.name} onChange={handleInputChange} fullWidth />
-          <TextField label="Email" name="email" value={newUser.email} onChange={handleInputChange} fullWidth />
-          <TextField label="Phone" name="phone" value={newUser.phone} onChange={handleInputChange} fullWidth />
+          <TextField label={t('users_page.drawer.label_fullname')} name="name" value={newUser.name} onChange={handleInputChange} fullWidth />
+          <TextField label={t('users_page.drawer.label_email')} name="email" value={newUser.email} onChange={handleInputChange} fullWidth />
+          <TextField label={t('users_page.drawer.label_phone')} name="phone" value={newUser.phone} onChange={handleInputChange} fullWidth />
+          
           <FormControl fullWidth>
-            <InputLabel>Restaurant</InputLabel>
-            <Select name="restaurant" value={newUser.restaurant} label="Restaurant" onChange={handleInputChange}>
+            <InputLabel>{t('users_page.drawer.label_restaurant')}</InputLabel>
+            <Select name="restaurant" value={newUser.restaurant} label={t('users_page.drawer.label_restaurant')} onChange={handleInputChange}>
               <MenuItem value="Grand Baku">Grand Baku</MenuItem>
               <MenuItem value="Dolma Kitchen">Dolma Kitchen</MenuItem>
               <MenuItem value="Caspian Grill">Caspian Grill</MenuItem>
               <MenuItem value="Global Access">Global Access</MenuItem>
             </Select>
           </FormControl>
+
           <FormControl fullWidth>
-            <InputLabel>Role</InputLabel>
-            <Select name="role" value={newUser.role} label="Role" onChange={handleInputChange}>
+            <InputLabel>{t('users_page.drawer.label_role')}</InputLabel>
+            <Select name="role" value={newUser.role} label={t('users_page.drawer.label_role')} onChange={handleInputChange}>
               <MenuItem value="SUPER ADMIN">Super Admin</MenuItem>
               <MenuItem value="OWNER">Owner</MenuItem>
               <MenuItem value="MANAGER">Manager</MenuItem>
               <MenuItem value="STAFF">Staff</MenuItem>
             </Select>
           </FormControl>
+
           <FormControl fullWidth>
-            <InputLabel>Status</InputLabel>
-            <Select name="status" value={newUser.status} label="Status" onChange={handleInputChange}>
+            <InputLabel>{t('users_page.drawer.label_status')}</InputLabel>
+            <Select name="status" value={newUser.status} label={t('users_page.drawer.label_status')} onChange={handleInputChange}>
               <MenuItem value="ACTIVE">Active</MenuItem>
               <MenuItem value="PENDING">Pending</MenuItem>
               <MenuItem value="INACTIVE">Inactive</MenuItem>
             </Select>
           </FormControl>
+
           <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
-            <Button variant="contained" fullWidth size="large" onClick={handleSaveUser} startIcon={<Save />} sx={{ bgcolor: '#4285F4' }}>Save User</Button>
-            <Button variant="outlined" fullWidth size="large" onClick={() => setOpenDrawer(false)} color="secondary">Cancel</Button>
+            <Button variant="contained" fullWidth size="large" onClick={handleSaveUser} startIcon={<Save />} sx={{ bgcolor: '#4285F4' }}>
+              {t('users_page.drawer.btn_save')}
+            </Button>
+            <Button variant="outlined" fullWidth size="large" onClick={() => setOpenDrawer(false)} color="secondary">
+              {t('users_page.drawer.btn_cancel')}
+            </Button>
           </Box>
         </Stack>
       </Drawer>
@@ -335,23 +359,25 @@ const Users = () => {
       >
         {resetDialog.step === 1 ? (
           <>
-            <DialogTitle sx={{ fontWeight: 'bold' }}>Сброс пароля</DialogTitle>
+            <DialogTitle sx={{ fontWeight: 'bold' }}>{t('users_page.reset_password.title')}</DialogTitle>
             <DialogContent>
               <Typography variant="body1" sx={{ mb: 1 }}>
-                Сбросить пароль для <b>{resetDialog.user?.name}</b>?
+                {t('users_page.reset_password.confirm_text')} <b>{resetDialog.user?.name}</b>?
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                Текущий пароль перестанет работать.
+                {t('users_page.reset_password.warning')}
               </Typography>
             </DialogContent>
             <DialogActions sx={{ px: 3, pb: 3 }}>
-              <Button onClick={handleCloseResetDialog} color="inherit">Отмена</Button>
-              <Button onClick={handleGeneratePassword} variant="contained" sx={{ bgcolor: '#4285F4' }}>Сбросить</Button>
+              <Button onClick={handleCloseResetDialog} color="inherit">{t('users_page.reset_password.btn_cancel')}</Button>
+              <Button onClick={handleGeneratePassword} variant="contained" sx={{ bgcolor: '#4285F4' }}>
+                {t('users_page.reset_password.btn_reset')}
+              </Button>
             </DialogActions>
           </>
         ) : (
           <>
-            <DialogTitle sx={{ fontWeight: 'bold' }}>Сброс пароля</DialogTitle>
+            <DialogTitle sx={{ fontWeight: 'bold' }}>{t('users_page.reset_password.title')}</DialogTitle>
             <DialogContent>
               <Alert 
                 icon={<CheckCircle fontSize="inherit" />} 
@@ -359,11 +385,11 @@ const Users = () => {
                 variant="filled"
                 sx={{ mb: 3, bgcolor: 'rgba(114, 225, 40, 0.12)', color: '#72E128', border: '1px solid rgba(114, 225, 40, 0.2)' }}
               >
-                Пароль успешно сброшен!
+                {t('users_page.reset_password.success')}
               </Alert>
               
               <TextField
-                label="Новый пароль"
+                label={t('users_page.reset_password.label_new_pass')}
                 fullWidth
                 value={resetDialog.newPass}
                 InputProps={{
@@ -380,7 +406,9 @@ const Users = () => {
               />
             </DialogContent>
             <DialogActions sx={{ px: 3, pb: 3 }}>
-              <Button onClick={handleCloseResetDialog} variant="contained" fullWidth sx={{ bgcolor: '#4285F4' }}>Готово</Button>
+              <Button onClick={handleCloseResetDialog} variant="contained" fullWidth sx={{ bgcolor: '#4285F4' }}>
+                {t('users_page.reset_password.btn_done')}
+              </Button>
             </DialogActions>
           </>
         )}

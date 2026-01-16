@@ -6,7 +6,6 @@ const resources = {
   en: {
     translation: {
       sidebar: {
-        // Super Admin
         super_admin: "Super Admin",
         dashboard: "Dashboard",
         restaurants: "Restaurants",
@@ -17,8 +16,6 @@ const resources = {
         push: "Push Notifications",
         releases: "System Releases",
         logs: "Global Logs",
-        
-        // Management
         management: "Management",
         venue_dashboard: "Venue Dashboard",
         marketing: "Marketing & Promo",
@@ -29,12 +26,8 @@ const resources = {
         analytics: "Analytics",
         whats_new: "What's New",
         help: "Help & Support",
-
-        // Finance
         finance: "Finance",
         billing: "Billing",
-
-        // Operations
         operations: "Operations",
         ops_dashboard: "Dashboard",
         live_orders: "Live Orders",
@@ -43,12 +36,8 @@ const resources = {
         menu_mgmt: "Menu Management",
         table_layout: "Table Layout",
         floor_plan: "Visual Floor Plan",
-
-        // Personal
         personal: "Personal",
         profile_settings: "Profile Settings",
-
-        // Staff Interface
         staff_interface: "Staff Interface",
         open_mobile: "Open Mobile App",
         staff_profile: "Staff Profile"
@@ -113,6 +102,80 @@ const resources = {
           btn_delete: "Delete Permanently"
         }
       },
+      // YENİ: USERS PAGE
+      users_page: {
+        title: "System Users",
+        subtitle: "Access Management (Admins, Owners, Staff)",
+        btn_add_user: "Add New User",
+        search_placeholder: "Search by Name, Email or Restaurant...",
+        filter_all_roles: "All Roles",
+        table: {
+          col_user: "USER",
+          col_role: "ROLE",
+          col_restaurant: "RESTAURANT",
+          col_contact: "CONTACT",
+          col_status: "STATUS",
+          col_actions: "ACTIONS",
+          last_login: "Last login: {{time}}"
+        },
+        drawer: {
+          title: "New User",
+          label_fullname: "Full Name",
+          label_email: "Email (Login)",
+          label_phone: "Phone",
+          label_restaurant: "Restaurant",
+          label_role: "Role",
+          label_status: "Status",
+          btn_save: "Save User",
+          btn_cancel: "Cancel",
+          alert_required: "Name and Email are required!"
+        },
+        reset_password: {
+          title: "Reset Password",
+          confirm_text: "Reset password for",
+          warning: "Current password will stop working.",
+          success: "Password reset successfully!",
+          label_new_pass: "New Password",
+          btn_cancel: "Cancel",
+          btn_reset: "Reset",
+          btn_done: "Done"
+        },
+        tooltips: {
+          ban_user: "Ban User",
+          unban_user: "Unban User",
+          reset_pass: "Reset Password"
+        }
+      },
+      venue_dashboard: {
+        you_manage: "You Manage:",
+        shift: "Shift: 12:00 - 00:00",
+        stats: {
+          hall_load: "HALL LOAD",
+          tables_count: "{{count}} / 20 Tables",
+          reserves: "RESERVES",
+          guests_count: "Guests: {{count}}",
+          waiters: "WAITERS",
+          on_shift: "On Shift",
+          ai_assistant: "AI ASSISTANT",
+          status_online: "Online",
+          status_norm: "Normal"
+        },
+        reserves: {
+          title: "Upcoming Reserves",
+          calendar: "Calendar",
+          guest_count: "{{count}} Pers.",
+          status_confirmed: "Confirmed",
+          status_pending: "Pending",
+          hall_vip: "VIP",
+          hall_terrace: "Terrace",
+          hall_main: "Main Hall"
+        },
+        stop_list: {
+          title: "Stop List",
+          count: "{{count}} Items",
+          hint: "Tap to edit"
+        }
+      },
       drawer: {
         title_edit: "Edit Brand",
         title_new: "New Brand Client",
@@ -143,37 +206,6 @@ const resources = {
         profile: "Profile",
         settings: "Settings",
         logout: "Logout"
-      },
-      // YENİ: Venue Dashboard
-      venue_dashboard: {
-        you_manage: "You Manage:",
-        shift: "Shift: 12:00 - 00:00",
-        stats: {
-          hall_load: "HALL LOAD",
-          tables_count: "{{count}} / 20 Tables",
-          reserves: "RESERVES",
-          guests_count: "Guests: {{count}}",
-          waiters: "WAITERS",
-          on_shift: "On Shift",
-          ai_assistant: "AI ASSISTANT",
-          status_online: "Online",
-          status_norm: "Normal"
-        },
-        reserves: {
-          title: "Upcoming Reserves",
-          calendar: "Calendar",
-          guest_count: "{{count}} Pers.",
-          status_confirmed: "Confirmed",
-          status_pending: "Pending",
-          hall_vip: "VIP",
-          hall_terrace: "Terrace",
-          hall_main: "Main Hall"
-        },
-        stop_list: {
-          title: "Stop List",
-          count: "{{count}} Items",
-          hint: "Tap to edit"
-        }
       }
     }
   },
@@ -276,36 +308,49 @@ const resources = {
           btn_delete: "Birdəfəlik Sil"
         }
       },
-      drawer: {
-        title_edit: "Brendi Redaktə Et",
-        title_new: "Yeni Brend Müştərisi",
-        subtitle: "Brendi və ilkin filialları quraşdırın",
-        section_identity: "BREND KİMLİYİ",
-        label_brand_name: "Brend Adı",
-        label_slug: "Sistem Linki (Slug)",
-        label_currency: "Əsas Valyuta",
-        section_locations: "FİZİKİ FİLİALLAR",
-        btn_add_branch: "Filial Əlavə Et",
-        label_branch_name: "Filial Adı",
-        placeholder_branch: "Məs: Mərkəz Filialı",
-        label_address: "Ünvan",
-        placeholder_address: "Məs: Nizami küç. 12",
-        tooltip_remove: "Filialı Sil",
-        section_owner: "SAHİB PROFİLİ",
-        label_owner_name: "Sahibin Adı Soyadı",
-        label_email: "Giriş Email",
-        label_phone: "Telefon (WhatsApp)",
-        label_password: "Şifrə",
-        section_plan: "PLAN",
-        label_tariff: "Tarif Planı",
-        btn_save: "Yadda Saxla",
-        btn_create: "Brend və Filialları Yarat",
-        btn_cancel: "Ləğv Et"
-      },
-      profile: {
-        profile: "Profil",
-        settings: "Ayarlar",
-        logout: "Çıxış"
+      // YENİ: USERS PAGE
+      users_page: {
+        title: "Sistem İstifadəçiləri",
+        subtitle: "Giriş İdarəetməsi (Adminlər, Sahibləri, Personal)",
+        btn_add_user: "İstifadəçi Əlavə Et",
+        search_placeholder: "Ad, Email və ya Restoran üzrə axtar...",
+        filter_all_roles: "Bütün Rollar",
+        table: {
+          col_user: "İSTİFADƏÇİ",
+          col_role: "ROL",
+          col_restaurant: "RESTORAN",
+          col_contact: "ƏLAQƏ",
+          col_status: "STATUS",
+          col_actions: "ƏMƏLİYYATLAR",
+          last_login: "Son giriş: {{time}}"
+        },
+        drawer: {
+          title: "Yeni İstifadəçi",
+          label_fullname: "Tam Ad",
+          label_email: "Email (Giriş)",
+          label_phone: "Telefon",
+          label_restaurant: "Restoran",
+          label_role: "Rol",
+          label_status: "Status",
+          btn_save: "Yadda Saxla",
+          btn_cancel: "Ləğv Et",
+          alert_required: "Ad və Email mütləqdir!"
+        },
+        reset_password: {
+          title: "Şifrəni Sıfırla",
+          confirm_text: "Şifrəni sıfırlamaq istəyirsiniz:",
+          warning: "Hazırki şifrə etibarsız olacaq.",
+          success: "Şifrə uğurla sıfırlandı!",
+          label_new_pass: "Yeni Şifrə",
+          btn_cancel: "Ləğv Et",
+          btn_reset: "Sıfırla",
+          btn_done: "Hazırdır"
+        },
+        tooltips: {
+          ban_user: "İstifadəçini Blokla",
+          unban_user: "Bloku Aç",
+          reset_pass: "Şifrəni Sıfırla"
+        }
       },
       venue_dashboard: {
         you_manage: "Siz İdarə Edirsiniz:",
@@ -336,6 +381,37 @@ const resources = {
           count: "{{count}} Məhsul",
           hint: "Dəyişmək üçün toxunun"
         }
+      },
+      drawer: {
+        title_edit: "Brendi Redaktə Et",
+        title_new: "Yeni Brend Müştərisi",
+        subtitle: "Brendi və ilkin filialları quraşdırın",
+        section_identity: "BREND KİMLİYİ",
+        label_brand_name: "Brend Adı",
+        label_slug: "Sistem Linki (Slug)",
+        label_currency: "Əsas Valyuta",
+        section_locations: "FİZİKİ FİLİALLAR",
+        btn_add_branch: "Filial Əlavə Et",
+        label_branch_name: "Filial Adı",
+        placeholder_branch: "Məs: Mərkəz Filialı",
+        label_address: "Ünvan",
+        placeholder_address: "Məs: Nizami küç. 12",
+        tooltip_remove: "Filialı Sil",
+        section_owner: "SAHİB PROFİLİ",
+        label_owner_name: "Sahibin Adı Soyadı",
+        label_email: "Giriş Email",
+        label_phone: "Telefon (WhatsApp)",
+        label_password: "Şifrə",
+        section_plan: "PLAN",
+        label_tariff: "Tarif Planı",
+        btn_save: "Yadda Saxla",
+        btn_create: "Brend və Filialları Yarat",
+        btn_cancel: "Ləğv Et"
+      },
+      profile: {
+        profile: "Profil",
+        settings: "Ayarlar",
+        logout: "Çıxış"
       }
     }
   },
@@ -438,6 +514,80 @@ const resources = {
           btn_delete: "Удалить Навсегда"
         }
       },
+      // YENİ: USERS PAGE
+      users_page: {
+        title: "Пользователи Системы",
+        subtitle: "Управление доступами (Админы, Владельцы, Персонал)",
+        btn_add_user: "Добавить Пользователя",
+        search_placeholder: "Поиск по имени, email или ресторану...",
+        filter_all_roles: "Все Роли",
+        table: {
+          col_user: "ПОЛЬЗОВАТЕЛЬ",
+          col_role: "РОЛЬ",
+          col_restaurant: "РЕСТОРАН",
+          col_contact: "КОНТАКТ",
+          col_status: "СТАТУС",
+          col_actions: "ДЕЙСТВИЯ",
+          last_login: "Вход: {{time}}"
+        },
+        drawer: {
+          title: "Новый Пользователь",
+          label_fullname: "ФИО",
+          label_email: "Email (Логин)",
+          label_phone: "Телефон",
+          label_restaurant: "Ресторан",
+          label_role: "Роль",
+          label_status: "Статус",
+          btn_save: "Сохранить",
+          btn_cancel: "Отмена",
+          alert_required: "Имя и Email обязательны!"
+        },
+        reset_password: {
+          title: "Сброс пароля",
+          confirm_text: "Сбросить пароль для",
+          warning: "Текущий пароль перестанет работать.",
+          success: "Пароль успешно сброшен!",
+          label_new_pass: "Новый пароль",
+          btn_cancel: "Отмена",
+          btn_reset: "Сбросить",
+          btn_done: "Готово"
+        },
+        tooltips: {
+          ban_user: "Заблокировать",
+          unban_user: "Разблокировать",
+          reset_pass: "Сбросить пароль"
+        }
+      },
+      venue_dashboard: {
+        you_manage: "Вы управляете:",
+        shift: "Смена: 12:00 - 00:00",
+        stats: {
+          hall_load: "ЗАГРУЗКА ЗАЛА",
+          tables_count: "{{count}} / 20 Столов",
+          reserves: "РЕЗЕРВЫ",
+          guests_count: "Гостей: {{count}}",
+          waiters: "ОФИЦИАНТЫ",
+          on_shift: "На смене",
+          ai_assistant: "AI АССИСТЕНТ",
+          status_online: "Online",
+          status_norm: "Норма"
+        },
+        reserves: {
+          title: "Ближайшие резервы",
+          calendar: "Календарь",
+          guest_count: "{{count}} Перс.",
+          status_confirmed: "Подтверждено",
+          status_pending: "Ожидание",
+          hall_vip: "VIP",
+          hall_terrace: "Терраса",
+          hall_main: "Основной зал"
+        },
+        stop_list: {
+          title: "Stop List",
+          count: "{{count}} Позиций",
+          hint: "Нажмите, чтобы изменить"
+        }
+      },
       drawer: {
         title_edit: "Редактировать Бренд",
         title_new: "Новый Клиент Бренда",
@@ -468,36 +618,6 @@ const resources = {
         profile: "Профиль",
         settings: "Настройки",
         logout: "Выйти"
-      },
-      venue_dashboard: {
-        you_manage: "Вы управляете:",
-        shift: "Смена: 12:00 - 00:00",
-        stats: {
-          hall_load: "ЗАГРУЗКА ЗАЛА",
-          tables_count: "{{count}} / 20 Столов",
-          reserves: "РЕЗЕРВЫ",
-          guests_count: "Гостей: {{count}}",
-          waiters: "ОФИЦИАНТЫ",
-          on_shift: "На смене",
-          ai_assistant: "AI АССИСТЕНТ",
-          status_online: "Online",
-          status_norm: "Норма"
-        },
-        reserves: {
-          title: "Ближайшие резервы",
-          calendar: "Календарь",
-          guest_count: "{{count}} Перс.",
-          status_confirmed: "Confirmed",
-          status_pending: "Pending",
-          hall_vip: "VIP",
-          hall_terrace: "Terrace",
-          hall_main: "Main Hall"
-        },
-        stop_list: {
-          title: "Stop List",
-          count: "{{count}} Позиций",
-          hint: "Нажмите, чтобы изменить"
-        }
       }
     }
   }

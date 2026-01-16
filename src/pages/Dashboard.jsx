@@ -2,20 +2,23 @@ import React from 'react';
 import { 
   Box, Card, CardContent, Typography, Avatar, 
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, 
-  Chip, Button 
+  Chip, Button, useMediaQuery, useTheme 
 } from '@mui/material';
 import { 
-  Store, MonetizationOn, LocationOn, Favorite, // LocationOn ikonu əlavə olundu
-  LockPerson 
+  Store, MonetizationOn, LocationOn, Favorite, 
+  LockPerson, AccessTime 
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
   const { t } = useTranslation();
+  const theme = useTheme();
+  // Mobil ekranı təyin edirik (<600px)
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const stats = [
     { 
-      title: t('dashboard.stats.brands'), // Brendlər (Şəbəkə)
+      title: t('dashboard.stats.brands'), 
       value: '12', 
       badge: `+2 ${t('dashboard.stats.new')}`, 
       color: '#666CFF', 
@@ -23,15 +26,15 @@ const Dashboard = () => {
       icon: <Store />
     },
     { 
-      title: t('dashboard.stats.branches'), // Cəmi Filiallar
+      title: t('dashboard.stats.branches'), 
       value: '45', 
       badge: `+5 ${t('dashboard.stats.new')}`, 
-      color: '#26C6F9', // Mavi rəng (Şəkildəki kimi)
+      color: '#26C6F9', 
       bgColor: 'rgba(38, 198, 249, 0.12)', 
-      icon: <LocationOn /> // Map/Location ikonu
+      icon: <LocationOn /> 
     },
     { 
-      title: t('dashboard.stats.revenue_total'), // Gəlir (Ümumi)
+      title: t('dashboard.stats.revenue_total'), 
       value: '18,500 ₼', 
       badge: '+15%', 
       color: '#72E128', 
@@ -39,7 +42,7 @@ const Dashboard = () => {
       icon: <MonetizationOn />
     },
     { 
-      title: t('dashboard.stats.system'), // Sistem
+      title: t('dashboard.stats.system'), 
       value: '100%', 
       badge: t('dashboard.stats.stable'), 
       color: '#72E128', 
@@ -55,8 +58,14 @@ const Dashboard = () => {
     { id: 4, name: 'Old City Cafe', branches: 1, date: t('dashboard.table.time_2_weeks'), status: t('dashboard.table.status_active'), color: 'success', letter: 'O' },
   ];
 
+  const getStatusColor = (status) => {
+      if (status === 'Active' || status === 'Aktiv' || status === 'Актив') return { bg: 'rgba(114, 225, 40, 0.12)', text: '#72E128' };
+      return { bg: 'rgba(253, 181, 40, 0.12)', text: '#FDB528' };
+  };
+
   return (
-    <Box sx={{ width: '100%', typography: 'body1' }}>
+    // ANA KONTEYNER - DAŞMANI QARŞILAYIR
+    <Box sx={{ width: '100%', maxWidth: '100vw', overflowX: 'hidden', boxSizing: 'border-box' }}>
       
       {/* 1. YUXARI BANNER */}
       <Card sx={{ mb: 2 }}>
@@ -70,23 +79,27 @@ const Dashboard = () => {
             </Typography>
           </Box>
           <Avatar sx={{ bgcolor: 'rgba(255, 255, 255, 0.04)', color: 'primary.main', width: 40, height: 40, borderRadius: '10px' }}>
-             <LockPerson fontSize="small" />
+              <LockPerson fontSize="small" />
           </Avatar>
         </CardContent>
       </Card>
 
-      {/* 2. STATİSTİKA KARTLARI */}
+      {/* 2. STATISTIKA KARTLARI (GRID SİSTEMİ) */}
       <Box 
         sx={{ 
           display: 'grid', 
-          gridTemplateColumns: {
+          // Mobildə (xs): 1 sütun (Tam alt-alta - iPhone 5 safe)
+          // Planşet (sm): 2 sütun
+          // PC (md): 4 sütun
+          gridTemplateColumns: { 
             xs: '1fr', 
             sm: '1fr 1fr', 
-            md: 'repeat(4, 1fr)' 
-          },
+            md: '1fr 1fr 1fr 1fr' 
+          }, 
           gap: 2, 
           width: '100%',
-          mb: 2
+          mb: 2,
+          boxSizing: 'border-box'
         }}
       >
         {stats.map((item, index) => (
@@ -132,74 +145,110 @@ const Dashboard = () => {
         ))}
       </Box>
 
-      {/* 3. CƏDVƏL (Yeni Sütun: Filiallar) */}
-      <Card sx={{ mt: 2 }}>
+      {/* 3. CƏDVƏL HİSSƏSİ (RESPONSIV) */}
+      <Card sx={{ mt: 2, overflow: 'hidden' }}>
         <Box sx={{ p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>{t('dashboard.table.title')}</Typography>
             <Button size="small" sx={{ textTransform: 'none', fontSize: '0.75rem' }}>{t('dashboard.table.all')}</Button>
         </Box>
-        <TableContainer>
-          <Table size="small">
-            <TableHead>
-              <TableRow sx={{ '& th': { borderBottom: '1px solid rgba(255,255,255,0.05)', textTransform: 'uppercase', fontSize: '0.7rem', fontWeight: 600, color: 'text.secondary', py: 1 } }}>
-                <TableCell>{t('dashboard.table.col_brand')}</TableCell>
-                <TableCell>{t('dashboard.table.col_branches')}</TableCell> {/* YENİ SÜTUN */}
-                <TableCell>{t('dashboard.table.col_date')}</TableCell>
-                <TableCell align="right">{t('dashboard.table.col_status')}</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {recentRegistrations.map((row) => (
-                <TableRow key={row.id} hover sx={{ '& td': { borderBottom: '1px solid rgba(255,255,255,0.05)', py: 2 } }}> 
-                  
-                  {/* Brend Adı */}
-                  <TableCell>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                      <Avatar 
-                        variant="rounded" 
-                        sx={{ bgcolor: 'rgba(102, 108, 255, 0.12)', color: '#666CFF', width: 28, height: 28, fontSize: '0.75rem', fontWeight: 600 }}
-                      >
-                        {row.letter}
-                      </Avatar>
-                      <Typography variant="body2" fontWeight="bold" fontSize="0.85rem">{row.name}</Typography>
-                    </Box>
-                  </TableCell>
 
-                  {/* Filial Sayı (Yeni Sütun - Chip ilə) */}
-                  <TableCell>
-                     <Chip 
-                        label={t('dashboard.table.points', { count: row.branches })} // "3 filial"
-                        size="small"
-                        sx={{ 
-                            bgcolor: 'rgba(38, 198, 249, 0.12)', 
-                            color: '#26C6F9', 
-                            fontWeight: 'bold', 
-                            height: 22, 
-                            fontSize: '0.7rem',
-                            borderRadius: '6px'
-                        }}
-                     />
-                  </TableCell>
+        {/* --- MOBIL VS PC GÖRÜNÜŞÜ --- */}
+        {isMobile ? (
+            // MOBIL (KARTLAR)
+            <Box sx={{ p: 2, pt: 0 }}>
+                {recentRegistrations.map((row) => {
+                    const statusData = getStatusColor(row.status); // Status rəngini təyin et
+                    return (
+                        <Card key={row.id} sx={{ mb: 2, border: '1px solid rgba(255,255,255,0.1)', bgcolor: 'rgba(255,255,255,0.02)' }}>
+                            <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                                        <Avatar variant="rounded" sx={{ bgcolor: 'rgba(102, 108, 255, 0.12)', color: '#666CFF', width: 32, height: 32, fontSize: '0.8rem', fontWeight: 600 }}>
+                                            {row.letter}
+                                        </Avatar>
+                                        <Box>
+                                            <Typography variant="subtitle2" fontWeight="bold" fontSize="0.9rem">{row.name}</Typography>
+                                            <Typography variant="caption" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                                                <AccessTime sx={{ fontSize: 12 }} /> {row.date}
+                                            </Typography>
+                                        </Box>
+                                    </Box>
+                                </Box>
 
-                  {/* Tarix */}
-                  <TableCell>
-                    <Typography variant="caption" color="text.secondary">{row.date}</Typography>
-                  </TableCell>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: 'rgba(255,255,255,0.03)', p: 1, borderRadius: 1 }}>
+                                    <Chip 
+                                        label={t('dashboard.table.points', { count: row.branches })} 
+                                        size="small" 
+                                        sx={{ bgcolor: 'rgba(38, 198, 249, 0.12)', color: '#26C6F9', fontWeight: 'bold', height: 24, fontSize: '0.7rem' }} 
+                                    />
+                                    <Chip 
+                                        label={row.status} 
+                                        size="small" 
+                                        sx={{ bgcolor: statusData.bg, color: statusData.text, fontWeight: 'bold', height: 24, fontSize: '0.7rem' }} 
+                                    />
+                                </Box>
+                            </CardContent>
+                        </Card>
+                    );
+                })}
+            </Box>
+        ) : (
+            // PC (CƏDVƏL)
+            <TableContainer sx={{ overflowX: 'auto' }}>
+                <Box sx={{ minWidth: 600 }}> {/* Cədvəlin minimum eni */}
+                    <Table size="small">
+                    <TableHead>
+                        <TableRow sx={{ '& th': { borderBottom: '1px solid rgba(255,255,255,0.05)', textTransform: 'uppercase', fontSize: '0.7rem', fontWeight: 600, color: 'text.secondary', py: 1 } }}>
+                        <TableCell>{t('dashboard.table.col_brand')}</TableCell>
+                        <TableCell>{t('dashboard.table.col_branches')}</TableCell>
+                        <TableCell>{t('dashboard.table.col_date')}</TableCell>
+                        <TableCell align="right">{t('dashboard.table.col_status')}</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {recentRegistrations.map((row) => {
+                            const statusData = getStatusColor(row.status);
+                            return (
+                                <TableRow key={row.id} hover sx={{ '& td': { borderBottom: '1px solid rgba(255,255,255,0.05)', py: 2 } }}> 
+                                    <TableCell>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                                        <Avatar 
+                                        variant="rounded" 
+                                        sx={{ bgcolor: 'rgba(102, 108, 255, 0.12)', color: '#666CFF', width: 28, height: 28, fontSize: '0.75rem', fontWeight: 600 }}
+                                        >
+                                        {row.letter}
+                                        </Avatar>
+                                        <Typography variant="body2" fontWeight="bold" fontSize="0.85rem">{row.name}</Typography>
+                                    </Box>
+                                    </TableCell>
 
-                  {/* Status */}
-                  <TableCell align="right">
-                    <Chip 
-                      label={row.status} 
-                      color={row.color} 
-                      size="small" 
-                      sx={{ fontWeight: 'bold', height: 20, fontSize: '0.65rem', borderRadius: '4px' }} 
-                    />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                                    <TableCell>
+                                        <Chip 
+                                        label={t('dashboard.table.points', { count: row.branches })} 
+                                        size="small"
+                                        sx={{ bgcolor: 'rgba(38, 198, 249, 0.12)', color: '#26C6F9', fontWeight: 'bold', height: 22, fontSize: '0.7rem', borderRadius: '6px' }}
+                                        />
+                                    </TableCell>
+
+                                    <TableCell>
+                                        <Typography variant="caption" color="text.secondary">{row.date}</Typography>
+                                    </TableCell>
+
+                                    <TableCell align="right">
+                                        <Chip 
+                                            label={row.status} 
+                                            size="small" 
+                                            sx={{ bgcolor: statusData.bg, color: statusData.text, fontWeight: 'bold', height: 20, fontSize: '0.65rem', borderRadius: '4px' }} 
+                                        />
+                                    </TableCell>
+                                </TableRow>
+                            );
+                        })}
+                    </TableBody>
+                    </Table>
+                </Box>
+            </TableContainer>
+        )}
       </Card>
     </Box>
   );

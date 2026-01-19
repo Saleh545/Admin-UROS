@@ -3,15 +3,17 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 const resources = {
+  // --- ENGLISH ---
   en: {
     translation: {
-      // --- NEW PRICING SECTION ---
       pricing: {
         title: "Monetization & Pricing 💰",
         subtitle: "Create custom plans & limits.",
         btn_save_all: "Save All Changes",
         tab_manage: "Manage Plans",
         tab_subscriptions: "Subscriptions",
+        tab_addons: "Add-Ons",
+        tab_coupons: "Coupons",
         plan_name_placeholder: "Plan Name",
         price_label: "Price",
         limits: {
@@ -29,6 +31,19 @@ const resources = {
           action: "ACTION",
           btn_edit: "Edit"
         },
+        addons: {
+          btn_new: "New Add-On",
+          col_name: "MODULE NAME",
+          col_price: "PRICE",
+          col_active: "ACTIVE"
+        },
+        coupons: {
+          btn_create: "Create Coupon",
+          col_code: "CODE",
+          col_target: "TARGET",
+          col_discount: "DISCOUNT",
+          col_status: "STATUS"
+        },
         dialog: {
           title: "Manage: {{restaurant}}",
           label_select_plan: "Select Plan",
@@ -37,12 +52,19 @@ const resources = {
           placeholder_custom: "e.g. 400",
           helper_custom: "Optional override",
           btn_cancel: "Cancel",
-          btn_save: "Save Changes"
+          btn_save: "Save Changes",
+          addon_title: "New Add-on",
+          label_module_name: "Module Name",
+          label_price: "Price (AZN)",
+          btn_create: "Create",
+          coupon_title: "New Coupon",
+          label_code: "Code",
+          label_target: "Target Restaurant",
+          label_value: "Value",
+          label_type: "Type"
         },
         alert_saved: "All changes saved 💾"
       },
-      // ---------------------------
-
       sidebar: {
         super_admin: "Super Admin",
         dashboard: "Dashboard",
@@ -246,15 +268,18 @@ const resources = {
       }
     }
   },
+
+  // --- AZERBAIJANI ---
   az: {
     translation: {
-      // --- NEW PRICING SECTION (AZ) ---
       pricing: {
         title: "Monetizasiya və Qiymətlər 💰",
         subtitle: "Xüsusi planlar və limitlər yaradın.",
         btn_save_all: "Yadda Saxla",
         tab_manage: "Planları İdarə Et",
         tab_subscriptions: "Abunəliklər",
+        tab_addons: "Əlavələr",
+        tab_coupons: "Kuponlar",
         plan_name_placeholder: "Plan Adı",
         price_label: "Qiymət",
         limits: {
@@ -272,6 +297,19 @@ const resources = {
           action: "ƏMƏLİYYAT",
           btn_edit: "Düzəliş"
         },
+        addons: {
+          btn_new: "Yeni Əlavə",
+          col_name: "MODUL ADI",
+          col_price: "QİYMƏT",
+          col_active: "AKTİV"
+        },
+        coupons: {
+          btn_create: "Kupon Yarat",
+          col_code: "KOD",
+          col_target: "HƏDƏF",
+          col_discount: "ENDİRİM",
+          col_status: "STATUS"
+        },
         dialog: {
           title: "İdarə et: {{restaurant}}",
           label_select_plan: "Plan Seçin",
@@ -280,12 +318,19 @@ const resources = {
           placeholder_custom: "məs. 400",
           helper_custom: "İstəyə bağlı (Standartdan fərqli)",
           btn_cancel: "Ləğv Et",
-          btn_save: "Dəyişikliyi Saxla"
+          btn_save: "Yadda Saxla",
+          addon_title: "Yeni Əlavə",
+          label_module_name: "Modul Adı",
+          label_price: "Qiymət (AZN)",
+          btn_create: "Yarat",
+          coupon_title: "Yeni Kupon",
+          label_code: "Kod",
+          label_target: "Hədəf Restoran",
+          label_value: "Dəyər",
+          label_type: "Növ"
         },
         alert_saved: "Bütün dəyişikliklər yadda saxlanıldı 💾"
       },
-      // -------------------------------
-
       sidebar: {
         super_admin: "Super Admin",
         dashboard: "İdarə Paneli",
@@ -489,15 +534,18 @@ const resources = {
       }
     }
   },
+
+  // --- RUSSIAN ---
   ru: {
     translation: {
-      // --- NEW PRICING SECTION (RU) ---
       pricing: {
         title: "Монетизация и Цены 💰",
         subtitle: "Создавайте тарифы и лимиты.",
         btn_save_all: "Сохранить Всё",
         tab_manage: "Управление Планами",
         tab_subscriptions: "Подписки",
+        tab_addons: "Дополнения",
+        tab_coupons: "Купоны",
         plan_name_placeholder: "Название Плана",
         price_label: "Цена",
         limits: {
@@ -515,6 +563,19 @@ const resources = {
           action: "ДЕЙСТВИЕ",
           btn_edit: "Изменить"
         },
+        addons: {
+          btn_new: "Новое дополнение",
+          col_name: "НАЗВАНИЕ МОДУЛЯ",
+          col_price: "ЦЕНА",
+          col_active: "АКТИВЕН"
+        },
+        coupons: {
+          btn_create: "Создать купон",
+          col_code: "КОД",
+          col_target: "ЦЕЛЬ",
+          col_discount: "СКИДКА",
+          col_status: "СТАТУС"
+        },
         dialog: {
           title: "Управление: {{restaurant}}",
           label_select_plan: "Выберите План",
@@ -523,12 +584,19 @@ const resources = {
           placeholder_custom: "напр. 400",
           helper_custom: "Необязательно (вместо стандарта)",
           btn_cancel: "Отмена",
-          btn_save: "Сохранить"
+          btn_save: "Сохранить",
+          addon_title: "Новое дополнение",
+          label_module_name: "Название модуля",
+          label_price: "Цена (AZN)",
+          btn_create: "Создать",
+          coupon_title: "Новый купон",
+          label_code: "Код",
+          label_target: "Целевой ресторан",
+          label_value: "Значение",
+          label_type: "Тип"
         },
         alert_saved: "Все изменения сохранены 💾"
       },
-      // -------------------------------
-
       sidebar: {
         super_admin: "Супер Админ",
         dashboard: "Панель управления",

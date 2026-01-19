@@ -29,42 +29,55 @@ const resources = {
           price_mo: "PRICE/MO",
           addons: "ADD-ONS",
           action: "ACTION",
-          btn_edit: "Edit"
+          btn_edit: "Edit",
+          label_plan: "Plan:",
+          label_price: "Price:",
+          label_addons: "Add-ons:"
         },
         addons: {
           btn_new: "New Add-On",
           col_name: "MODULE NAME",
           col_price: "PRICE",
-          col_active: "ACTIVE"
+          col_active: "ACTIVE",
+          label_name: "Module Name:",
+          label_price: "Price:",
+          label_active: "Active:"
         },
         coupons: {
           btn_create: "Create Coupon",
           col_code: "CODE",
           col_target: "TARGET",
           col_discount: "DISCOUNT",
-          col_status: "STATUS"
+          col_status: "STATUS",
+          label_code: "Code:",
+          label_target: "Target:",
+          label_discount: "Discount:",
+          label_status: "Status:"
         },
         dialog: {
-          title: "Manage: {{restaurant}}",
+          manage_title: "Manage: {{restaurant}}",
           label_select_plan: "Select Plan",
-          label_standard_price: "Standard Price",
-          label_custom_price: "Custom Price",
-          placeholder_custom: "e.g. 400",
-          helper_custom: "Optional override",
-          btn_cancel: "Cancel",
-          btn_save: "Save Changes",
+          label_price_override: "Custom Price Override (AZN)",
+          helper_price: "Set a specific price for this client only",
+          label_addons_enable: "Enable Specific Add-ons:",
+
           addon_title: "New Add-on",
           label_module_name: "Module Name",
-          label_price: "Price (AZN)",
-          btn_create: "Create",
+          label_price_input: "Price (AZN)",
+
           coupon_title: "New Coupon",
           label_code: "Code",
           label_target: "Target Restaurant",
           label_value: "Value",
-          label_type: "Type"
+          label_type: "Type",
+
+          btn_cancel: "Cancel",
+          btn_save: "Save Changes",
+          btn_create: "Create"
         },
         alert_saved: "All changes saved 💾"
       },
+
       sidebar: {
         super_admin: "Super Admin",
         dashboard: "Dashboard",
@@ -265,7 +278,144 @@ const resources = {
         profile: "Profile",
         settings: "Settings",
         logout: "Logout"
-      }
+      },
+      automation: {
+        stats: {
+          uptime: "System Uptime",
+          executions: "Total Executions",
+          workflows: "Active Workflows",
+          errors: "Webhook Errors"
+        },
+        server: {
+          title: "Server Configuration",
+          desc: "Core connection settings between UR-OS and the n8n automation engine.",
+          url_label: "Instance URL",
+          api_label: "API Key",
+          status_online: "SYSTEM ONLINE",
+          btn_test: "Test Connection"
+        },
+        channels: {
+          title: "Communication Channels (Bots)",
+          btn_restart: "Restart",
+          status_online: "Online",
+          status_maintenance: "Maintenance"
+        },
+        scenarios: {
+          title: "Active Scenarios (Workflows)",
+          cols: {
+            name: "WORKFLOW NAME",
+            tenant: "TENANT",
+            type: "TYPE",
+            status: "STATUS",
+            health: "HEALTH",
+            runs: "RUNS"
+          }
+        }
+      },
+      support: {
+        title: "Support Tickets",
+        subtitle: "Technical support for restaurants",
+        btn_push: "Broadcast (Push)",
+        menu: {
+          delete: "Delete"
+        },
+        table: {
+          id: "ID",
+          restaurant: "RESTAURANT",
+          problem: "PROBLEM",
+          priority: "PRIORITY",
+          status: "STATUS",
+          actions: "ACTIONS"
+        },
+        priority: {
+          high: "High",
+          medium: "Medium",
+          low: "Low"
+        },
+        status: {
+          open: "Open",
+          closed: "Closed",
+          in_progress: "In Progress"
+        }
+      },
+      push: {
+        title: "System Broadcast",
+        subtitle: "Send push notifications to all restaurant owners.",
+        form: {
+          title: "Create Message",
+          label_recipients: "Recipients",
+          option_all: "All Restaurants",
+          option_pro: "PRO Plans",
+          option_active: "Active Only",
+          label_type: "Notification Type",
+          type_info: "Information (Blue)",
+          type_warning: "Warning (Yellow)",
+          type_success: "Success (Green)",
+          label_title: "Title",
+          label_message: "Message Text",
+          btn_send: "Send Broadcast"
+        },
+        history: {
+          title: "Broadcast History",
+          col_date: "DATE",
+          col_message: "MESSAGE",
+          col_recipients: "RECIPIENTS",
+          col_actions: "ACTIONS"
+        }
+      },
+      releases: {
+        title: "System Updates & Releases",
+        subtitle: "Manage changelogs and system status.",
+        maintenance: "Maintenance",
+        btn_push: "Push Update",
+        table: {
+          version: "VERSION",
+          type: "TYPE",
+          desc: "TITLE & DESCRIPTION",
+          date: "DATE",
+          status: "STATUS"
+        },
+        modal: {
+          title: "Publish New Update",
+          version: "Version",
+          type: "Type",
+          update_title: "Update Title",
+          desc: "Changelog Description",
+          notify: "Notify All Owners",
+          btn_cancel: "Cancel",
+          btn_publish: "Publish"
+        }
+      },
+      logs: {
+  title: "Global Security Audit",
+  search_placeholder: "Search Tenant, IP, User...",
+  filter_module: "Module",
+  filter_status: "Status",
+  stats: {
+    total: "Total Events",
+    errors: "Critical Errors",
+    security: "Security Alerts",
+    admins: "Active Admins"
+  },
+  cols: {
+    event: "EVENT",
+    tenant: "TENANT / CONTEXT",
+    user: "USER",
+    source: "SOURCE",
+    status: "STATUS",
+    time: "TIME",
+    action: "ACTION"
+  },modal: {
+    title: "Log Details",
+    tenant: "Tenant",
+    user: "User",
+    ip: "IP Addr",
+    module: "Module",
+    payload: "Payload Data",
+    ban_ip: "Ban IP",
+    close: "Close"
+  }
+}
     }
   },
 
@@ -295,39 +445,51 @@ const resources = {
           price_mo: "QİYMƏT/AY",
           addons: "ƏLAVƏLƏR",
           action: "ƏMƏLİYYAT",
-          btn_edit: "Düzəliş"
+          btn_edit: "Düzəliş",
+          label_plan: "Plan:",
+          label_price: "Qiymət:",
+          label_addons: "Əlavələr:"
         },
         addons: {
           btn_new: "Yeni Əlavə",
           col_name: "MODUL ADI",
           col_price: "QİYMƏT",
-          col_active: "AKTİV"
+          col_active: "AKTİV",
+          label_name: "Modul Adı:",
+          label_price: "Qiymət:",
+          label_active: "Aktiv:"
         },
         coupons: {
           btn_create: "Kupon Yarat",
           col_code: "KOD",
           col_target: "HƏDƏF",
           col_discount: "ENDİRİM",
-          col_status: "STATUS"
+          col_status: "STATUS",
+          label_code: "Kod:",
+          label_target: "Hədəf:",
+          label_discount: "Endirim:",
+          label_status: "Status:"
         },
         dialog: {
-          title: "İdarə et: {{restaurant}}",
+          manage_title: "İdarə et: {{restaurant}}",
           label_select_plan: "Plan Seçin",
-          label_standard_price: "Standart Qiymət",
-          label_custom_price: "Xüsusi Qiymət",
-          placeholder_custom: "məs. 400",
-          helper_custom: "İstəyə bağlı (Standartdan fərqli)",
-          btn_cancel: "Ləğv Et",
-          btn_save: "Yadda Saxla",
+          label_price_override: "Xüsusi Qiymət (AZN)",
+          helper_price: "İstəyə bağlı (Standartdan fərqli)",
+          label_addons_enable: "Xüsusi Əlavələri Aktivləşdir:",
+
           addon_title: "Yeni Əlavə",
           label_module_name: "Modul Adı",
-          label_price: "Qiymət (AZN)",
-          btn_create: "Yarat",
+          label_price_input: "Qiymət (AZN)",
+
           coupon_title: "Yeni Kupon",
           label_code: "Kod",
           label_target: "Hədəf Restoran",
           label_value: "Dəyər",
-          label_type: "Növ"
+          label_type: "Növ",
+
+          btn_cancel: "Ləğv Et",
+          btn_save: "Yadda Saxla",
+          btn_create: "Yarat"
         },
         alert_saved: "Bütün dəyişikliklər yadda saxlanıldı 💾"
       },
@@ -531,7 +693,146 @@ const resources = {
         profile: "Profil",
         settings: "Ayarlar",
         logout: "Çıxış"
-      }
+      },
+      automation: {
+        stats: {
+          uptime: "Sistem Vaxtı",
+          executions: "Cəmi İcra",
+          workflows: "Aktiv İş Prosesləri",
+          errors: "Webhook Xətaları"
+        },
+        server: {
+          title: "Server Konfiqurasiyası",
+          desc: "UR-OS və n8n avtomatlaşdırma mühərriki arasında əlaqə parametrləri.",
+          url_label: "İnstance URL",
+          api_label: "API Açarı",
+          status_online: "SİSTEM ONLAYN",
+          btn_test: "Əlaqəni Yoxla"
+        },
+        channels: {
+          title: "Əlaqə Kanalları (Botlar)",
+          btn_restart: "Yenidən Başlat",
+          status_online: "Onlayn",
+          status_maintenance: "Baxımda"
+        },
+        scenarios: {
+          title: "Aktiv Ssenarilər",
+          cols: {
+            name: "SSENARİ ADI",
+            tenant: "MÜŞTƏRİ",
+            type: "NÖV",
+            status: "STATUS",
+            health: "SAĞLAMLIQ",
+            runs: "İCRALAR"
+          }
+        }
+      },
+      support: {
+        title: "Dəstək Tələbləri",
+        subtitle: "Restoranlar üçün texniki dəstək",
+        btn_push: "Yayım (Push)",
+        menu: {
+          delete: "Sil"
+        },
+        table: {
+          id: "İD",
+          restaurant: "RESTORAN",
+          problem: "PROBLEM",
+          priority: "VACİBLİK",
+          status: "STATUS",
+          actions: "ƏMƏLİYYAT"
+        },
+        priority: {
+          high: "Yüksək",
+          medium: "Orta",
+          low: "Aşağı"
+        },
+        status: {
+          open: "Açıq",
+          closed: "Bağlı",
+          in_progress: "İcrada"
+        }
+      },
+      push: {
+        title: "Sistem Yayımı",
+        subtitle: "Bütün restoran sahiblərinə push bildiriş göndərin.",
+        form: {
+          title: "Mesaj Yarat",
+          label_recipients: "Qəbul edənlər",
+          option_all: "Bütün Restoranlar",
+          option_pro: "PRO Planlar",
+          option_active: "Yalnız Aktivlər",
+          label_type: "Bildiriş Növü",
+          type_info: "Məlumat (Mavi)",
+          type_warning: "Xəbərdarlıq (Sarı)",
+          type_success: "Uğurlu (Yaşıl)",
+          label_title: "Başlıq",
+          label_message: "Mesaj Mətni",
+          btn_send: "Yayımı Göndər"
+        },
+        history: {
+          title: "Yayım Tarixçəsi",
+          col_date: "TARİX",
+          col_message: "MESAJ",
+          col_recipients: "QƏBUL EDƏNLƏR",
+          col_actions: "ƏMƏLİYYAT"
+        }
+      },
+      releases: {
+        title: "Sistem Yenilikləri",
+        subtitle: "Dəyişiklik qeydlərini və sistem statusunu idarə edin.",
+        maintenance: "Baxım Rejimi",
+        btn_push: "Yeniləməni Yay",
+        table: {
+          version: "VERSİYA",
+          type: "NÖV",
+          desc: "BAŞLIQ VƏ TƏSVİR",
+          date: "TARİX",
+          status: "STATUS"
+        },
+        modal: {
+    title: "Yeni Yeniləməni Yay",
+    version: "Versiya",
+    type: "Növ",
+    update_title: "Yeniləmə Başlığı",
+    desc: "Dəyişiklik Təsviri",
+    notify: "Bütün Sahibləri Bildir",
+    btn_cancel: "Ləğv Et",
+    btn_publish: "Yayımla"
+  }
+      },
+      logs: {
+  title: "Qlobal Təhlükəsizlik Auditi",
+  search_placeholder: "Axtarış: Müştəri, IP, İstifadəçi...",
+  filter_module: "Modul",
+  filter_status: "Status",
+  stats: {
+    total: "Cəmi Hadisələr",
+    errors: "Kritik Xətalar",
+    security: "Təhlükəsizlik",
+    admins: "Aktiv Adminlər"
+  },
+  cols: {
+    event: "HADİSƏ",
+    tenant: "MÜŞTƏRİ / KONTEKST",
+    user: "İSTİFADƏÇİ",
+    source: "MƏNBƏ",
+    status: "STATUS",
+    time: "VAXT",
+    action: "ƏMƏLİYYAT"
+  },
+  modal: {
+    title: "Log Detalları",
+    tenant: "Müştəri",
+    user: "İstifadəçi",
+    ip: "IP Ünvan",
+    module: "Modul",
+    payload: "Məlumat (Payload)",
+    ban_ip: "IP-ni Blokla",
+    close: "Bağla"
+  }
+}
+
     }
   },
 
@@ -561,39 +862,51 @@ const resources = {
           price_mo: "ЦЕНА/МЕС",
           addons: "ДОПОЛНЕНИЯ",
           action: "ДЕЙСТВИЕ",
-          btn_edit: "Изменить"
+          btn_edit: "Изменить",
+          label_plan: "План:",
+          label_price: "Цена:",
+          label_addons: "Дополнения:"
         },
         addons: {
-          btn_new: "Новое дополнение",
+          btn_new: "Новое Дополнение",
           col_name: "НАЗВАНИЕ МОДУЛЯ",
           col_price: "ЦЕНА",
-          col_active: "АКТИВЕН"
+          col_active: "АКТИВЕН",
+          label_name: "Название:",
+          label_price: "Цена:",
+          label_active: "Активен:"
         },
         coupons: {
-          btn_create: "Создать купон",
+          btn_create: "Создать Купон",
           col_code: "КОД",
           col_target: "ЦЕЛЬ",
           col_discount: "СКИДКА",
-          col_status: "СТАТУС"
+          col_status: "СТАТУС",
+          label_code: "Код:",
+          label_target: "Цель:",
+          label_discount: "Скидка:",
+          label_status: "Статус:"
         },
         dialog: {
-          title: "Управление: {{restaurant}}",
+          manage_title: "Управление: {{restaurant}}",
           label_select_plan: "Выберите План",
-          label_standard_price: "Стандартная Цена",
-          label_custom_price: "Своя Цена",
-          placeholder_custom: "напр. 400",
-          helper_custom: "Необязательно (вместо стандарта)",
-          btn_cancel: "Отмена",
-          btn_save: "Сохранить",
-          addon_title: "Новое дополнение",
+          label_price_override: "Специальная Цена (AZN)",
+          helper_price: "Необязательно (вместо стандарта)",
+          label_addons_enable: "Включить дополнения:",
+
+          addon_title: "Новое Дополнение",
           label_module_name: "Название модуля",
-          label_price: "Цена (AZN)",
-          btn_create: "Создать",
+          label_price_input: "Цена (AZN)",
+
           coupon_title: "Новый купон",
           label_code: "Код",
           label_target: "Целевой ресторан",
           label_value: "Значение",
-          label_type: "Тип"
+          label_type: "Тип",
+
+          btn_cancel: "Отмена",
+          btn_save: "Сохранить",
+          btn_create: "Создать"
         },
         alert_saved: "Все изменения сохранены 💾"
       },
@@ -797,7 +1110,148 @@ const resources = {
         profile: "Профиль",
         settings: "Настройки",
         logout: "Выйти"
-      }
+      },
+      automation: {
+        stats: {
+          uptime: "Время работы",
+          executions: "Всего исполнений",
+          workflows: "Активные процессы",
+          errors: "Ошибки вебхуков"
+        },
+        server: {
+          title: "Конфигурация Сервера",
+          desc: "Настройки соединения между UR-OS и движком автоматизации n8n.",
+          url_label: "URL Инстанса",
+          api_label: "API Ключ",
+          status_online: "СИСТЕМА ОНЛАЙН",
+          btn_test: "Проверить",
+        },
+        channels: {
+          title: "Каналы связи (Боты)",
+          btn_restart: "Перезапуск",
+          status_online: "Онлайн",
+          status_maintenance: "Обслуживание"
+        },
+        scenarios: {
+          title: "Активные Сценарии",
+          cols: {
+            name: "НАЗВАНИЕ",
+            tenant: "КЛИЕНТ",
+            type: "ТИП",
+            status: "СТАТУС",
+            health: "ЗДОРОВЬЕ",
+            runs: "ЗАПУСКИ"
+          }
+        }
+      },
+      support: {
+        title: "Support Tickets",
+        subtitle: "Техподдержка ресторанов",
+        btn_push: "Рассылка (Push)",
+        menu: {
+          delete: "Удалить"
+        },
+        table: {
+          id: "ID",
+          restaurant: "РЕСТОРАН",
+          problem: "ПРОБЛЕМА",
+          priority: "ПРИОРИТЕТ",
+          status: "СТАТУС",
+          actions: "ДЕЙСТВИЯ"
+        },
+        priority: {
+          high: "High",
+          medium: "Medium",
+          low: "Low"
+        },
+        status: {
+          open: "Open",
+          closed: "Closed",
+          in_progress: "In Progress"
+        }
+      },
+      push: {
+        title: "Системная Рассылка",
+        subtitle: "Отправка Push-уведомлений всем владельцам ресторанов.",
+        form: {
+          title: "Создать Сообщение",
+          label_recipients: "Получатели",
+          option_all: "Все Рестораны",
+          option_pro: "PRO Планы",
+          option_active: "Только Активные",
+          label_type: "Тип уведомления",
+          type_info: "Информация (Синий)",
+          type_warning: "Предупреждение (Желтый)",
+          type_success: "Успех (Зеленый)",
+          label_title: "Заголовок",
+          label_message: "Текст сообщения",
+          btn_send: "Отправить Рассылку"
+        },
+        history: {
+          title: "История Рассылок",
+          col_date: "ДАТА",
+          col_message: "СООБЩЕНИЕ",
+          col_recipients: "ПОЛУЧАТЕЛИ",
+          col_actions: "ДЕЙСТВИЯ"
+        }
+      },
+      releases: {
+        title: "Обновления Системы",
+        subtitle: "Управление журналом изменений и статусом системы.",
+        maintenance: "Режим Обслуживания",
+        btn_push: "Выпустить Обновление",
+        table: {
+          version: "ВЕРСИЯ",
+          type: "ТИП",
+          desc: "ЗАГОЛОВОК И ОПИСАНИЕ",
+          date: "ДАТА",
+          status: "СТАТУС"
+        },
+        modal: {
+    title: "Опубликовать Обновление",
+    version: "Версия",
+    type: "Тип",
+    update_title: "Заголовок Обновления",
+    desc: "Описание Изменений",
+    notify: "Уведомить Всех Владельцев",
+    btn_cancel: "Отмена",
+    btn_publish: "Опубликовать"
+  }
+      },
+      logs: {
+  title: "Глобальный Аудит Безопасности",
+  search_placeholder: "Поиск Клиента, IP, Пользователя...",
+  filter_module: "Модуль",
+  filter_status: "Статус",
+  stats: {
+    total: "Всего Событий",
+    errors: "Критические Ошибки",
+    security: "Безопасность",
+    admins: "Активные Админы"
+  },
+  cols: {
+    event: "СОБЫТИЕ",
+    tenant: "КЛИЕНТ / КОНТЕКСТ",
+    user: "ПОЛЬЗОВАТЕЛЬ",
+    source: "ИСТОЧНИК",
+    status: "СТАТУС",
+    time: "ВРЕМЯ",
+    action: "ДЕЙСТВИЕ"
+  },
+  modal: {
+    title: "Детали Лога",
+    tenant: "Клиент",
+    user: "Пользователь",
+    ip: "IP Адрес",
+    module: "Модуль",
+    payload: "Данные (Payload)",
+    ban_ip: "Забанить IP",
+    close: "Закрыть"
+  }
+}
+
+
+
     }
   }
 };
@@ -809,7 +1263,7 @@ i18n
     resources,
     fallbackLng: "az",
     interpolation: {
-      escapeValue: false 
+      escapeValue: false
     }
   });
 

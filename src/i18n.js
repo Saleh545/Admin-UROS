@@ -387,34 +387,167 @@ const resources = {
         }
       },
       logs: {
-  title: "Global Security Audit",
-  search_placeholder: "Search Tenant, IP, User...",
-  filter_module: "Module",
-  filter_status: "Status",
-  stats: {
-    total: "Total Events",
-    errors: "Critical Errors",
-    security: "Security Alerts",
-    admins: "Active Admins"
-  },
-  cols: {
-    event: "EVENT",
-    tenant: "TENANT / CONTEXT",
-    user: "USER",
-    source: "SOURCE",
-    status: "STATUS",
-    time: "TIME",
-    action: "ACTION"
-  },modal: {
-    title: "Log Details",
-    tenant: "Tenant",
-    user: "User",
-    ip: "IP Addr",
-    module: "Module",
-    payload: "Payload Data",
-    ban_ip: "Ban IP",
-    close: "Close"
-  }
+        title: "Global Security Audit",
+        search_placeholder: "Search Tenant, IP, User...",
+        filter_module: "Module",
+        filter_status: "Status",
+        stats: {
+          total: "Total Events",
+          errors: "Critical Errors",
+          security: "Security Alerts",
+          admins: "Active Admins"
+        },
+        cols: {
+          event: "EVENT",
+          tenant: "TENANT / CONTEXT",
+          user: "USER",
+          source: "SOURCE",
+          status: "STATUS",
+          time: "TIME",
+          action: "ACTION"
+        }, modal: {
+          title: "Log Details",
+          tenant: "Tenant",
+          user: "User",
+          ip: "IP Addr",
+          module: "Module",
+          payload: "Payload Data",
+          ban_ip: "Ban IP",
+          close: "Close"
+        }
+      },
+      dashboard: {
+        owner: {
+          title: "Owner Dashboard",
+          subtitle: "Overview for",
+          date_filter: "This Month: Jan 2026"
+        },
+        stats: {
+          revenue: "Revenue Today",
+          promo: "Active Promo",
+          rating: "Guest Rating",
+          occupancy: "Occupancy"
+        },
+        revenue: {
+          title: "Revenue (Hourly)"
+        },
+        promo: {
+          title: "Promo Performance",
+          btn_manage: "Manage Promos"
+        },
+        dishes: {
+          title: "Top Dishes",
+          item: "ITEM",
+          price: "PRICE",
+          sold: "SOLD",
+          trend: "TREND"
+        },
+        reviews: {
+          title: "Recent Reviews"
+        }
+      },
+      marketing: {
+        title: "Marketing & Promo",
+        managing: "Managing",
+        btn_create: "Create Promo",
+        table: {
+          name: "NAME",
+          code: "CODE",
+          branch: "BRANCH",
+          discount: "DISCOUNT",
+          stats: "STATS",
+          expires: "EXPIRES",
+          actions: "ACTIONS"
+        },
+        modal: {
+          title: "Create Promo",
+          label_name: "Promo Name",
+          label_code: "Promo Code",
+          label_branch: "Where it applies?",
+          label_value: "Discount Value",
+          label_type: "Type",
+          type_percent: "Percent (%)",
+          type_fixed: "Fixed (AZN)",
+          label_date: "Expires On",
+          btn_cancel: "Cancel",
+          btn_create: "Create Promo"
+        }
+      },
+      staff: {
+        title: "Team & Access",
+        subtitle: "Managing",
+        limits: "Plan Limits (Global)",
+        btn_add: "Add New Member",
+        tab_managers: "Managers",
+        tab_staff: "Staff",
+        search_placeholder: "Search by name or PIN...",
+        confirm_delete: "Are you sure you want to remove this user?",
+        btn_edit: "Edit",
+        btn_remove: "Remove",
+        modal: {
+          title_add: "Add New Member",
+          title_edit: "Edit User",
+          label_branch: "Assign to Branch",
+          label_name: "Full Name",
+          label_phone: "Phone",
+          label_pin: "Access PIN",
+          label_email: "Email (Login)",
+          label_cash_control: "Require Cash Input on Close",
+          btn_cancel: "Cancel",
+          btn_save: "Save Member",
+          btn_add_confirm: "Add Member"
+        }
+      },
+      security: {
+        title: "Security Audit",
+        source: "Source",
+        search_placeholder: "Search logs...",
+        all_branches: "All Branches",
+        filters: {
+          all: "All",
+          high_risk: "High Risk",
+          normal: "Normal"
+        },
+        logs: {
+          deleted_receipt: "Deleted Receipt #4092",
+          closed_table: "Closed Table #5",
+          changed_service: "Changed Service Charge",
+          voided_item: "Voided Item \"Cola\"",
+          backup_created: "Daily Backup Created",
+          edited_reservation: "Edited Reservation",
+          badge_cash: "Cash Payment",
+          badge_auto: "Auto-Save",
+          badge_guest: "Guest Count: 2 → 5",
+          today: "Today",
+          yesterday: "Yesterday"
+        }
+      },
+      venue: {
+  header_title: "Settings",
+  configure: "Configure Branch",
+  identity_title: "Identity & Location",
+  btn_upload: "Upload Network Logo",
+  upload_hint: "Changes apply to ALL branches",
+  label_name: "Branch Display Name",
+  label_slug: "Menu Link Slug",
+  label_address: "Address (Text)",
+  label_map: "Google Maps Link",
+  map_hint: "For humans: clickable link in chat",
+  bot_coords: "Bot Coordinates",
+  pick_map: "Pick On Map",
+  label_lat: "Latitude",
+  label_lng: "Longitude",
+  label_phone: "Branch Phone",
+  label_wifi: "Wi-Fi Password",
+  qr_subtitle: "Unique QR for",
+  btn_download: "Download PNG",
+  rules_title: "Network Rules (Global)",
+  label_currency: "Currency",
+  label_service: "Service %",
+  bot_contacts: "Bot Contacts",
+  label_insta: "Instagram Username",
+  label_whatsapp: "WhatsApp Number",
+  btn_save: "Save Changes"
 }
     }
   },
@@ -791,46 +924,179 @@ const resources = {
           status: "STATUS"
         },
         modal: {
-    title: "Yeni Yeniləməni Yay",
-    version: "Versiya",
-    type: "Növ",
-    update_title: "Yeniləmə Başlığı",
-    desc: "Dəyişiklik Təsviri",
-    notify: "Bütün Sahibləri Bildir",
-    btn_cancel: "Ləğv Et",
-    btn_publish: "Yayımla"
-  }
+          title: "Yeni Yeniləməni Yay",
+          version: "Versiya",
+          type: "Növ",
+          update_title: "Yeniləmə Başlığı",
+          desc: "Dəyişiklik Təsviri",
+          notify: "Bütün Sahibləri Bildir",
+          btn_cancel: "Ləğv Et",
+          btn_publish: "Yayımla"
+        }
       },
       logs: {
-  title: "Qlobal Təhlükəsizlik Auditi",
-  search_placeholder: "Axtarış: Müştəri, IP, İstifadəçi...",
-  filter_module: "Modul",
-  filter_status: "Status",
-  stats: {
-    total: "Cəmi Hadisələr",
-    errors: "Kritik Xətalar",
-    security: "Təhlükəsizlik",
-    admins: "Aktiv Adminlər"
-  },
-  cols: {
-    event: "HADİSƏ",
-    tenant: "MÜŞTƏRİ / KONTEKST",
-    user: "İSTİFADƏÇİ",
-    source: "MƏNBƏ",
-    status: "STATUS",
-    time: "VAXT",
-    action: "ƏMƏLİYYAT"
-  },
-  modal: {
-    title: "Log Detalları",
-    tenant: "Müştəri",
-    user: "İstifadəçi",
-    ip: "IP Ünvan",
-    module: "Modul",
-    payload: "Məlumat (Payload)",
-    ban_ip: "IP-ni Blokla",
-    close: "Bağla"
-  }
+        title: "Qlobal Təhlükəsizlik Auditi",
+        search_placeholder: "Axtarış: Müştəri, IP, İstifadəçi...",
+        filter_module: "Modul",
+        filter_status: "Status",
+        stats: {
+          total: "Cəmi Hadisələr",
+          errors: "Kritik Xətalar",
+          security: "Təhlükəsizlik",
+          admins: "Aktiv Adminlər"
+        },
+        cols: {
+          event: "HADİSƏ",
+          tenant: "MÜŞTƏRİ / KONTEKST",
+          user: "İSTİFADƏÇİ",
+          source: "MƏNBƏ",
+          status: "STATUS",
+          time: "VAXT",
+          action: "ƏMƏLİYYAT"
+        },
+        modal: {
+          title: "Log Detalları",
+          tenant: "Müştəri",
+          user: "İstifadəçi",
+          ip: "IP Ünvan",
+          module: "Modul",
+          payload: "Məlumat (Payload)",
+          ban_ip: "IP-ni Blokla",
+          close: "Bağla"
+        }
+      },
+      dashboard: {
+        owner: {
+          title: "Sahib Paneli",
+          subtitle: "İcmal",
+          date_filter: "Bu Ay: Yan 2026"
+        },
+        stats: {
+          revenue: "Bugünkü Gəlir",
+          promo: "Aktiv Promo",
+          rating: "Qonaq Reytinqi",
+          occupancy: "Doluluq"
+        },
+        revenue: {
+          title: "Gəlir (Saatlıq)"
+        },
+        promo: {
+          title: "Promo Performansı",
+          btn_manage: "Promoları İdarə Et"
+        },
+        dishes: {
+          title: "Top Yeməklər",
+          item: "MƏHSUL",
+          price: "QİYMƏT",
+          sold: "SATILIB",
+          trend: "TREND"
+        },
+        reviews: {
+          title: "Son Rəylər"
+        }
+      },
+      marketing: {
+        title: "Marketinq və Promo",
+        managing: "İdarə edilir",
+        btn_create: "Promo Yarat",
+        table: {
+          name: "AD",
+          code: "KOD",
+          branch: "FİLİAL",
+          discount: "ENDİRİM",
+          stats: "STATİSTİKA",
+          expires: "BİTMƏ TARİXİ",
+          actions: "ƏMƏLİYYAT"
+        },
+        modal: {
+          title: "Aksiya Yarat",
+          label_name: "Aksiya Adı",
+          label_code: "Promokod",
+          label_branch: "Harada keçərlidir?",
+          label_value: "Endirim Dəyəri",
+          label_type: "Növ",
+          type_percent: "Faiz (%)",
+          type_fixed: "Sabit (AZN)",
+          label_date: "Bitmə Tarixi",
+          btn_cancel: "Ləğv Et",
+          btn_create: "Aksiya Yarat"
+        }
+      },
+      staff: {
+        title: "Komanda və Giriş",
+        subtitle: "İdarə edilir",
+        limits: "Plan Limitləri (Qlobal)",
+        btn_add: "Yeni Üzv Əlavə Et",
+        tab_managers: "Menecerlər",
+        tab_staff: "Personal",
+        search_placeholder: "Ad və ya PIN ilə axtar...",
+        confirm_delete: "Bu istifadəçini silmək istədiyinizə əminsiniz?",
+        btn_edit: "Düzəliş",
+        btn_remove: "Sil",
+        modal: {
+          title_add: "Yeni Üzv Əlavə Et",
+          title_edit: "İstifadəçini Redaktə Et",
+          label_branch: "Filiala Təyin Et",
+          label_name: "Tam Ad",
+          label_phone: "Telefon",
+          label_pin: "Giriş PIN",
+          label_email: "Email (Giriş)",
+          label_cash_control: "Bağlayarkən Nağd Girişi Tələb Et",
+          btn_cancel: "Ləğv Et",
+          btn_save: "Yadda Saxla",
+          btn_add_confirm: "Əlavə Et"
+        }
+      },
+      security: {
+        title: "Təhlükəsizlik Auditi",
+        source: "Mənbə",
+        search_placeholder: "Logları axtar...",
+        all_branches: "Bütün Filiallar",
+        filters: {
+          all: "Hamısı",
+          high_risk: "Yüksək Risk",
+          normal: "Normal"
+        },
+        logs: {
+          deleted_receipt: "Çek Silindi #4092",
+          closed_table: "Masa Bağlandı #5",
+          changed_service: "Xidmət Haqqı Dəyişdirildi",
+          voided_item: "\"Cola\" Ləğv Edildi",
+          backup_created: "Günlük Nüsxə Yaradıldı",
+          edited_reservation: "Rezervasiya Düzəldildi",
+          badge_cash: "Nağd Ödəniş",
+          badge_auto: "Avto-Yaddaş",
+          badge_guest: "Qonaq Sayı: 2 → 5",
+          today: "Bu gün",
+          yesterday: "Dünən"
+        }
+      },
+      venue: {
+  header_title: "Tənzimləmələr",
+  configure: "Filialı Tənzimlə",
+  identity_title: "Kimlik və Məkan",
+  btn_upload: "Şəbəkə Loqosunu Yüklə",
+  upload_hint: "Dəyişikliklər BÜTÜN filiallara aiddir",
+  label_name: "Filialın Görünən Adı",
+  label_slug: "Menyu Linki (Slug)",
+  label_address: "Ünvan (Mətn)",
+  label_map: "Google Maps Linki",
+  map_hint: "Çatda kliklənə bilən link üçün",
+  bot_coords: "Bot Koordinatları",
+  pick_map: "Xəritədə Seç",
+  label_lat: "Enlik",
+  label_lng: "Uzunluq",
+  label_phone: "Filial Telefonu",
+  label_wifi: "Wi-Fi Şifrəsi",
+  qr_subtitle: "Unikal QR:",
+  btn_download: "PNG Yüklə",
+  rules_title: "Şəbəkə Qaydaları (Qlobal)",
+  label_currency: "Valyuta",
+  label_service: "Xidmət %",
+  bot_contacts: "Bot Əlaqələri",
+  label_insta: "Instagram Adı",
+  label_whatsapp: "WhatsApp Nömrəsi",
+  btn_save: "Yadda Saxla"
 }
 
     }
@@ -1208,46 +1474,179 @@ const resources = {
           status: "СТАТУС"
         },
         modal: {
-    title: "Опубликовать Обновление",
-    version: "Версия",
-    type: "Тип",
-    update_title: "Заголовок Обновления",
-    desc: "Описание Изменений",
-    notify: "Уведомить Всех Владельцев",
-    btn_cancel: "Отмена",
-    btn_publish: "Опубликовать"
-  }
+          title: "Опубликовать Обновление",
+          version: "Версия",
+          type: "Тип",
+          update_title: "Заголовок Обновления",
+          desc: "Описание Изменений",
+          notify: "Уведомить Всех Владельцев",
+          btn_cancel: "Отмена",
+          btn_publish: "Опубликовать"
+        }
       },
       logs: {
-  title: "Глобальный Аудит Безопасности",
-  search_placeholder: "Поиск Клиента, IP, Пользователя...",
-  filter_module: "Модуль",
-  filter_status: "Статус",
-  stats: {
-    total: "Всего Событий",
-    errors: "Критические Ошибки",
-    security: "Безопасность",
-    admins: "Активные Админы"
-  },
-  cols: {
-    event: "СОБЫТИЕ",
-    tenant: "КЛИЕНТ / КОНТЕКСТ",
-    user: "ПОЛЬЗОВАТЕЛЬ",
-    source: "ИСТОЧНИК",
-    status: "СТАТУС",
-    time: "ВРЕМЯ",
-    action: "ДЕЙСТВИЕ"
-  },
-  modal: {
-    title: "Детали Лога",
-    tenant: "Клиент",
-    user: "Пользователь",
-    ip: "IP Адрес",
-    module: "Модуль",
-    payload: "Данные (Payload)",
-    ban_ip: "Забанить IP",
-    close: "Закрыть"
-  }
+        title: "Глобальный Аудит Безопасности",
+        search_placeholder: "Поиск Клиента, IP, Пользователя...",
+        filter_module: "Модуль",
+        filter_status: "Статус",
+        stats: {
+          total: "Всего Событий",
+          errors: "Критические Ошибки",
+          security: "Безопасность",
+          admins: "Активные Админы"
+        },
+        cols: {
+          event: "СОБЫТИЕ",
+          tenant: "КЛИЕНТ / КОНТЕКСТ",
+          user: "ПОЛЬЗОВАТЕЛЬ",
+          source: "ИСТОЧНИК",
+          status: "СТАТУС",
+          time: "ВРЕМЯ",
+          action: "ДЕЙСТВИЕ"
+        },
+        modal: {
+          title: "Детали Лога",
+          tenant: "Клиент",
+          user: "Пользователь",
+          ip: "IP Адрес",
+          module: "Модуль",
+          payload: "Данные (Payload)",
+          ban_ip: "Забанить IP",
+          close: "Закрыть"
+        }
+      },
+      dashboard: {
+        owner: {
+          title: "Панель Владельца",
+          subtitle: "Обзор для",
+          date_filter: "Этот месяц: Янв 2026"
+        },
+        stats: {
+          revenue: "Доход сегодня",
+          promo: "Активные промо",
+          rating: "Рейтинг гостей",
+          occupancy: "Загруженность"
+        },
+        revenue: {
+          title: "Доход (Почасовой)"
+        },
+        promo: {
+          title: "Эффективность Промо",
+          btn_manage: "Управление"
+        },
+        dishes: {
+          title: "Топ Блюд",
+          item: "ТОВАР",
+          price: "ЦЕНА",
+          sold: "ПРОДАНО",
+          trend: "ТРЕНД"
+        },
+        reviews: {
+          title: "Недавние отзывы"
+        }
+      },
+      marketing: {
+        title: "Маркетинг и Промо",
+        managing: "Управление",
+        btn_create: "Создать Промокод",
+        table: {
+          name: "НАЗВАНИЕ",
+          code: "КОД",
+          branch: "ФИЛИАЛ",
+          discount: "СКИДКА",
+          stats: "СТАТИСТИКА",
+          expires: "ИСТЕКАЕТ",
+          actions: "ДЕЙСТВИЯ"
+        },
+        modal: {
+          title: "Создать Акцию",
+          label_name: "Название акции",
+          label_code: "Промокод",
+          label_branch: "Где действует?",
+          label_value: "Размер скидки",
+          label_type: "Тип",
+          type_percent: "Процент (%)",
+          type_fixed: "Фикс. (AZN)",
+          label_date: "Действует до",
+          btn_cancel: "Отмена",
+          btn_create: "Создать Акцию"
+        }
+      },
+      staff: {
+        title: "Команда и Доступ",
+        subtitle: "Управление",
+        limits: "Лимиты Плана (Глобально)",
+        btn_add: "Добавить Участника",
+        tab_managers: "Менеджеры",
+        tab_staff: "Персонал",
+        search_placeholder: "Поиск по имени или PIN...",
+        confirm_delete: "Вы уверены, что хотите удалить этого пользователя?",
+        btn_edit: "Изменить",
+        btn_remove: "Удалить",
+        modal: {
+          title_add: "Добавить Участника",
+          title_edit: "Редактировать",
+          label_branch: "Назначить в филиал",
+          label_name: "ФИО",
+          label_phone: "Телефон",
+          label_pin: "PIN Доступа",
+          label_email: "Email (Логин)",
+          label_cash_control: "Требовать ввод наличных при закрытии",
+          btn_cancel: "Отмена",
+          btn_save: "Сохранить",
+          btn_add_confirm: "Добавить"
+        }
+      },
+      security: {
+        title: "Аудит Безопасности",
+        source: "Источник",
+        search_placeholder: "Поиск логов...",
+        all_branches: "Все Филиалы",
+        filters: {
+          all: "Все",
+          high_risk: "Высокий Риск",
+          normal: "Обычный"
+        },
+        logs: {
+          deleted_receipt: "Удален Чек #4092",
+          closed_table: "Стол Закрыт #5",
+          changed_service: "Изменен Сервисный Сбор",
+          voided_item: "Аннулирован Товар \"Cola\"",
+          backup_created: "Создана Дневная Копия",
+          edited_reservation: "Бронь Изменена",
+          badge_cash: "Наличные",
+          badge_auto: "Авто-Сохр.",
+          badge_guest: "Гостей: 2 → 5",
+          today: "Сегодня",
+          yesterday: "Вчера"
+        }
+      },
+      venue: {
+  header_title: "Настройки",
+  configure: "Настроить Филиал",
+  identity_title: "Идентификация и Локация",
+  btn_upload: "Загрузить Логотип",
+  upload_hint: "Применяется ко ВСЕМ филиалам",
+  label_name: "Отображаемое Имя",
+  label_slug: "Ссылка Меню (Slug)",
+  label_address: "Адрес (Текст)",
+  label_map: "Ссылка Google Maps",
+  map_hint: "Кликабельная ссылка в чате",
+  bot_coords: "Координаты Бота",
+  pick_map: "Выбрать на карте",
+  label_lat: "Широта",
+  label_lng: "Долгота",
+  label_phone: "Телефон Филиала",
+  label_wifi: "Пароль Wi-Fi",
+  qr_subtitle: "Уникальный QR для",
+  btn_download: "Скачать PNG",
+  rules_title: "Правила Сети (Глобально)",
+  label_currency: "Валюта",
+  label_service: "Сервис %",
+  bot_contacts: "Контакты Бота",
+  label_insta: "Instagram Имя",
+  label_whatsapp: "WhatsApp Номер",
+  btn_save: "Сохранить"
 }
 
 

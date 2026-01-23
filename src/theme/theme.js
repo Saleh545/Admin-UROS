@@ -3,29 +3,29 @@ import { createTheme } from '@mui/material/styles';
 // Keçid effekti
 const transitionStyle = 'all 0.3s ease-in-out';
 
-// Dizayn tokenləri (Rənglər birebir şəkildəki kimi)
+// Dizayn tokenləri
 export const getDesignTokens = (mode) => ({
   palette: {
     mode,
     ...(mode === 'light'
       ? {
-          // LIGHT MODE (Əgər gələcəkdə lazım olsa)
+          // LIGHT MODE
           background: { default: '#F4F5FA', paper: '#FFFFFF' },
           text: { primary: 'rgba(58, 53, 65, 0.87)', secondary: 'rgba(58, 53, 65, 0.68)' },
         }
       : {
-          // DARK MODE (Birebir şəkildəki rənglər)
+          // DARK MODE
           background: {
-            default: '#28243d', // Əsas arxa fon (Tünd)
-            paper: '#312d4b',   // Sidebar və Kartların rəngi (Bir az açıq tünd)
+            default: '#28243d',
+            paper: '#312d4b',
           },
           text: {
-            primary: 'rgba(231, 227, 252, 0.87)', // Ağ yazılar
-            secondary: 'rgba(231, 227, 252, 0.68)', // Boz yazılar
+            primary: 'rgba(231, 227, 252, 0.87)',
+            secondary: 'rgba(231, 227, 252, 0.68)',
           },
         }),
     primary: {
-      main: '#666CFF', // Şəkildəki parlaq bənövşəyi/mavi düymə rəngi
+      main: '#666CFF',
       contrastText: '#fff',
     },
     success: { main: '#72E128' },
@@ -35,7 +35,6 @@ export const getDesignTokens = (mode) => ({
   },
   typography: {
     fontFamily: '"Inter", "Roboto", sans-serif',
-    // Şrift qalınlıqları
     h1: { fontWeight: 700 }, h2: { fontWeight: 700 }, h3: { fontWeight: 700 },
     h4: { fontWeight: 700 }, h5: { fontWeight: 600 }, h6: { fontWeight: 600 },
     subtitle1: { fontWeight: 600 }, subtitle2: { fontWeight: 600 },
@@ -43,7 +42,7 @@ export const getDesignTokens = (mode) => ({
     button: { fontWeight: 600, textTransform: 'none' },
   },
   shape: {
-    borderRadius: 8, // Ümumi yumruluq
+    borderRadius: 8,
   },
   components: {
     MuiCssBaseline: {
@@ -51,11 +50,10 @@ export const getDesignTokens = (mode) => ({
         body: { transition: transitionStyle },
       },
     },
-    // Sidebar və Header üçün sərhədləri ləğv edirik
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderRight: 'none', // SAĞ XƏTTİ LƏĞV EDİRİK (Şəkildəki kimi)
+          borderRight: 'none',
           backgroundColor: mode === 'dark' ? '#312d4b' : '#FFFFFF',
           transition: transitionStyle,
         },
@@ -65,8 +63,8 @@ export const getDesignTokens = (mode) => ({
       styleOverrides: {
         root: {
           boxShadow: 'none',
-          borderBottom: 'none', // Headerin alt xəttini də ləğv edirik
-          backgroundColor: mode === 'dark' ? '#28243d' : '#FFFFFF', // Header arxa fonla eyni rəngdə
+          borderBottom: 'none',
+          backgroundColor: mode === 'dark' ? '#28243d' : '#FFFFFF',
           transition: transitionStyle,
           backgroundImage: 'none',
         },
@@ -81,14 +79,20 @@ export const getDesignTokens = (mode) => ({
         },
       },
     },
-    // Menyu düymələrinin ümumi stili
     MuiListItemButton: {
         styleOverrides: {
             root: {
-                borderRadius: 8, // Düymələr yumru olsun
+                borderRadius: 8,
                 transition: transitionStyle,
             }
         }
-    }
+    },
+    MuiGrid: {
+      styleOverrides: {
+        item: {
+          minWidth: 'auto', 
+        },
+      },
+    },
   },
 });

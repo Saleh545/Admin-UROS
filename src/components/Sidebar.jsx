@@ -9,7 +9,8 @@ import {
   Security, Settings, BarChart, ShoppingBag,
   LocalOffer, RocketLaunch, ReceiptLong, DashboardCustomize,
   FactCheck, Chat, Star, Restaurant, TableRestaurant,
-  Map, Smartphone, PermIdentity
+  Map, Smartphone, PermIdentity, AutoAwesome, HelpOutline,
+  CreditCard, GridView
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -21,7 +22,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
   const { t } = useTranslation();
 
   const navigation = [
-    // --- SUPER ADMIN ---
+    // --- SUPER ADMIN (Köhnə menyular saxlanıldı) ---
     { kind: 'header', title: t('sidebar.super_admin') },
     { kind: 'item', title: t('sidebar.dashboard'), icon: <Home />, path: '/' },
     { kind: 'item', title: t('sidebar.restaurants'), icon: <Store />, path: '/restaurants' },
@@ -33,62 +34,69 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
     { kind: 'item', title: t('sidebar.releases'), icon: <RocketLaunch />, path: '/releases' },
     { kind: 'item', title: t('sidebar.logs'), icon: <Storage />, path: '/logs' },
 
-    // --- MANAGEMENT ---
+    // --- MANAGEMENT (Yeniləndi: Şəkildəki kimi) ---
     { kind: 'header', title: t('sidebar.management') },
-    { kind: 'item', title: t('sidebar.dashboard'), icon: <ShoppingBag />, path: '/dashboard' },
-    { kind: 'item', title: t('sidebar.marketing'), icon: <CardGiftcard />, path: '/marketing' },
+    { kind: 'item', title: 'Dashboard', icon: <ShoppingBag />, path: '/dashboard' }, // Əvvəlki
+    { kind: 'item', title: 'Marketing & Promo', icon: <CardGiftcard />, path: '/marketing' }, // Ad dəyişdirildi
     { 
       kind: 'item', 
-      title: t('sidebar.staff'), 
+      title: 'Staff & Access', 
       icon: <PeopleOutline />, 
       path: '/staff',
       badge: { label: 'Limits', color: '#4285F4' } 
     },
-    { kind: 'item', title: t('sidebar.security'), icon: <Security />, path: '/security' },
-    { kind: 'item', title: t('sidebar.settings'), icon: <Settings />, path: '/venue-settings' },
-    { kind: 'item', title: t('sidebar.analytics'), icon: <BarChart />, path: '/analytics' },
-
-    // --- FINANCE ---
-    { kind: 'header', title: t('sidebar.finance') },
-    { kind: 'item', title: t('sidebar.billing'), icon: <ReceiptLong />, path: '/billing' },
-
-    // --- OPERATIONS ---
-    { kind: 'header', title: t('sidebar.operations') },
-    { kind: 'item', title: t('sidebar.ops_dashboard'), icon: <DashboardCustomize />, path: '/venue-dashboard' },
+    { kind: 'item', title: 'Security Logs', icon: <Security />, path: '/security' },
+    { kind: 'item', title: 'Venue Settings', icon: <Settings />, path: '/venue-settings' },
+    { kind: 'item', title: 'Analytics', icon: <BarChart />, path: '/analytics' },
     { 
       kind: 'item', 
-      title: t('sidebar.live_orders'), 
+      title: "What's New", 
+      icon: <AutoAwesome />, 
+      path: '/whats-new',
+      badge: { label: 'New', color: '#FF4C51' } 
+    },
+    { kind: 'item', title: 'Help & Support', icon: <HelpOutline />, path: '/help-support' },
+
+    // --- FINANCE ---
+    { kind: 'header', title: 'FINANCE' },
+    { kind: 'item', title: 'Billing', icon: <CreditCard />, path: '/billing' },
+
+    // --- OPERATIONS ---
+    { kind: 'header', title: 'OPERATIONS' },
+    { kind: 'item', title: 'Dashboard', icon: <GridView />, path: '/venue-dashboard' },
+    { 
+      kind: 'item', 
+      title: 'Live Orders', 
       icon: <FactCheck />, 
       path: '/live-orders',
       badge: { label: 'Live', color: '#FF4C51' } 
     },
     { 
       kind: 'item', 
-      title: t('sidebar.chat'), 
+      title: 'Chat / CRM', 
       icon: <Chat />, 
       path: '/chat',
       badge: { label: '3', color: '#4285F4' } 
     },
-    { kind: 'item', title: t('sidebar.reviews'), icon: <Star />, path: '/reviews' },
-    { kind: 'item', title: t('sidebar.menu_mgmt'), icon: <Restaurant />, path: '/menu-management' },
-    { kind: 'item', title: t('sidebar.table_layout'), icon: <TableRestaurant />, path: '/table-layout' },
-    { kind: 'item', title: t('sidebar.floor_plan'), icon: <Map />, path: '/floor-plan' },
+    { kind: 'item', title: 'Reviews / Feedback', icon: <Star />, path: '/reviews' },
+    { kind: 'item', title: 'Menu Management', icon: <Restaurant />, path: '/menu-management' },
+    { kind: 'item', title: 'Table Layout', icon: <TableRestaurant />, path: '/table-layout' },
+    { kind: 'item', title: 'Visual Floor Plan', icon: <Map />, path: '/floor-plan' },
 
     // --- PERSONAL ---
-    { kind: 'header', title: t('sidebar.personal') },
-    { kind: 'item', title: t('sidebar.profile_settings'), icon: <Person />, path: '/profile-settings' },
+    { kind: 'header', title: 'PERSONAL' },
+    { kind: 'item', title: 'Profile Settings', icon: <Person />, path: '/profile-settings' },
 
     // --- STAFF INTERFACE ---
-    { kind: 'header', title: t('sidebar.staff_interface') },
+    { kind: 'header', title: 'STAFF INTERFACE' },
     { 
         kind: 'item', 
-        title: t('sidebar.open_mobile'), 
+        title: 'Open Mobile App', 
         icon: <Smartphone />, 
         path: '/mobile-app',
-        // special: true silindi - artıq standart davranacaq
         badge: { label: 'Mobile', color: '#72E128' } 
     },
-    { kind: 'item', title: t('sidebar.staff_profile'), icon: <PermIdentity />, path: '/staff-profile' },
+    { kind: 'item', title: 'Staff Profile', icon: <PermIdentity />, path: '/staff-profile' },
   ];
 
   const drawerContent = (

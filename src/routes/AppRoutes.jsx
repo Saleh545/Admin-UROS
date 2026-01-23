@@ -15,6 +15,8 @@ import MarketingPromo from '../pages/MarketingPromo'
 import StaffAccess from '../pages/StaffAccess'
 import SecurityLogs from '../pages/SecurityLogs'
 import VenueSettings from '../pages/VenueSettings'
+import Analytics from '../pages/Analytics'
+import WhatsNew from '../pages/WhatsNew'
 
 const AppRoutes = () => {
   return (
@@ -35,6 +37,8 @@ const AppRoutes = () => {
       <Route path="/staff" element={<StaffAccess/>} />
       <Route path="/security" element={<SecurityLogs/>} />
       <Route path="/venue-settings" element={<VenueSettings/>} />
+      <Route path="/analytics" element={<Analytics/>} />
+      <Route path="/whats-new" element={<WhatsNew/>} />
     </Routes>
   )
 }

@@ -72,14 +72,14 @@ const OwnerDashboard = () => {
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: 3, gap: 2 }}>
         <Box>
           <Typography variant="h5" fontWeight="700" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            {t('dashboard.owner.title')} 📊
+            {t('ownerdashboard.owner.title')} 📊
           </Typography>
           <Button 
             onClick={handleClick}
             endIcon={<KeyboardArrowDown />} 
             sx={{ color: 'text.secondary', textTransform: 'none', p: 0, '&:hover': { bgcolor: 'transparent' }, justifyContent: 'flex-start', mt: 0.5 }}
           >
-            {t('dashboard.owner.subtitle')}: <strong style={{ marginLeft: '5px', color: '#fff' }}>{selectedBranch}</strong>
+            {t('ownerdashboard.owner.subtitle')}: <strong style={{ marginLeft: '5px', color: '#fff' }}>{selectedBranch}</strong>
           </Button>
           <Menu
             anchorEl={anchorEl}
@@ -107,17 +107,17 @@ const OwnerDashboard = () => {
           </Menu>
         </Box>
         <Button variant="outlined" startIcon={<CalendarToday fontSize="small" />} sx={{ borderColor: 'rgba(255,255,255,0.2)', color: 'text.secondary', textTransform: 'none' }}>
-          {t('dashboard.owner.date_filter')}
+          {t('ownerdashboard.owner.date_filter')}
         </Button>
       </Box>
 
       {/* 1. STATS CARDS */}
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(4, 1fr)' }, gap: 2, mb: 3 }}>
         {[
-          { title: t('dashboard.stats.revenue'), val: "12,450 ₼", sub: "+18% vs yesterday", icon: <MonetizationOn />, color: '#72E128', bg: 'rgba(114, 225, 40, 0.12)' },
-          { title: t('dashboard.stats.promo'), val: "12", sub: "Campaigns running", icon: <LocalOffer />, color: '#4285F4', bg: 'rgba(66, 133, 244, 0.12)' },
-          { title: t('dashboard.stats.rating'), val: "4.8", sub: "Based on 45 reviews", icon: <Star />, color: '#FDB528', bg: 'rgba(253, 181, 40, 0.12)' },
-          { title: t('dashboard.stats.occupancy'), val: "75%", sub: "12 / 20 Tables", icon: <Restaurant />, color: '#26C6F9', bg: 'rgba(38, 198, 249, 0.12)' },
+          { title: t('ownerdashboard.stats.revenue'), val: "12,450 ₼", sub: "+18% vs yesterday", icon: <MonetizationOn />, color: '#72E128', bg: 'rgba(114, 225, 40, 0.12)' },
+          { title: t('ownerdashboard.stats.promo'), val: "12", sub: "Campaigns running", icon: <LocalOffer />, color: '#4285F4', bg: 'rgba(66, 133, 244, 0.12)' },
+          { title: t('ownerdashboard.stats.rating'), val: "4.8", sub: "Based on 45 reviews", icon: <Star />, color: '#FDB528', bg: 'rgba(253, 181, 40, 0.12)' },
+          { title: t('ownerdashboard.stats.occupancy'), val: "75%", sub: "12 / 20 Tables", icon: <Restaurant />, color: '#26C6F9', bg: 'rgba(38, 198, 249, 0.12)' },
         ].map((stat, i) => (
           <Card key={i} sx={{ height: '100%', boxShadow: 3, borderRadius: '12px' }}>
             <CardContent sx={{ p: 2.5, '&:last-child': { pb: 2.5 }, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', boxSizing: 'border-box' }}>
@@ -138,7 +138,7 @@ const OwnerDashboard = () => {
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' }, gap: 3, mb: 3 }}>
         <Card sx={{ height: '100%', width: '100%', boxShadow: 3, borderRadius: '12px', minWidth: 0 }}>
           <CardContent sx={{ p: 3 }}>
-            <Typography variant="h6" fontWeight="bold">{t('dashboard.revenue.title')}</Typography>
+            <Typography variant="h6" fontWeight="bold">{t('ownerdashboard.revenue.title')}</Typography>
             <Typography variant="caption" color="text.secondary" sx={{ mb: 3, display: 'block' }}>Today (12:00 - 21:00)</Typography>
             <Box sx={{ width: '100%', overflowX: 'auto' }}>
               <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', height: 200, minWidth: '500px', gap: 2, mt: 4 }}>
@@ -157,7 +157,7 @@ const OwnerDashboard = () => {
 
         <Card sx={{ height: '100%', width: '100%', boxShadow: 3, borderRadius: '12px', minWidth: 0 }}>
           <CardContent sx={{ p: 3 }}>
-            <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>{t('dashboard.promo.title')} 🎁</Typography>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>{t('ownerdashboard.promo.title')} 🎁</Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               {PROMOS.map((promo, i) => (
                 <Box key={i}>
@@ -176,7 +176,7 @@ const OwnerDashboard = () => {
               ))}
             </Box>
             <Button fullWidth variant="contained" onClick={() => navigate('/marketing')} sx={{ mt: 4, bgcolor: 'rgba(255,255,255,0.05)', color: '#4285F4', fontWeight: 'bold', textTransform: 'none', '&:hover': { bgcolor: 'rgba(66, 133, 244, 0.1)' } }}>
-              {t('dashboard.promo.btn_manage')}
+              {t('ownerdashboard.promo.btn_manage')}
             </Button>
           </CardContent>
         </Card>
@@ -189,17 +189,17 @@ const OwnerDashboard = () => {
         <Card sx={{ height: '100%', width: '100%', boxShadow: 3, borderRadius: '12px', overflow: 'hidden', minWidth: 0 }}>
           <CardContent sx={{ p: 0, '&:last-child': { pb: 0 } }}>
             <Box sx={{ p: 3, pb: 1 }}>
-              <Typography variant="h6" fontWeight="bold">{t('dashboard.dishes.title')} 🍔</Typography>
+              <Typography variant="h6" fontWeight="bold">{t('ownerdashboard.dishes.title')} 🍔</Typography>
             </Box>
             <Box sx={{ width: '100%', overflowX: 'auto' }}>
               {/* RESPONSIV CƏDVƏL TƏNZİMLƏMƏLƏRİ */}
               <Table sx={{ minWidth: { xs: 350, sm: 600 } }}> {/* Mobil üçün minWidth azaldıldı */}
                 <TableHead sx={{ bgcolor: 'rgba(255,255,255,0.02)' }}>
                   <TableRow>
-                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('dashboard.dishes.item')}</TableCell>
-                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('dashboard.dishes.price')}</TableCell>
-                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('dashboard.dishes.sold')}</TableCell>
-                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('dashboard.dishes.trend')}</TableCell>
+                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('ownerdashboard.dishes.item')}</TableCell>
+                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('ownerdashboard.dishes.price')}</TableCell>
+                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('ownerdashboard.dishes.sold')}</TableCell>
+                    <TableCell sx={{ color: 'text.secondary', fontWeight: 'bold', p: { xs: 1.5, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{t('ownerdashboard.dishes.trend')}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -222,7 +222,7 @@ const OwnerDashboard = () => {
         {/* Recent Reviews */}
         <Card sx={{ height: '100%', width: '100%', boxShadow: 3, borderRadius: '12px', minWidth: 0 }}>
           <CardContent sx={{ p: 3 }}>
-            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>{t('dashboard.reviews.title')} ⭐</Typography>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>{t('ownerdashboard.reviews.title')} ⭐</Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {REVIEWS.map((review) => (
                 <Box key={review.id} sx={{ p: 1.5, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 2 }}>

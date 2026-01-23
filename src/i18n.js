@@ -6,6 +6,63 @@ const resources = {
   // --- ENGLISH ---
   en: {
     translation: {
+      dashboard: {
+        title: "Super Admin",
+        subtitle: "UR-OS Monitoring Panel",
+        stats: {
+          brands: "BRANDS (CHAIN)",
+          branches: "TOTAL BRANCHES",
+          revenue_total: "REVENUE (TOTAL)",
+          system: "SYSTEM",
+          new: "new",
+          stable: "Stable"
+        },
+        table: {
+          title: "Recent Brands",
+          all: "All",
+          col_brand: "BRAND",
+          col_branches: "BRANCHES",
+          col_date: "DATE",
+          col_status: "STATUS",
+          status_active: "Active",
+          status_pending: "Pending",
+          points: "{{count}} points",
+          time_2_days: "2 days ago",
+          time_5_hours: "5 hours ago",
+          time_1_week: "1 week ago",
+          time_2_weeks: "2 weeks ago"
+        }
+      },
+      ownerdashboard: {
+        owner: {
+          title: "Owner Dashboard",
+          subtitle: "Overview for",
+          date_filter: "This Month: Jan 2026"
+        },
+        stats: {
+          revenue: "Revenue Today",
+          promo: "Active Promo",
+          rating: "Guest Rating",
+          occupancy: "Occupancy"
+        },
+        revenue: {
+          title: "Revenue (Hourly)"
+        },
+        promo: {
+          title: "Promo Performance",
+          btn_manage: "Manage Promos"
+        },
+        dishes: {
+          title: "Top Dishes",
+          item: "ITEM",
+          price: "PRICE",
+          sold: "SOLD",
+          trend: "TREND"
+        },
+        reviews: {
+          title: "Recent Reviews"
+        }
+      },
       pricing: {
         title: "Monetization & Pricing 💰",
         subtitle: "Create custom plans & limits.",
@@ -77,7 +134,6 @@ const resources = {
         },
         alert_saved: "All changes saved 💾"
       },
-
       sidebar: {
         super_admin: "Super Admin",
         dashboard: "Dashboard",
@@ -114,33 +170,6 @@ const resources = {
         staff_interface: "Staff Interface",
         open_mobile: "Open Mobile App",
         staff_profile: "Staff Profile"
-      },
-      dashboard: {
-        title: "Super Admin",
-        subtitle: "UR-OS Monitoring Panel",
-        stats: {
-          brands: "BRANDS (CHAIN)",
-          branches: "TOTAL BRANCHES",
-          revenue_total: "REVENUE (TOTAL)",
-          system: "SYSTEM",
-          new: "new",
-          stable: "Stable"
-        },
-        table: {
-          title: "Recent Brands",
-          all: "All",
-          col_brand: "BRAND",
-          col_branches: "BRANCHES",
-          col_date: "DATE",
-          col_status: "STATUS",
-          status_active: "Active",
-          status_pending: "Pending",
-          points: "{{count}} points",
-          time_2_days: "2 days ago",
-          time_5_hours: "5 hours ago",
-          time_1_week: "1 week ago",
-          time_2_weeks: "2 weeks ago"
-        }
       },
       restaurants: {
         title: "Brands & Networks",
@@ -416,36 +445,6 @@ const resources = {
           close: "Close"
         }
       },
-      dashboard: {
-        owner: {
-          title: "Owner Dashboard",
-          subtitle: "Overview for",
-          date_filter: "This Month: Jan 2026"
-        },
-        stats: {
-          revenue: "Revenue Today",
-          promo: "Active Promo",
-          rating: "Guest Rating",
-          occupancy: "Occupancy"
-        },
-        revenue: {
-          title: "Revenue (Hourly)"
-        },
-        promo: {
-          title: "Promo Performance",
-          btn_manage: "Manage Promos"
-        },
-        dishes: {
-          title: "Top Dishes",
-          item: "ITEM",
-          price: "PRICE",
-          sold: "SOLD",
-          trend: "TREND"
-        },
-        reviews: {
-          title: "Recent Reviews"
-        }
-      },
       marketing: {
         title: "Marketing & Promo",
         managing: "Managing",
@@ -523,38 +522,125 @@ const resources = {
         }
       },
       venue: {
-  header_title: "Settings",
-  configure: "Configure Branch",
-  identity_title: "Identity & Location",
-  btn_upload: "Upload Network Logo",
-  upload_hint: "Changes apply to ALL branches",
-  label_name: "Branch Display Name",
-  label_slug: "Menu Link Slug",
-  label_address: "Address (Text)",
-  label_map: "Google Maps Link",
-  map_hint: "For humans: clickable link in chat",
-  bot_coords: "Bot Coordinates",
-  pick_map: "Pick On Map",
-  label_lat: "Latitude",
-  label_lng: "Longitude",
-  label_phone: "Branch Phone",
-  label_wifi: "Wi-Fi Password",
-  qr_subtitle: "Unique QR for",
-  btn_download: "Download PNG",
-  rules_title: "Network Rules (Global)",
-  label_currency: "Currency",
-  label_service: "Service %",
-  bot_contacts: "Bot Contacts",
-  label_insta: "Instagram Username",
-  label_whatsapp: "WhatsApp Number",
-  btn_save: "Save Changes"
-}
+        header_title: "Settings",
+        configure: "Configure Branch",
+        identity_title: "Identity & Location",
+        btn_upload: "Upload Network Logo",
+        upload_hint: "Changes apply to ALL branches",
+        label_name: "Branch Display Name",
+        label_slug: "Menu Link Slug",
+        label_address: "Address (Text)",
+        label_map: "Google Maps Link",
+        map_hint: "For humans: clickable link in chat",
+        bot_coords: "Bot Coordinates",
+        pick_map: "Pick On Map",
+        label_lat: "Latitude",
+        label_lng: "Longitude",
+        label_phone: "Branch Phone",
+        label_wifi: "Wi-Fi Password",
+        qr_subtitle: "Unique QR for",
+        btn_download: "Download PNG",
+        rules_title: "Network Rules (Global)",
+        label_currency: "Currency",
+        label_service: "Service %",
+        bot_contacts: "Bot Contacts",
+        label_insta: "Instagram Username",
+        label_whatsapp: "WhatsApp Number",
+        btn_save: "Save Changes"
+      },
+      analytics: {
+        "title": "Analytics & Reports",
+        "showing_for": "Showing data for",
+        "all_branches": "All Branches (Network)",
+        "revenue_growth": "Revenue Growth",
+        "sales_perf": "Sales performance",
+        "sales_category": "Sales by Category",
+        "top_waiters": "Top Waiters",
+        "week": "Week",
+        "stats": {
+          "revenue": "Total Revenue",
+          "avg_check": "Avg. Check",
+          "orders": "Total Orders",
+          "retention": "Retention"
+        },
+        "categories": {
+          "food": "Food",
+          "drinks": "Drinks",
+          "hookah": "Hookah"
+        },
+        "filters": {
+          "this_week": "This Week",
+          "this_month": "This Month",
+          "last_month": "Last Month"
+        }
+      },
+      whats_new: {
+        "title": "What's New in UR-OS",
+        "subtitle": "Stay updated with the latest features and improvements.",
+        "current_version": "Current Version",
+        "types": {
+          "feature": "FEATURE",
+          "fix": "FIX",
+          "major": "MAJOR"
+        },
+        "releases": {
+          "telegram": {
+            "title": "Telegram Integration & Speed Boost",
+            "desc": "We have added full support for Telegram bots. Now you can receive orders directly in your group chat.",
+            "changes": {
+              "bot": "Telegram Bot Module",
+              "speed": "Faster Menu Loading",
+              "bugs": "Bug fixes in Billing"
+            }
+          },
+          "billing": {
+            "title": "Critical Billing Fix",
+            "desc": "Resolved an issue where PDF invoices were not downloading correctly on iOS devices.",
+            "changes": {
+              "pdf": "PDF Generation Fix",
+              "ios": "iOS UI Improvements"
+            }
+          },
+          "launch": {
+            "title": "Global Launch 🚀",
+            "desc": "Welcome to UR-OS! The ultimate operating system for your restaurant."
+          }
+        }
+      }
+
     }
   },
 
   // --- AZERBAIJANI ---
   az: {
     translation: {
+      dashboard: {
+        title: "Super Admin",
+        subtitle: "UR-OS Monitorinq Paneli",
+        stats: {
+          brands: "BRENDLƏR (ŞƏBƏKƏ)",
+          branches: "CƏMİ FİLİALLAR",
+          revenue_total: "GƏLİR (ÜMUMİ)",
+          system: "SİSTEM",
+          new: "yeni",
+          stable: "Stabil",
+        },
+        table: {
+          title: "Son Brendlər",
+          all: "Hamısı",
+          col_brand: "BREND",
+          col_branches: "FİLİALLAR",
+          col_date: "TARİX",
+          col_status: "STATUS",
+          status_active: "Aktiv",
+          status_pending: "Gözləmədə",
+          points: "{{count}} filial",
+          time_2_days: "2 gün əvvəl",
+          time_5_hours: "5 saat əvvəl",
+          time_1_week: "1 həftə əvvəl",
+          time_2_weeks: "2 həftə əvvəl"
+        }
+      },
       pricing: {
         title: "Monetizasiya və Qiymətlər 💰",
         subtitle: "Xüsusi planlar və limitlər yaradın.",
@@ -663,33 +749,7 @@ const resources = {
         open_mobile: "Mobil Tətbiqi Aç",
         staff_profile: "Personal Profili"
       },
-      dashboard: {
-        title: "Super Admin",
-        subtitle: "UR-OS Monitorinq Paneli",
-        stats: {
-          brands: "BRENDLƏR (ŞƏBƏKƏ)",
-          branches: "CƏMİ FİLİALLAR",
-          revenue_total: "GƏLİR (ÜMUMİ)",
-          system: "SİSTEM",
-          new: "yeni",
-          stable: "Stabil"
-        },
-        table: {
-          title: "Son Brendlər",
-          all: "Hamısı",
-          col_brand: "BREND",
-          col_branches: "FİLİALLAR",
-          col_date: "TARİX",
-          col_status: "STATUS",
-          status_active: "Aktiv",
-          status_pending: "Gözləmədə",
-          points: "{{count}} filial",
-          time_2_days: "2 gün əvvəl",
-          time_5_hours: "5 saat əvvəl",
-          time_1_week: "1 həftə əvvəl",
-          time_2_weeks: "2 həftə əvvəl"
-        }
-      },
+
       restaurants: {
         title: "Brendlər və Şəbəkələr",
         stats: {
@@ -965,7 +1025,7 @@ const resources = {
           close: "Bağla"
         }
       },
-      dashboard: {
+      ownerdashboard: {
         owner: {
           title: "Sahib Paneli",
           subtitle: "İcmal",
@@ -1072,32 +1132,91 @@ const resources = {
         }
       },
       venue: {
-  header_title: "Tənzimləmələr",
-  configure: "Filialı Tənzimlə",
-  identity_title: "Kimlik və Məkan",
-  btn_upload: "Şəbəkə Loqosunu Yüklə",
-  upload_hint: "Dəyişikliklər BÜTÜN filiallara aiddir",
-  label_name: "Filialın Görünən Adı",
-  label_slug: "Menyu Linki (Slug)",
-  label_address: "Ünvan (Mətn)",
-  label_map: "Google Maps Linki",
-  map_hint: "Çatda kliklənə bilən link üçün",
-  bot_coords: "Bot Koordinatları",
-  pick_map: "Xəritədə Seç",
-  label_lat: "Enlik",
-  label_lng: "Uzunluq",
-  label_phone: "Filial Telefonu",
-  label_wifi: "Wi-Fi Şifrəsi",
-  qr_subtitle: "Unikal QR:",
-  btn_download: "PNG Yüklə",
-  rules_title: "Şəbəkə Qaydaları (Qlobal)",
-  label_currency: "Valyuta",
-  label_service: "Xidmət %",
-  bot_contacts: "Bot Əlaqələri",
-  label_insta: "Instagram Adı",
-  label_whatsapp: "WhatsApp Nömrəsi",
-  btn_save: "Yadda Saxla"
-}
+        header_title: "Tənzimləmələr",
+        configure: "Filialı Tənzimlə",
+        identity_title: "Kimlik və Məkan",
+        btn_upload: "Şəbəkə Loqosunu Yüklə",
+        upload_hint: "Dəyişikliklər BÜTÜN filiallara aiddir",
+        label_name: "Filialın Görünən Adı",
+        label_slug: "Menyu Linki (Slug)",
+        label_address: "Ünvan (Mətn)",
+        label_map: "Google Maps Linki",
+        map_hint: "Çatda kliklənə bilən link üçün",
+        bot_coords: "Bot Koordinatları",
+        pick_map: "Xəritədə Seç",
+        label_lat: "Enlik",
+        label_lng: "Uzunluq",
+        label_phone: "Filial Telefonu",
+        label_wifi: "Wi-Fi Şifrəsi",
+        qr_subtitle: "Unikal QR:",
+        btn_download: "PNG Yüklə",
+        rules_title: "Şəbəkə Qaydaları (Qlobal)",
+        label_currency: "Valyuta",
+        label_service: "Xidmət %",
+        bot_contacts: "Bot Əlaqələri",
+        label_insta: "Instagram Adı",
+        label_whatsapp: "WhatsApp Nömrəsi",
+        btn_save: "Yadda Saxla"
+      },
+      analytics: {
+        "title": "Analitika və Hesabatlar",
+        "showing_for": "Məlumat göstərilir",
+        "all_branches": "Bütün Filiallar (Şəbəkə)",
+        "revenue_growth": "Gəlir Artımı",
+        "sales_perf": "Satış performansı",
+        "sales_category": "Kateqoriya üzrə Satış",
+        "top_waiters": "Ən Yaxşı Ofisiantlar",
+        "week": "Həftə",
+        "stats": {
+          "revenue": "Ümumi Gəlir",
+          "avg_check": "Orta Çek",
+          "orders": "Cəmi Sifariş",
+          "retention": "Qayıdış Faizi"
+        },
+        "categories": {
+          "food": "Yemək",
+          "drinks": "İçkilər",
+          "hookah": "Qəlyan"
+        },
+        "filters": {
+          "this_week": "Bu Həftə",
+          "this_month": "Bu Ay",
+          "last_month": "Keçən Ay"
+        }
+      },
+      whats_new: {
+        "title": "UR-OS Yenilikləri",
+        "subtitle": "Ən son xüsusiyyətlər və təkmilləşdirmələrdən xəbərdar olun.",
+        "current_version": "Cari Versiya",
+        "types": {
+          "feature": "YENİLİK",
+          "fix": "DÜZƏLİŞ",
+          "major": "ƏSAS"
+        },
+        "releases": {
+          "telegram": {
+            "title": "Telegram İnteqrasiyası və Sürət Artımı",
+            "desc": "Telegram botları üçün tam dəstək əlavə etdik. Artıq sifarişləri birbaşa qrup çatınızda qəbul edə bilərsiniz.",
+            "changes": {
+              "bot": "Telegram Bot Modulu",
+              "speed": "Daha Sürətli Menyu Yüklənməsi",
+              "bugs": "Ödəniş sistemindəki xətaların həlli"
+            }
+          },
+          "billing": {
+            "title": "Kritik Ödəniş Düzəlişi",
+            "desc": "PDF qəbzlərinin iOS cihazlarında düzgün yüklənməməsi problemi həll edildi.",
+            "changes": {
+              "pdf": "PDF Generasiya Düzəlişi",
+              "ios": "iOS UI Təkmilləşdirmələri"
+            }
+          },
+          "launch": {
+            "title": "Qlobal Açılış 🚀",
+            "desc": "UR-OS-a xoş gəlmisiniz! Restoranınız üçün ən mükəmməl əməliyyat sistemi."
+          }
+        }
+      }
 
     }
   },
@@ -1515,7 +1634,7 @@ const resources = {
           close: "Закрыть"
         }
       },
-      dashboard: {
+      ownerdashboard: {
         owner: {
           title: "Панель Владельца",
           subtitle: "Обзор для",
@@ -1622,33 +1741,91 @@ const resources = {
         }
       },
       venue: {
-  header_title: "Настройки",
-  configure: "Настроить Филиал",
-  identity_title: "Идентификация и Локация",
-  btn_upload: "Загрузить Логотип",
-  upload_hint: "Применяется ко ВСЕМ филиалам",
-  label_name: "Отображаемое Имя",
-  label_slug: "Ссылка Меню (Slug)",
-  label_address: "Адрес (Текст)",
-  label_map: "Ссылка Google Maps",
-  map_hint: "Кликабельная ссылка в чате",
-  bot_coords: "Координаты Бота",
-  pick_map: "Выбрать на карте",
-  label_lat: "Широта",
-  label_lng: "Долгота",
-  label_phone: "Телефон Филиала",
-  label_wifi: "Пароль Wi-Fi",
-  qr_subtitle: "Уникальный QR для",
-  btn_download: "Скачать PNG",
-  rules_title: "Правила Сети (Глобально)",
-  label_currency: "Валюта",
-  label_service: "Сервис %",
-  bot_contacts: "Контакты Бота",
-  label_insta: "Instagram Имя",
-  label_whatsapp: "WhatsApp Номер",
-  btn_save: "Сохранить"
-}
-
+        header_title: "Настройки",
+        configure: "Настроить Филиал",
+        identity_title: "Идентификация и Локация",
+        btn_upload: "Загрузить Логотип",
+        upload_hint: "Применяется ко ВСЕМ филиалам",
+        label_name: "Отображаемое Имя",
+        label_slug: "Ссылка Меню (Slug)",
+        label_address: "Адрес (Текст)",
+        label_map: "Ссылка Google Maps",
+        map_hint: "Кликабельная ссылка в чате",
+        bot_coords: "Координаты Бота",
+        pick_map: "Выбрать на карте",
+        label_lat: "Широта",
+        label_lng: "Долгота",
+        label_phone: "Телефон Филиала",
+        label_wifi: "Пароль Wi-Fi",
+        qr_subtitle: "Уникальный QR для",
+        btn_download: "Скачать PNG",
+        rules_title: "Правила Сети (Глобально)",
+        label_currency: "Валюта",
+        label_service: "Сервис %",
+        bot_contacts: "Контакты Бота",
+        label_insta: "Instagram Имя",
+        label_whatsapp: "WhatsApp Номер",
+        btn_save: "Сохранить"
+      },
+      analytics: {
+        "title": "Аналитика и отчеты",
+        "showing_for": "Данные для",
+        "all_branches": "Все филиалы (Сеть)",
+        "revenue_growth": "Рост выручки",
+        "sales_perf": "Эффективность продаж",
+        "sales_category": "Продажи по категориям",
+        "top_waiters": "Лучшие официанты",
+        "week": "Неделя",
+        "stats": {
+          "revenue": "Общая выручка",
+          "avg_check": "Средний чек",
+          "orders": "Всего заказов",
+          "retention": "Удержание"
+        },
+        "categories": {
+          "food": "Еда",
+          "drinks": "Напитки",
+          "hookah": "Кальян"
+        },
+        "filters": {
+          "this_week": "Эта неделя",
+          "this_month": "Этот месяц",
+          "last_month": "Прошлый месяц"
+        }
+      },
+      whats_new: {
+        "title": "Что нового в UR-OS",
+        "subtitle": "Будьте в курсе последних функций и улучшений.",
+        "current_version": "Текущая версия",
+        "types": {
+          "feature": "НОВОЕ",
+          "fix": "ИСПРАВЛЕНИЕ",
+          "major": "РЕЛИЗ"
+        },
+        "releases": {
+          "telegram": {
+            "title": "Интеграция с Telegram и Ускорение",
+            "desc": "Мы добавили полную поддержку Telegram-ботов. Теперь вы можете принимать заказы прямо в групповом чате.",
+            "changes": {
+              "bot": "Модуль Telegram-бота",
+              "speed": "Ускоренная загрузка меню",
+              "bugs": "Исправление ошибок в биллинге"
+            }
+          },
+          "billing": {
+            "title": "Критическое исправление биллинга",
+            "desc": "Решена проблема, из-за которой PDF-счета не скачивались корректно на устройствах iOS.",
+            "changes": {
+              "pdf": "Исправление генерации PDF",
+              "ios": "Улучшения интерфейса iOS"
+            }
+          },
+          "launch": {
+            "title": "Глобальный запуск 🚀",
+            "desc": "Добро пожаловать в UR-OS! Идеальная операционная система для вашего ресторана."
+          }
+        }
+      }
 
 
     }

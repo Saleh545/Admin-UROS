@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 
 // FILIALLAR
 const BRANCHES = ['Grand Baku (Center)', 'Grand Baku (Mall)', 'Grand Baku (Sea Breeze)'];
-const FILTER_OPTIONS = ['All Branches', ...BRANCHES];
 
 const SecurityLogs = () => {
   const { t } = useTranslation();
@@ -24,8 +23,7 @@ const SecurityLogs = () => {
   const [selectedBranch, setSelectedBranch] = useState('All Branches'); 
   const [anchorEl, setAnchorEl] = useState(null); 
 
-  // --- MOCK DATA (Komponentin içində - Tərcümə üçün) ---
-  // useMemo istifadə edirik ki, dil dəyişəndə avtomatik yenilənsin
+  // --- MOCK DATA ---
   const logs = useMemo(() => [
     { 
       id: 1, type: 'danger', icon: <DeleteOutline />, 
@@ -63,7 +61,7 @@ const SecurityLogs = () => {
       branch: 'Mall', user: 'Aysel Hostess', time: `${t('security.logs.yesterday')}, 02:15 PM`, 
       badge: t('security.logs.badge_guest'), badgeColor: 'warning' 
     },
-  ], [t]); // Dil dəyişəndə yenidən hesabla
+  ], [t]);
 
   // Handlers
   const handleBranchClick = (event) => setAnchorEl(event.currentTarget);
@@ -85,11 +83,9 @@ const SecurityLogs = () => {
 
   // FILTER LOGIC
   const filteredLogs = logs.filter(log => {
-    // 1. Text Search
     const matchesSearch = log.title.toLowerCase().includes(search.toLowerCase()) || 
                           log.user.toLowerCase().includes(search.toLowerCase());
     
-    // 2. Risk Type Filter
     let matchesType = true;
     if (filter === 'High Risk') {
       matchesType = log.type === 'danger' || log.type === 'warning';
@@ -97,7 +93,6 @@ const SecurityLogs = () => {
       matchesType = log.type === 'success' || log.type === 'info';
     }
 
-    // 3. Branch Filter
     let matchesBranch = true;
     if (selectedBranch !== 'All Branches') {
       const branchShort = selectedBranch.match(/\(([^)]+)\)/)[1];
@@ -113,13 +108,13 @@ const SecurityLogs = () => {
       {/* HEADER */}
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'center' }, mb: 3, gap: 2 }}>
         <Box>
-          <Typography variant="h5" fontWeight="700" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="h5" fontWeight="700" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: '#fff' }}>
             {t('security.title')} 🛡️
           </Typography>
           
           {/* BRANCH DROPDOWN */}
           <Box sx={{ display: 'flex', alignItems: 'center', mt: 0.5 }}>
-            <Typography variant="body2" color="text.secondary">{t('security.source')}:</Typography>
+            <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.5)' }}>{t('security.source')}:</Typography>
             <Button 
               onClick={handleBranchClick}
               endIcon={<KeyboardArrowDown fontSize="small" />} 
@@ -137,13 +132,13 @@ const SecurityLogs = () => {
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={() => handleBranchClose(null)}
-              PaperProps={{ sx: { bgcolor: '#2b2c40', color: '#fff', mt: 1, minWidth: 200 } }}
+              PaperProps={{ sx: { bgcolor: '#2b2c40', color: '#fff', mt: 1, minWidth: 200, border: '1px solid rgba(255,255,255,0.1)' } }}
             >
-              <MenuItem onClick={() => handleBranchClose('All Branches')}>
+              <MenuItem onClick={() => handleBranchClose('All Branches')} sx={{ '&:hover': { bgcolor: 'rgba(255,255,255,0.05)' } }}>
                 {t('security.all_branches')}
               </MenuItem>
               {BRANCHES.map((option) => (
-                <MenuItem key={option} onClick={() => handleBranchClose(option)}>{option}</MenuItem>
+                <MenuItem key={option} onClick={() => handleBranchClose(option)} sx={{ '&:hover': { bgcolor: 'rgba(255,255,255,0.05)' } }}>{option}</MenuItem>
               ))}
             </Menu>
           </Box>
@@ -156,8 +151,16 @@ const SecurityLogs = () => {
             placeholder={t('security.search_placeholder')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            InputProps={{ startAdornment: <InputAdornment position="start"><Search fontSize="small" sx={{ color: 'text.secondary' }} /></InputAdornment> }}
-            sx={{ minWidth: { md: 300 }, '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255,255,255,0.05)' } }}
+            InputProps={{ startAdornment: <InputAdornment position="start"><Search fontSize="small" sx={{ color: 'rgba(255,255,255,0.5)' }} /></InputAdornment> }}
+            sx={{ 
+                minWidth: { md: 300 }, 
+                '& .MuiOutlinedInput-root': { 
+                    color: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.05)',
+                    '& fieldset': { borderColor: 'rgba(255,255,255,0.2)' },
+                    '&:hover fieldset': { borderColor: 'rgba(255,255,255,0.3)' },
+                } 
+            }}
           />
           
           {/* RISK FILTER DROPDOWN */}
@@ -166,19 +169,33 @@ const SecurityLogs = () => {
               value={filter} 
               onChange={(e) => setFilter(e.target.value)}
               displayEmpty
-              startAdornment={<FilterList fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />}
-              sx={{ bgcolor: 'rgba(255,255,255,0.05)', color: '#fff', '.MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.1)' } }}
+              startAdornment={<FilterList fontSize="small" sx={{ mr: 1, color: 'rgba(255,255,255,0.5)' }} />}
+              sx={{ 
+                  bgcolor: 'rgba(255,255,255,0.05)', 
+                  color: '#fff', 
+                  '.MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.2)' },
+                  '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                  '& .MuiSvgIcon-root': { color: 'rgba(255,255,255,0.5)' }
+              }}
+              MenuProps={{ PaperProps: { sx: { bgcolor: '#2b2c40', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' } } }}
             >
-              <MenuItem value="All">{t('security.filters.all')}</MenuItem>
-              <MenuItem value="High Risk">{t('security.filters.high_risk')}</MenuItem>
-              <MenuItem value="Normal">{t('security.filters.normal')}</MenuItem>
+              <MenuItem value="All" sx={{ '&:hover': { bgcolor: 'rgba(255,255,255,0.05)' } }}>{t('security.filters.all')}</MenuItem>
+              <MenuItem value="High Risk" sx={{ '&:hover': { bgcolor: 'rgba(255,255,255,0.05)' } }}>{t('security.filters.high_risk')}</MenuItem>
+              <MenuItem value="Normal" sx={{ '&:hover': { bgcolor: 'rgba(255,255,255,0.05)' } }}>{t('security.filters.normal')}</MenuItem>
             </Select>
           </FormControl>
         </Box>
       </Box>
 
-      {/* LOGS LIST */}
-      <Card sx={{ boxShadow: 3, borderRadius: '12px', bgcolor: '#2b2c40' }}>
+      {/* LOGS LIST CARD */}
+      <Card sx={{ 
+          boxShadow: 3, 
+          borderRadius: '12px', 
+          // RƏNG DƏYİŞİKLİYİ:
+          bgcolor: 'rgba(255,255,255,0.02)', 
+          border: '1px solid rgba(255,255,255,0.1)',
+          color: '#fff'
+      }}>
         <CardContent sx={{ p: 0, '&:last-child': { pb: 0 } }}>
           {filteredLogs.map((log, index) => {
             const style = getStyles(log.type);
@@ -192,7 +209,8 @@ const SecurityLogs = () => {
                   p: 2, 
                   borderBottom: index !== filteredLogs.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
                   flexDirection: { xs: 'column', sm: 'row' },
-                  gap: { xs: 2, sm: 0 }
+                  gap: { xs: 2, sm: 0 },
+                  '&:hover': { bgcolor: 'rgba(255,255,255,0.02)' }
                 }}
               >
                 {/* ICON & MAIN INFO */}
@@ -207,7 +225,7 @@ const SecurityLogs = () => {
                   </Box>
 
                   <Box sx={{ minWidth: 0, flex: 1 }}>
-                    <Typography variant="body1" fontWeight="bold" noWrap>
+                    <Typography variant="body1" fontWeight="bold" noWrap sx={{ color: '#fff' }}>
                       {log.title}
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', mt: 0.5 }}>
@@ -215,13 +233,13 @@ const SecurityLogs = () => {
                         <Chip 
                           label={`📍 ${log.branch}`} 
                           size="small" 
-                          sx={{ height: 20, fontSize: '0.65rem', bgcolor: 'rgba(255,255,255,0.1)', color: 'text.secondary', fontWeight: 'bold' }} 
+                          sx={{ height: 20, fontSize: '0.65rem', bgcolor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', fontWeight: 'bold' }} 
                         />
                       )}
-                      <Typography variant="caption" color="#4285F4" fontWeight="bold">
+                      <Typography variant="caption" sx={{ color: '#4285F4', fontWeight: 'bold' }}>
                         {log.user}
                       </Typography>
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.5)' }}>
                         • {log.time}
                       </Typography>
                     </Box>
@@ -246,7 +264,7 @@ const SecurityLogs = () => {
             );
           })}
           {filteredLogs.length === 0 && (
-            <Box sx={{ p: 4, textAlign: 'center', color: 'text.secondary' }}>
+            <Box sx={{ p: 4, textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>
               No logs found for this filter.
             </Box>
           )}

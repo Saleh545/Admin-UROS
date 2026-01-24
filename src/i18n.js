@@ -606,7 +606,103 @@ const resources = {
             "desc": "Welcome to UR-OS! The ultimate operating system for your restaurant."
           }
         }
-      }
+      },
+      help_center: {
+        "title": "Help Center",
+        "subtitle": "Having issues? Write to us, we will help.",
+        "btn_contact": "Contact Support",
+        "my_requests": "My Requests",
+        "ticket_desc_1": "Technician is looking.",
+        "ticket_desc_2": "Done.",
+        "cards": {
+          "kb_title": "Knowledge Base",
+          "kb_desc": "Instructions and guides",
+          "wa_desc": "Instant response"
+        },
+        "table": {
+          "topic": "TOPIC",
+          "category": "CATEGORY",
+          "date": "DATE",
+          "priority": "PRIORITY",
+          "status": "STATUS"
+        },
+        "modal": {
+          "title": "New Request",
+          "cat_label": "Category",
+          "topic_label": "Topic (brief)",
+          "urgency_label": "Urgency",
+          "desc_label": "Detailed description",
+          "btn_cancel": "Cancel",
+          "btn_send": "Send"
+        },
+        "options": {
+          "tech_issue": "Technical Issue",
+          "billing": "Billing / Payment",
+          "feature": "Feature Request",
+          "other": "Other",
+          "high": "High",
+          "medium": "Medium",
+          "low": "Low"
+        }
+      },
+      billing: {
+        "title": "Billing & Subscription",
+        "subtitle": "Manage your network plan, payment methods, and invoices.",
+        "active_sub": "ACTIVE SUBSCRIPTION",
+        "month": "month",
+        "next_billing": "Next billing",
+        "update": "Update",
+        "expires": "Expires",
+        "upgrade_btn": "Upgrade / Change Plan",
+        "resource_usage": "Network Resource Usage",
+        "addons": "Active Add-ons",
+        "included": "Included",
+        "invoices": "Recent Invoices",
+        "view_history": "View All History",
+        "resources": {
+          "0": "Active Branches",
+          "1": "Staff Accounts",
+          "2": "Menu Items (SKU)",
+          "3": "Monthly AI Messages"
+        }
+      },
+      live_orders: {
+        "title": "Kitchen & Orders",
+        "managing": "Managing",
+        "sound_on": "Sound: ON",
+        "sound_off": "Sound: OFF",
+        "type_takeaway": "TAKEAWAY",
+        "type_dinein": "DINE-IN",
+        "table": "Table",
+        "in_restaurant": "In restaurant",
+        "eta": "ARRIVES",
+        "total": "TOTAL",
+        "note": "NOTE",
+        "btn_cancel": "Cancel",
+        "btn_cook": "COOK",
+        "btn_assemble": "Assemble Order",
+        "all_clean": "All clean, chief!",
+        "tabs": {
+          "new": "New",
+          "working": "In Progress",
+          "history": "History"
+        }
+      },
+      staff_profile: {
+  "title": "My Profile",
+  "role": "Waitress",
+  "hours": "Hours",
+  "orders": "Orders",
+  "personal_data": "Personal Data",
+  "firstname": "First Name",
+  "lastname": "Last Name",
+  "phone": "Phone",
+  "shift_status": "Shift Status",
+  "working_now": "You are currently working",
+  "offline": "You are offline",
+  "btn_save": "Save Changes",
+  "btn_logout": "Log Out"
+}
 
     }
   },
@@ -1216,8 +1312,103 @@ const resources = {
             "desc": "UR-OS-a xoş gəlmisiniz! Restoranınız üçün ən mükəmməl əməliyyat sistemi."
           }
         }
-      }
-
+      },
+      help_center: {
+        "title": "Yardım Mərkəzi",
+        "subtitle": "Problemlər yarandı? Bizə yazın, kömək edərik.",
+        "btn_contact": "Dəstəyə Yazın",
+        "my_requests": "Sorğularım",
+        "ticket_desc_1": "Texnik artıq baxır.",
+        "ticket_desc_2": "Həll olundu.",
+        "cards": {
+          "kb_title": "Bilik Bazası",
+          "kb_desc": "Təlimatlar və bələdçilər",
+          "wa_desc": "Ani cavab"
+        },
+        "table": {
+          "topic": "MÖVZU",
+          "category": "KATEQORİYA",
+          "date": "TARİX",
+          "priority": "VACİBLİK",
+          "status": "STATUS"
+        },
+        "modal": {
+          "title": "Yeni Sorğu",
+          "cat_label": "Kateqoriya",
+          "topic_label": "Mövzu (qısa)",
+          "urgency_label": "Təcililik",
+          "desc_label": "Ətraflı təsvir",
+          "btn_cancel": "Ləğv et",
+          "btn_send": "Göndər"
+        },
+        "options": {
+          "tech_issue": "Texniki Problem",
+          "billing": "Ödəniş / Hesab",
+          "feature": "Xüsusiyyət İstəyi",
+          "other": "Digər",
+          "high": "Yüksək",
+          "medium": "Orta",
+          "low": "Aşağı"
+        }
+      },
+      billing: {
+        "title": "Ödəniş və Abunəlik",
+        "subtitle": "Şəbəkə planınızı, ödəniş üsullarını və fakturaları idarə edin.",
+        "active_sub": "AKTİV ABUNƏLİK",
+        "month": "ay",
+        "next_billing": "Növbəti ödəniş",
+        "update": "Yenilə",
+        "expires": "Bitmə tarixi",
+        "upgrade_btn": "Planı Dəyiş / Yüksəlt",
+        "resource_usage": "Resurs İstifadəsi",
+        "addons": "Aktiv Əlavələr",
+        "included": "Daxildir",
+        "invoices": "Son Fakturalar",
+        "view_history": "Bütün Tarixçəyə Bax",
+        "resources": {
+          "0": "Aktiv Filiallar",
+          "1": "İşçi Hesabları",
+          "2": "Menyu Elementləri (SKU)",
+          "3": "Aylıq AI Mesajları"
+        }
+      },
+      live_orders: {
+        "title": "Mətbəx və Sifarişlər",
+        "managing": "İdarə olunur",
+        "sound_on": "Səs: AÇIQ",
+        "sound_off": "Səs: BAĞLI",
+        "type_takeaway": "PAKET",
+        "type_dinein": "ZALDA",
+        "table": "Stol",
+        "in_restaurant": "Restoranda",
+        "eta": "ÇATACAQ",
+        "total": "CƏMİ",
+        "note": "QEYD",
+        "btn_cancel": "İmtina",
+        "btn_cook": "HAZIRLA",
+        "btn_assemble": "Sifarişi Yığ",
+        "all_clean": "Hər şey təmizdir, şef!",
+        "tabs": {
+          "new": "Yeni",
+          "working": "İşlənir",
+          "history": "Tarixçə"
+        }
+      },
+      staff_profile: {
+  "title": "Mənim Profilim",
+  "role": "Ofisiant",
+  "hours": "Saat",
+  "orders": "Sifariş",
+  "personal_data": "Şəxsi Məlumatlar",
+  "firstname": "Ad",
+  "lastname": "Soyad",
+  "phone": "Telefon",
+  "shift_status": "Növbə Statusu",
+  "working_now": "Siz indi işləyirsiniz",
+  "offline": "İşdə deyilsiniz",
+  "btn_save": "Dəyişiklikləri Yadda Saxla",
+  "btn_logout": "Hesabdan Çıx"
+}
     }
   },
 
@@ -1825,8 +2016,103 @@ const resources = {
             "desc": "Добро пожаловать в UR-OS! Идеальная операционная система для вашего ресторана."
           }
         }
-      }
-
+      },
+      help_center: {
+        "title": "Центр Помощи",
+        "subtitle": "Возникли проблемы? Напишите нам, мы поможем.",
+        "btn_contact": "Написать В Поддержку",
+        "my_requests": "Мои Запросы",
+        "ticket_desc_1": "Техник уже смотрит.",
+        "ticket_desc_2": "Сделано.",
+        "cards": {
+          "kb_title": "База Знаний",
+          "kb_desc": "Инструкции и гайды",
+          "wa_desc": "Мгновенный ответ"
+        },
+        "table": {
+          "topic": "ТЕМА",
+          "category": "КАТЕГОРИЯ",
+          "date": "ДАТА",
+          "priority": "ПРИОРИТЕТ",
+          "status": "СТАТУС"
+        },
+        "modal": {
+          "title": "Новый запрос",
+          "cat_label": "Категория",
+          "topic_label": "Тема (кратко)",
+          "urgency_label": "Срочность",
+          "desc_label": "Подробное описание",
+          "btn_cancel": "Отмена",
+          "btn_send": "Отправить"
+        },
+        "options": {
+          "tech_issue": "Техническая проблема",
+          "billing": "Биллинг / Оплата",
+          "feature": "Запрос функции",
+          "other": "Другое",
+          "high": "Высокая",
+          "medium": "Средняя",
+          "low": "Низкая"
+        }
+      },
+      billing: {
+        "title": "Биллинг и Подписка",
+        "subtitle": "Управление планом сети, способами оплаты и счетами.",
+        "active_sub": "АКТИВНАЯ ПОДПИСКА",
+        "month": "мес",
+        "next_billing": "След. оплата",
+        "update": "Обновить",
+        "expires": "Истекает",
+        "upgrade_btn": "Обновить / Сменить план",
+        "resource_usage": "Использование ресурсов",
+        "addons": "Активные дополнения",
+        "included": "Включено",
+        "invoices": "Недавние счета",
+        "view_history": "Посмотреть всю историю",
+        "resources": {
+          "0": "Активные филиалы",
+          "1": "Аккаунты персонала",
+          "2": "Позиции меню (SKU)",
+          "3": "AI Сообщения в месяц"
+        }
+      },
+      live_orders: {
+        "title": "Кухня и Заказы",
+        "managing": "Управление",
+        "sound_on": "Звук: ВКЛ",
+        "sound_off": "Звук: ВЫКЛ",
+        "type_takeaway": "НА ВЫНОС",
+        "type_dinein": "В ЗАЛЕ",
+        "table": "Стол",
+        "in_restaurant": "В ресторане",
+        "eta": "ПРИБУДЕТ",
+        "total": "ИТОГО",
+        "note": "ПРИМЕЧАНИЕ",
+        "btn_cancel": "Отмена",
+        "btn_cook": "ГОТОВИТЬ",
+        "btn_assemble": "Собрать Заказ",
+        "all_clean": "Все чисто, шеф!",
+        "tabs": {
+          "new": "Новые",
+          "working": "В Работе",
+          "history": "История"
+        }
+      },
+      staff_profile: {
+  "title": "Мой Профиль",
+  "role": "Официант",
+  "hours": "Часов",
+  "orders": "Заказов",
+  "personal_data": "Личные данные",
+  "firstname": "Имя",
+  "lastname": "Фамилия",
+  "phone": "Телефон",
+  "shift_status": "Статус смены",
+  "working_now": "Вы сейчас работаете",
+  "offline": "Вы не на смене",
+  "btn_save": "Сохранить Изменения",
+  "btn_logout": "Выйти Из Аккаунта"
+}
 
     }
   }

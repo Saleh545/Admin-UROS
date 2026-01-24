@@ -22,7 +22,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
   const { t } = useTranslation();
 
   const navigation = [
-    // --- SUPER ADMIN (Köhnə menyular saxlanıldı) ---
+    // --- SUPER ADMIN ---
     { kind: 'header', title: t('sidebar.super_admin') },
     { kind: 'item', title: t('sidebar.dashboard'), icon: <Home />, path: '/' },
     { kind: 'item', title: t('sidebar.restaurants'), icon: <Store />, path: '/restaurants' },
@@ -34,10 +34,10 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
     { kind: 'item', title: t('sidebar.releases'), icon: <RocketLaunch />, path: '/releases' },
     { kind: 'item', title: t('sidebar.logs'), icon: <Storage />, path: '/logs' },
 
-    // --- MANAGEMENT (Yeniləndi: Şəkildəki kimi) ---
+    // --- MANAGEMENT ---
     { kind: 'header', title: t('sidebar.management') },
-    { kind: 'item', title: 'Dashboard', icon: <ShoppingBag />, path: '/dashboard' }, // Əvvəlki
-    { kind: 'item', title: 'Marketing & Promo', icon: <CardGiftcard />, path: '/marketing' }, // Ad dəyişdirildi
+    { kind: 'item', title: 'Dashboard', icon: <ShoppingBag />, path: '/dashboard' },
+    { kind: 'item', title: 'Marketing & Promo', icon: <CardGiftcard />, path: '/marketing' },
     { 
       kind: 'item', 
       title: 'Staff & Access', 
@@ -119,7 +119,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
           pb: 2,
           '&::-webkit-scrollbar': { display: 'none' },
           scrollbarWidth: 'none',
-          '-ms-overflow-style': 'none',
+          msOverflowStyle: 'none', // DÜZƏLİŞ BURADADIR (kebab-case camelCase ilə əvəz olundu)
         }}
       >
         <List sx={{ px: 0 }}>

@@ -17,6 +17,10 @@ import SecurityLogs from '../pages/SecurityLogs'
 import VenueSettings from '../pages/VenueSettings'
 import Analytics from '../pages/Analytics'
 import WhatsNew from '../pages/WhatsNew'
+import HelpSupport from '../pages/HelpSupport'
+import Billing from '../pages/Billing'
+import LiveOrders from '../pages/LiveOrders'
+import StaffProfile from '../pages/StaffProfile'
 
 const AppRoutes = () => {
   return (
@@ -39,6 +43,10 @@ const AppRoutes = () => {
       <Route path="/venue-settings" element={<VenueSettings/>} />
       <Route path="/analytics" element={<Analytics/>} />
       <Route path="/whats-new" element={<WhatsNew/>} />
+      <Route path="/help-support" element={<HelpSupport/>} />
+      <Route path="/billing" element={<Billing/>} />
+      <Route path="/live-orders" element={<LiveOrders/>} />
+      <Route path="/staff-profile" element={<StaffProfile/>} />
     </Routes>
   )
 }

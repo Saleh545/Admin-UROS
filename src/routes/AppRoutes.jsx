@@ -25,6 +25,9 @@ import ChatCRM from '../pages/ChatCRM'
 import ReviewsFeedback from '../pages/ReviewsFeedback'
 import MenuManagement from '../pages/MenuManagement'
 import ProfileSettings from '../pages/ProfileSettings'
+import TableLayout from '../pages/TableLayout'
+import VisualFloorPlan from '../pages/VisualFloorPlan'
+import OpenMobile from '../pages/OpenMobile'
 
 const AppRoutes = () => {
   return (
@@ -55,6 +58,9 @@ const AppRoutes = () => {
       <Route path="/reviews" element={<ReviewsFeedback/>} />
       <Route path="/menu-management" element={<MenuManagement/>} />
       <Route path="/profile-settings" element={<ProfileSettings/>} />
+      <Route path="/table-layout" element={<TableLayout/>} />
+      <Route path="/floor-plan" element={<VisualFloorPlan/>} />
+      <Route path="/mobile-app" element={<OpenMobile/>} />
     </Routes>
   )
 }

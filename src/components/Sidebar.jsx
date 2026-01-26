@@ -21,7 +21,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
   const location = useLocation();
   const { t } = useTranslation();
 
-  const navigation = [
+const navigation = [
     // --- SUPER ADMIN ---
     { kind: 'header', title: t('sidebar.super_admin') },
     { kind: 'item', title: t('sidebar.dashboard'), icon: <Home />, path: '/' },
@@ -36,68 +36,68 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, drawerWidth }) => {
 
     // --- MANAGEMENT ---
     { kind: 'header', title: t('sidebar.management') },
-    { kind: 'item', title: 'Dashboard', icon: <ShoppingBag />, path: '/dashboard' },
-    { kind: 'item', title: 'Marketing & Promo', icon: <CardGiftcard />, path: '/marketing' },
+    { kind: 'item', title: t('sidebar.dashboard'), icon: <ShoppingBag />, path: '/dashboard' },
+    { kind: 'item', title: t('sidebar.marketing'), icon: <CardGiftcard />, path: '/marketing' },
     { 
       kind: 'item', 
-      title: 'Staff & Access', 
+      title: t('sidebar.staff'), 
       icon: <PeopleOutline />, 
       path: '/staff',
-      badge: { label: 'Limits', color: '#4285F4' } 
+      badge: { label: t('sidebar.badge_limits'), color: '#4285F4' } 
     },
-    { kind: 'item', title: 'Security Logs', icon: <Security />, path: '/security' },
-    { kind: 'item', title: 'Venue Settings', icon: <Settings />, path: '/venue-settings' },
-    { kind: 'item', title: 'Analytics', icon: <BarChart />, path: '/analytics' },
+    { kind: 'item', title: t('sidebar.security_logs'), icon: <Security />, path: '/security' },
+    { kind: 'item', title: t('sidebar.venue_settings'), icon: <Settings />, path: '/venue-settings' },
+    { kind: 'item', title: t('sidebar.analytics'), icon: <BarChart />, path: '/analytics' },
     { 
       kind: 'item', 
-      title: "What's New", 
+      title: t('sidebar.whats_new'), 
       icon: <AutoAwesome />, 
       path: '/whats-new',
-      badge: { label: 'New', color: '#FF4C51' } 
+      badge: { label: t('sidebar.badge_new'), color: '#FF4C51' } 
     },
-    { kind: 'item', title: 'Help & Support', icon: <HelpOutline />, path: '/help-support' },
+    { kind: 'item', title: t('sidebar.help'), icon: <HelpOutline />, path: '/help-support' },
 
     // --- FINANCE ---
-    { kind: 'header', title: 'FINANCE' },
-    { kind: 'item', title: 'Billing', icon: <CreditCard />, path: '/billing' },
+    { kind: 'header', title: t('sidebar.header_finance') },
+    { kind: 'item', title: t('sidebar.billing'), icon: <CreditCard />, path: '/billing' },
 
     // --- OPERATIONS ---
-    { kind: 'header', title: 'OPERATIONS' },
-    { kind: 'item', title: 'Dashboard', icon: <GridView />, path: '/venue-dashboard' },
+    { kind: 'header', title: t('sidebar.header_operations') },
+    { kind: 'item', title: t('sidebar.dashboard'), icon: <GridView />, path: '/venue-dashboard' },
     { 
       kind: 'item', 
-      title: 'Live Orders', 
+      title: t('sidebar.live_orders'), 
       icon: <FactCheck />, 
       path: '/live-orders',
-      badge: { label: 'Live', color: '#FF4C51' } 
+      badge: { label: t('sidebar.badge_live'), color: '#FF4C51' } 
     },
     { 
       kind: 'item', 
-      title: 'Chat / CRM', 
+      title: t('sidebar.chat'), 
       icon: <Chat />, 
       path: '/chat',
-      badge: { label: '3', color: '#4285F4' } 
+      badge: { label: '3', color: '#4285F4' } // Rəqəmləri tərcümə etməyə ehtiyac yoxdur
     },
-    { kind: 'item', title: 'Reviews / Feedback', icon: <Star />, path: '/reviews' },
-    { kind: 'item', title: 'Menu Management', icon: <Restaurant />, path: '/menu-management' },
-    { kind: 'item', title: 'Table Layout', icon: <TableRestaurant />, path: '/table-layout' },
-    { kind: 'item', title: 'Visual Floor Plan', icon: <Map />, path: '/floor-plan' },
+    { kind: 'item', title: t('sidebar.reviews'), icon: <Star />, path: '/reviews' },
+    { kind: 'item', title: t('sidebar.menu'), icon: <Restaurant />, path: '/menu-management' },
+    { kind: 'item', title: t('sidebar.table_layout'), icon: <TableRestaurant />, path: '/table-layout' },
+    { kind: 'item', title: t('sidebar.floor_plan'), icon: <Map />, path: '/floor-plan' },
 
     // --- PERSONAL ---
-    { kind: 'header', title: 'PERSONAL' },
-    { kind: 'item', title: 'Profile Settings', icon: <Person />, path: '/profile-settings' },
+    { kind: 'header', title: t('sidebar.header_personal') },
+    { kind: 'item', title: t('sidebar.profile_settings'), icon: <Person />, path: '/profile-settings' },
 
     // --- STAFF INTERFACE ---
-    { kind: 'header', title: 'STAFF INTERFACE' },
+    { kind: 'header', title: t('sidebar.header_staff') },
     { 
         kind: 'item', 
-        title: 'Open Mobile App', 
+        title: t('sidebar.mobile_app'), 
         icon: <Smartphone />, 
         path: '/mobile-app',
-        badge: { label: 'Mobile', color: '#72E128' } 
+        badge: { label: t('sidebar.badge_mobile'), color: '#72E128' } 
     },
-    { kind: 'item', title: 'Staff Profile', icon: <PermIdentity />, path: '/staff-profile' },
-  ];
+    { kind: 'item', title: t('sidebar.staff_profile'), icon: <PermIdentity />, path: '/staff-profile' },
+  ];;
 
   const drawerContent = (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>

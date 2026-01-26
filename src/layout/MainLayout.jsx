@@ -43,6 +43,12 @@ const MainLayout = ({ children }) => {
     navigate('/venue-dashboard'); 
   };
 
+  // YENİ: Settings səhifəsinə keçid funksiyası
+  const handleGoToSettings = () => {
+    handleProfileMenuClose();
+    navigate('/profile-settings');
+  };
+
   // --- LANGUAGE TOGGLE ---
   const handleLanguageToggle = () => {
     setIsLangSwitching(true);
@@ -183,7 +189,8 @@ const MainLayout = ({ children }) => {
                 <ListItemText primary={t('profile.profile')} primaryTypographyProps={{ fontSize: '0.9rem', fontWeight: 500 }} />
               </MenuItem>
               
-              <MenuItem onClick={handleProfileMenuClose} sx={{ py: 1, px: 2.5 }}>
+              {/* Settings düyməsi yeniləndi */}
+              <MenuItem onClick={handleGoToSettings} sx={{ py: 1, px: 2.5 }}>
                 <ListItemIcon sx={{ minWidth: 32 }}><Settings fontSize="small" /></ListItemIcon>
                 <ListItemText primary={t('profile.settings')} primaryTypographyProps={{ fontSize: '0.9rem', fontWeight: 500 }} />
               </MenuItem>

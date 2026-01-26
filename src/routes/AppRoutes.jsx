@@ -21,6 +21,10 @@ import HelpSupport from '../pages/HelpSupport'
 import Billing from '../pages/Billing'
 import LiveOrders from '../pages/LiveOrders'
 import StaffProfile from '../pages/StaffProfile'
+import ChatCRM from '../pages/ChatCRM'
+import ReviewsFeedback from '../pages/ReviewsFeedback'
+import MenuManagement from '../pages/MenuManagement'
+import ProfileSettings from '../pages/ProfileSettings'
 
 const AppRoutes = () => {
   return (
@@ -47,6 +51,10 @@ const AppRoutes = () => {
       <Route path="/billing" element={<Billing/>} />
       <Route path="/live-orders" element={<LiveOrders/>} />
       <Route path="/staff-profile" element={<StaffProfile/>} />
+      <Route path="/chat" element={<ChatCRM/>} />
+      <Route path="/reviews" element={<ReviewsFeedback/>} />
+      <Route path="/menu-management" element={<MenuManagement/>} />
+      <Route path="/profile-settings" element={<ProfileSettings/>} />
     </Routes>
   )
 }

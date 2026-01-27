@@ -821,7 +821,26 @@ const resources = {
         "add_floor": "Add Floor",
         "floor_name": "Name",
         "create": "Create"
-      }
+      },
+      mobile: {
+  halls: "Halls",
+  table_map: "Table Map",
+  menu: "Menu",
+  stop_list: "Stop List",
+  quick_order: "Quick Order",
+  my_tables: "My Tables",
+  welcome: "Hello, {{name}}!",
+  status_online: "Online",
+  status_offline: "Offline",
+  urgent: "URGENT",
+  clear: "Clear",
+  shift_closed_title: "Shift Closed",
+  shift_start_instruction_1: "Tap the",
+  green_button: "green button",
+  shift_start_instruction_2: "above to start.",
+  close_table: "Close Table",
+  to_order: "Go to Order"
+}
 
 
     }
@@ -1631,24 +1650,43 @@ const resources = {
         "status_reserved": "Bron"
       },
       floor_plan: {
-  "title": "Vizual Zal Planı",
-  "edit": "Redaktə",
-  "no_map": "Xəritə Yüklənməyib",
-  "switch_desc": "Şəkil yükləmək üçün Redaktə rejiminə keçin",
-  "upload_title": "Plan Yüklə",
-  "upload_desc": "Faylı seçmək üçün klikləyin",
-  "remove_map": "Xəritəni Sil",
-  "add_items": "ƏŞYA ƏLAVƏ ET (Sürüklə)",
-  "available_tables": "Mövcud Masalar",
-  "objects": "Obyektlər",
-  "wall": "Divar / Bölmə",
-  "decor": "Dekor / Əşya",
-  "add_floor": "Mərtəbə Əlavə Et",
-  "floor_name": "Ad",
-  "create": "Yarat"
+        "title": "Vizual Zal Planı",
+        "edit": "Redaktə",
+        "no_map": "Xəritə Yüklənməyib",
+        "switch_desc": "Şəkil yükləmək üçün Redaktə rejiminə keçin",
+        "upload_title": "Plan Yüklə",
+        "upload_desc": "Faylı seçmək üçün klikləyin",
+        "remove_map": "Xəritəni Sil",
+        "add_items": "ƏŞYA ƏLAVƏ ET (Sürüklə)",
+        "available_tables": "Mövcud Masalar",
+        "objects": "Obyektlər",
+        "wall": "Divar / Bölmə",
+        "decor": "Dekor / Əşya",
+        "add_floor": "Mərtəbə Əlavə Et",
+        "floor_name": "Ad",
+        "create": "Yarat"
+      },
+      mobile: {
+  halls: "Zallar",
+  table_map: "Masa xəritəsi",
+  menu: "Menyu",
+  stop_list: "Stop-list",
+  quick_order: "Sürətli Sifariş",
+  my_tables: "Masalarım",
+  welcome: "Salam, {{name}}!",
+  status_online: "Növbədə",
+  status_offline: "Oflayn",
+  urgent: "TƏCİLİ",
+  clear: "Təmizlə",
+  shift_closed_title: "Növbə bağlıdır",
+  shift_start_instruction_1: "Başlamaq üçün yuxarıdakı",
+  green_button: "yaşıl düyməyə",
+  shift_start_instruction_2: "toxunun.",
+  close_table: "Masanı bağla",
+  to_order: "Sifarişə keç"
 }
-      
-      
+
+
     }
   },
 
@@ -2471,7 +2509,26 @@ const resources = {
         "add_floor": "Добавить Этаж",
         "floor_name": "Название",
         "create": "Создать"
-      }
+      },
+      mobile: {
+  halls: "Залы",
+  table_map: "Карта столов",
+  menu: "Меню",
+  stop_list: "Стоп-лист",
+  quick_order: "Быстрый заказ",
+  my_tables: "Мои столы",
+  welcome: "Привет, {{name}}!",
+  status_online: "На смене",
+  status_offline: "Не в сети",
+  urgent: "СРОЧНО",
+  clear: "Очистить",
+  shift_closed_title: "Смена закрыта",
+  shift_start_instruction_1: "Нажмите на",
+  green_button: "зеленую кнопку",
+  shift_start_instruction_2: "сверху, чтобы начать.",
+  close_table: "Закрыть стол",
+  to_order: "К заказу"
+}
 
     }
   }
